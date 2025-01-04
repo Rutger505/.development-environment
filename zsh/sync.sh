@@ -3,7 +3,7 @@
 # Configuration
 ZSHRC_PATH="$HOME/.zshrc"
 # Your git repository path
-REPO_PATH="$HOME/.setup-development-environment"
+REPO_PATH="$HOME/.development-environment"
 # Your target branch
 BRANCH="main"
 # Sync interval in seconds

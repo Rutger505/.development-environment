@@ -3,7 +3,6 @@
 prompt_installation "Zsh" || return 0
 
 
-echo "Installing ZSH..."
 apt-get update
 apt-get install -y zsh
 
@@ -32,13 +31,12 @@ chsh -s "$(command -v zsh)" "$ACTUAL_USER"
 echo "ZSH version:"
 zsh --version
 
-echo "Installation complete!"
-echo "Please log out and log back in for changes to take effect."
 
+
+########### Setup ZSH Config Sync Service ##########
 echo "Installing Oh My Zsh..."
 su - "$ACTUAL_USER" -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended'
 
-########### Setup ZSH Config Sync Service ##########
 echo "Setting up ZSH config sync service..."
 
 # Make the script executable
@@ -74,4 +72,5 @@ su - $ACTUAL_USER -c 'systemctl --user start zsh-configuration-sync.service'
 loginctl enable-linger $ACTUAL_USER
 
 echo "ZSH config sync service has been set up and started."
+echo "Please log out and log back in for changes to take effect."
 echo "You can check the service status with: systemctl --user status zsh-configuration-sync.service"

@@ -8,12 +8,9 @@ Setup developer environment on machine such as terminal configuration
 |----------------|---------------------------------------------------------------------|--------|
 | zsh            | zsh with oh my zsh, automatically sync changes with this repository | ✅      |
 | zen browser    |                                                                     | ✅      |
-| docker desktop |                                                                     | ⚠️     |
+| docker desktop |                                                                     | ✅      |
 | phpstorm       |                                                                     | ✅      |
-| configure git  | Configure email and name                                            | ❌      |
-| create ssh key |                                                                     | ❌      |
-| bitwarden      |                                                                     | ❌      |
-| vscode         |                                                                     | ❌      |
+| configure git  | Configure email and name                                            | ⚠️     |
 
 ## Installation
 

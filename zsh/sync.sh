@@ -7,7 +7,7 @@ REPO_PATH="$HOME/.development-environment"
 # Your target branch
 BRANCH="main"
 # Sync interval in seconds
-CHECK_INTERVAL=5
+CHECK_INTERVAL=60
 
 # Create log file
 LOG_FILE="$REPO_PATH/auto_sync.log"

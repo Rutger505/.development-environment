@@ -1,0 +1,51 @@
+#!/bin/bash
+
+########### Setup zsh ##########
+# Check if script is run with sudo privileges
+if [ "$EUID" -ne 0 ]; then 
+    echo "Please run this script with sudo privileges"
+    exit 1
+fi
+
+# Check if running on Ubuntu
+if ! command -v apt-get &> /dev/null; then
+    echo "This script only supports Ubuntu systems"
+    exit 1
+fi
+
+echo "Installing ZSH..."
+apt-get update
+apt-get install -y zsh
+
+# Check if installation was successful
+if ! command -v zsh &> /dev/null; then
+    echo "ZSH installation failed"
+    exit 1
+fi
+
+# Add ZSH to available shells if not already present
+if ! grep -q "$(command -v zsh)" /etc/shells; then
+    command -v zsh | tee -a /etc/shells
+fi
+
+# Change default shell for the actual user (not root)
+ACTUAL_USER=$(logname || echo $SUDO_USER)
+if [ -z "$ACTUAL_USER" ]; then
+    echo "Could not determine the actual user"
+    exit 1
+fi
+
+echo "Setting ZSH as default shell for user $ACTUAL_USER..."
+chsh -s "$(command -v zsh)" "$ACTUAL_USER"
+
+# Verify installation
+echo "ZSH version:"
+zsh --version
+
+echo "Installation complete!"
+echo "Please log out and log back in for changes to take effect."
+
+echo "Installing Oh My Zsh..."
+su - "$ACTUAL_USER" -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended'
+
+

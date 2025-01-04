@@ -19,3 +19,4 @@ source ./zsh/setup.sh
 source ./phpstorm/setup.sh
 source ./zen-browser/setup.sh
 source ./docker-desktop/setup.sh
+source ./git/setup.sh

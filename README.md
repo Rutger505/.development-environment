@@ -17,4 +17,9 @@ Setup developer environment on machine such as terminal configuration
 
 ## Installation
 
-TODO
+1. Clone the repository in the home directory.
+2. Run the setup script.
+
+```bash
+sudo ./setup.sh
+```

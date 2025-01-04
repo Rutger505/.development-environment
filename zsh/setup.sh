@@ -37,6 +37,10 @@ zsh --version
 echo "Installing Oh My Zsh..."
 su - "$ACTUAL_USER" -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended'
 
+echo "Copying ZSH configuration files..."
+cp -r /home/$ACTUAL_USER/.development-environment/zsh/config/ /home/$ACTUAL_USER/
+
+
 echo "Setting up ZSH config sync service..."
 
 # Make the script executable

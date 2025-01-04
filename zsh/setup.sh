@@ -43,9 +43,6 @@ cp -r /home/$ACTUAL_USER/.development-environment/zsh/config/ /home/$ACTUAL_USER
 
 echo "Setting up ZSH config sync service..."
 
-# Make the script executable
-chmod +x /home/$ACTUAL_USER/.development-environment/zsh/sync.sh
-
 # Create systemd user directory
 mkdir -p /home/$ACTUAL_USER/.config/systemd/user/
 

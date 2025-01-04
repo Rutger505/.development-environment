@@ -10,7 +10,7 @@ Setup developer environment on machine such as terminal configuration
 | zen browser    |                                                                     | ✅      |
 | docker desktop |                                                                     | ✅      |
 | phpstorm       |                                                                     | ✅      |
-| configure git  | Configure email and name                                            | ⚠️     |
+| configure git  | Configure email and name                                            | ✅      |
 
 ## Installation
 

@@ -9,8 +9,11 @@ BRANCH="main"
 # Sync interval in seconds
 CHECK_INTERVAL=60
 
+# Config folder
+CONFIG_FOLDER="$REPO_PATH/zsh/config"
+
 # Create log file
-LOG_FILE="$REPO_PATH/auto_sync.log"
+LOG_FILE="$REPO_PATH/zsh/sync.log"
 touch "$LOG_FILE"
 
 # Function to check if repository is clean
@@ -27,14 +30,11 @@ sync_changes() {
 
     cd "$REPO_PATH" || exit 1
 
-    # Copy the current .zshrc to the repo
-    cp "$ZSHRC_PATH" "$REPO_PATH/.zshrc"
+    cp "$ZSHRC_PATH" "$CONFIG_FOLDER/.zshrc"
 
-    # Add changes
     git add .zshrc
 
-    # Commit with timestamp
-    git commit -m "Auto-update: $timestamp"
+    git commit -m "Auto sync zsh config: $timestamp"
 
     # Pull latest changes first to avoid conflicts
     if git pull origin "$BRANCH"; then

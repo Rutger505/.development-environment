@@ -2,7 +2,7 @@
 
 Setup developer environment on machine such as terminal configuration
 
-# Roadmap
+## Roadmap
 
 | Application    | Description                                                         | Status |
 |----------------|---------------------------------------------------------------------|--------|
@@ -14,3 +14,7 @@ Setup developer environment on machine such as terminal configuration
 | create ssh key |                                                                     | ❌      |
 | bitwarden      |                                                                     | ❌      |
 | vscode         |                                                                     | ❌      |
+
+## Installation
+
+TODO

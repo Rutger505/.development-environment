@@ -6,10 +6,15 @@ started with development.
 ## Installation
 
 1. Clone the repository in the home directory.
+
+```bash
+git clone git@github.com:Rutger505/.development-environment.git ~/.development-environment
+```
+
 2. Run the setup script.
 
 ```bash
-sudo ./setup.sh
+sudo ~/.development-environment/setup.sh
 ```
 
 ## Roadmap

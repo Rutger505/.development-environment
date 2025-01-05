@@ -15,6 +15,7 @@ fi
 # Import propt function to display install prompts
 source ./utils/prompt.sh
 
+source ./ghostty/setup.sh
 source ./zsh/setup.sh
 source ./phpstorm/setup.sh
 source ./zen-browser/setup.sh

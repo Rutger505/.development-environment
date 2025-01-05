@@ -18,43 +18,47 @@ touch "$LOG_FILE"
 
 # Function to check if repository is clean
 is_repo_clean() {
+   local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+   echo "[$timestamp] Checking repository status..."
+
    # Check if we can access the repository
    if ! cd "$REPO_PATH"; then
-       echo "Failed to change directory to $REPO_PATH"
+       echo "[$timestamp] Failed to change directory to $REPO_PATH"
        return 1
    fi
 
    # Fetch latest changes from remote
    if ! git fetch origin "$BRANCH"; then
-       echo "Failed to fetch from remote"
+       echo "[$timestamp] Failed to fetch from remote"
        return 1
    fi
 
    # Check for remote changes
    if ! git diff --quiet HEAD "origin/$BRANCH"; then
-       echo "Remote has changes"
+       echo "[$timestamp] Remote has changes"
        return 1
    fi
 
    # Check for local changes
    if ! git diff --quiet HEAD; then
-       echo "Local has uncommitted changes"
+       echo "[$timestamp] Local has uncommitted changes"
        return 1
    fi
 
    # Check if files even exist
    if [ ! -f "$ZSHRC_PATH" ] || [ ! -f "$CONFIG_FOLDER/.zshrc" ]; then
-       echo "One of the config files is missing"
+       echo "[$timestamp] One of the config files is missing"
        return 1
    fi
 
    # Compare local .zshrc with the one in repo
    if ! diff "$ZSHRC_PATH" "$CONFIG_FOLDER/.zshrc" > /dev/null 2>&1; then
-       echo "Local config file has changes"
+       echo "[$timestamp] Local config file has changes"
        return 1
    fi
 
    # All checks passed, repository is clean
+   echo "[$timestamp] Repository is clean"
    return 0
 }
 

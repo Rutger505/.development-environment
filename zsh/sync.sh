@@ -7,7 +7,7 @@ REPO_PATH="$HOME/.development-environment"
 # Your target branch
 BRANCH="main"
 # Sync interval in seconds
-CHECK_INTERVAL=5
+CHECK_INTERVAL=55
 
 # Config folder
 CONFIG_FOLDER="$REPO_PATH/zsh/config"

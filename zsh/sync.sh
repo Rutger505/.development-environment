@@ -9,7 +9,7 @@ REPO_CONFIG_FOLDER="$REPO_PATH/zsh/config"
 REPO_CONFIG_FILE="$REPO_CONFIG_FOLDER/.zshrc"
 
 # Function to log messages with timestamps
-source "$REPO_PATH/utils/logs.sh"
+source "$REPO_PATH/utils/log.sh"
 
 import_from_remote() {
     log "Checking for remote changes..."

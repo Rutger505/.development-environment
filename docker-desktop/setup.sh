@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source "$SCRIPT_DIR/utils/prompt.sh"
-
 prompt_installation "Docker Desktop" || return 0
 
 # Create temporary directory for download

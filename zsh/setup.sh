@@ -3,6 +3,7 @@
 prompt_installation "Zsh" || return 0
 
 
+########### Install ZSH ##########
 apt-get update
 apt-get install -y zsh
 
@@ -31,16 +32,20 @@ chsh -s "$(command -v zsh)" "$ACTUAL_USER"
 echo "ZSH version:"
 zsh --version
 
-
-
-########### Setup ZSH Config Sync Service ##########
+########### Install Oh My Zsh ##########
 echo "Installing Oh My Zsh..."
 su - "$ACTUAL_USER" -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended'
 
+
+########### Copy ZSH Configuration Files ##########
 echo "Copying ZSH configuration files..."
-cp -r /home/$ACTUAL_USER/.development-environment/zsh/config/ /home/$ACTUAL_USER/
+if ! cp -r /home/$ACTUAL_USER/.development-environment/zsh/config/.zshrc /home/$ACTUAL_USER/; then
+    echo "Failed to copy ZSH configuration files"
+    echo "Not setting up ZSH config sync service to prevent overwriting the remote config"
+    return 1
+fi
 
-
+########### Setup ZSH Config Sync Service ##########
 echo "Setting up ZSH config sync service..."
 
 # Create systemd user directory

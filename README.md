@@ -1,6 +1,16 @@
-# .development-environment
+# Development environment
 
-Setup developer environment on machine such as terminal configuration
+Repo to setup development environment on a new machine. It installs all the necessary tools and configurations to get
+started with development.
+
+## Installation
+
+1. Clone the repository in the home directory.
+2. Run the setup script.
+
+```bash
+sudo ./setup.sh
+```
 
 ## Roadmap
 
@@ -14,11 +24,7 @@ Setup developer environment on machine such as terminal configuration
 | Ghostty           |                                                                     | ✅      |
 | k9s (and kubectl) |                                                                     | ❌      |
 
-## Installation
+## Development
 
-1. Clone the repository in the home directory.
-2. Run the setup script.
+Clone the repository a second time. This is necessary to not mess with the zsh sync process.
 
-```bash
-sudo ./setup.sh
-```

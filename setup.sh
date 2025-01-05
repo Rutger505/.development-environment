@@ -20,9 +20,21 @@ apt-get install -y curl jq
 # Import propt function to display install prompts
 source ./utils/prompt.sh
 
-source ./ghostty/setup.sh
-source ./zsh/setup.sh
-source ./phpstorm/setup.sh
-source ./zen-browser/setup.sh
-source ./docker-desktop/setup.sh
-source ./git/setup.sh
+scripts=(
+   "ghostty"
+   "zsh"
+   "phpstorm"
+   "zen-browser"
+   "docker-desktop"
+   "git"
+   "k9s"
+)
+
+for script in "${scripts[@]}"; do
+   if [ -f "./$script/setup.sh" ]; then
+       source "./$script/setup.sh"
+   else
+       echo "Error: ./$script/setup.sh not found"
+       exit 1
+   fi
+done

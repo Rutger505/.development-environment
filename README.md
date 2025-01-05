@@ -27,7 +27,7 @@ sudo ~/.development-environment/setup.sh
 | phpstorm          |                                                                     | ✅      |
 | configure git     | Configure email and name                                            | ✅      |
 | Ghostty           |                                                                     | ✅      |
-| k9s (and kubectl) |                                                                     | ❌      |
+| k9s (and kubectl) |                                                                     | ✅      |
 
 ## Development
 

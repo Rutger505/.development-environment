@@ -72,6 +72,12 @@ sync_changes() {
        return 1
    }
 
+   # Pull latest changes first to avoid conflicts
+   if ! git pull origin "$BRANCH"; then
+       echo "[$timestamp] Failed to pull latest changes"
+       return 1
+   fi
+
    # Copy all config files
    if ! cp -r "$ZSHRC_PATH" "$CONFIG_FOLDER/"; then
        echo "[$timestamp] Failed to copy config files"
@@ -90,11 +96,6 @@ sync_changes() {
        return 1
    fi
 
-   # Pull latest changes first to avoid conflicts
-   if ! git pull origin "$BRANCH"; then
-       echo "[$timestamp] Failed to pull latest changes"
-       return 1
-   fi
 
    # Push changes
    if ! git push origin "$BRANCH"; then

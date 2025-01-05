@@ -105,4 +105,3 @@ source $ZSH/oh-my-zsh.sh
 
 PATH="$PATH:/snap/bin"
 
-# Test sync

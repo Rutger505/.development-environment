@@ -12,6 +12,11 @@ if ! command -v apt-get &> /dev/null; then
     exit 1
 fi
 
+echo "Installing dependencies..."
+apt-get update
+apt-get install -y curl jq
+
+
 # Import propt function to display install prompts
 source ./utils/prompt.sh
 

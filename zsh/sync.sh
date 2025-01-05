@@ -38,7 +38,7 @@ import_from_remote() {
     fi
 
     # Copy config from repo to local system
-    if ! cp "$REPO_CONFIG_FILE/" "$ZSH_CONFIG_FILE"; then
+    if ! cp "$REPO_CONFIG_FILE" "$ZSH_CONFIG_FILE"; then
         log "Failed to copy remote config to local system"
         return 1
     fi
@@ -68,13 +68,13 @@ export_to_remote() {
     fi
 
     # Copy local changes to repo
-    if ! cp "$ZSH_CONFIG_FILE" "$REPO_CONFIG_FILE/"; then
+    if ! cp "$ZSH_CONFIG_FILE" "$REPO_CONFIG_FILE"; then
         log "Failed to copy local config to repo"
         return 1
     fi
 
     # Stage changes
-    if ! git add "$REPO_CONFIG_FILE/"; then
+    if ! git add "$REPO_CONFIG_FILE"; then
         log "Failed to stage changes"
         return 1
     fi

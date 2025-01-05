@@ -25,38 +25,51 @@ is_repo_clean() {
 
 # Function to sync changes
 sync_changes() {
-    local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
-    echo "[$timestamp] Changes detected, syncing..." >> "$LOG_FILE"
+   local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+   echo "[$timestamp] Changes detected, syncing..."
 
-    cd "$REPO_PATH" || exit 1
+   cd "$REPO_PATH" || {
+       echo "[$timestamp] Failed to change directory"
+       return 1
+   }
 
-    cp "$ZSHRC_PATH" "$CONFIG_FOLDER/.zshrc"
+   # Copy all config files
+   if ! cp -r "$ZSHRC_PATH" "$CONFIG_FOLDER/"; then
+       echo "[$timestamp] Failed to copy config files"
+       return 1
+   fi
 
-    git add .zshrc
+   # Stage changes
+   if ! git add "$CONFIG_FOLDER/"; then
+       echo "[$timestamp] Failed to stage changes"
+       return 1
+   fi
 
-    git commit -m "Auto sync zsh config: $timestamp"
+   # Commit changes
+   if ! git commit -m "Auto sync zsh config: $timestamp"; then
+       echo "[$timestamp] No changes to commit"
+       return 1
+   fi
 
-    # Pull latest changes first to avoid conflicts
-    if git pull origin "$BRANCH"; then
-        # Push changes
-        if git push origin "$BRANCH"; then
-            echo "[$timestamp] Successfully pushed changes" >> "$LOG_FILE"
-        else
-            echo "[$timestamp] Failed to push changes" >> "$LOG_FILE"
-        fi
-    else
-        echo "[$timestamp] Failed to pull latest changes" >> "$LOG_FILE"
-    fi
+   # Pull latest changes first to avoid conflicts
+   if ! git pull origin "$BRANCH"; then
+       echo "[$timestamp] Failed to pull latest changes"
+       return 1
+   fi
+
+   # Push changes
+   if ! git push origin "$BRANCH"; then
+       echo "[$timestamp] Failed to push changes"
+       return 1
+   fi
+
+   echo "[$timestamp] Successfully pushed changes"
+   return 0
 }
 
 # Main loop
 echo "Starting .zshrc monitoring service..."
-echo "[$(date '+%Y-%m-%d %H:%M:%S')] Monitoring started" >> "$LOG_FILE"
-
-# Initial sync
-if [ -f "$ZSHRC_PATH" ]; then
-    sync_changes
-fi
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] Monitoring started"
 
 # Monitor for changes
 while true; do

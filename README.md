@@ -11,6 +11,7 @@ Setup developer environment on machine such as terminal configuration
 | docker desktop |                                                                     | ✅      |
 | phpstorm       |                                                                     | ✅      |
 | configure git  | Configure email and name                                            | ✅      |
+| Ghostty        |                                                                     | ❌      |
 
 ## Installation
 

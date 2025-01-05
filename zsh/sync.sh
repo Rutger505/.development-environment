@@ -108,7 +108,7 @@ sync_changes() {
 }
 
 # Main loop
-echo "Starting .zshrc monitoring service..."
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting .zshrc monitoring service..."
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] Monitoring started"
 
 # Monitor for changes

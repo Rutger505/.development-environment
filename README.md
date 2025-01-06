@@ -19,6 +19,17 @@ sudo ~/.development-environment/setup.sh
 
 ## Roadmap
 
+
+Automatically install basic development tools such as:
+
+- node, npm
+- curl
+- jq
+- less
+- nvim
+- git
+- kubectl
+
 | Application       | Description                                                         | Status |
 |-------------------|---------------------------------------------------------------------|--------|
 | zsh               | zsh with oh my zsh, automatically sync changes with this repository | ✅      |
@@ -27,7 +38,7 @@ sudo ~/.development-environment/setup.sh
 | phpstorm          |                                                                     | ✅      |
 | configure git     | Configure email and name                                            | ✅      |
 | Ghostty           |                                                                     | ✅      |
-| k9s (and kubectl) |                                                                     | ✅      |
+| k9s               |                                                                     | ✅      |
 
 ## Development
 

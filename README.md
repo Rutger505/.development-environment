@@ -17,18 +17,11 @@ git clone git@github.com:Rutger505/.development-environment.git ~/.development-e
 sudo ~/.development-environment/setup.sh
 ```
 
-## Roadmap
+## Applications
 
 
-Automatically install basic development tools such as:
 
-- node, npm
-- curl
-- jq
-- less
-- nvim
-- git
-- kubectl
+
 
 | Application       | Description                                                         | Status |
 |-------------------|---------------------------------------------------------------------|--------|
@@ -39,6 +32,31 @@ Automatically install basic development tools such as:
 | configure git     | Configure email and name                                            | ✅      |
 | Ghostty           |                                                                     | ✅      |
 | k9s               |                                                                     | ✅      |
+
+## Roadmap
+
+Automatically install basic development tools such as:
+
+- node, npm
+- curl
+- jq
+- less
+- nvim
+- git
+- kubectl
+- composer
+- make
+
+Install the following applications:
+- slack
+- spotify
+- postman
+- vscode
+- helm
+- opentofu
+- terraform
+- tableplus
+
 
 ## Development
 

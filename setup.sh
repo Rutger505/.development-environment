@@ -14,7 +14,7 @@ fi
 
 echo "Installing dependencies..."
 apt-get update
-apt-get install -y curl jq
+apt-get install -y curl jq ca-certificates
 
 
 # Import propt function to display install prompts

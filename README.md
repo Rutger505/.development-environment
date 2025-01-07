@@ -11,7 +11,13 @@ started with development.
 git clone git@github.com:Rutger505/.development-environment.git ~/.development-environment
 ```
 
-2. Run the setup script.
+2. Move to the repository directory.
+
+```bash
+cd ~/.development-environment
+```
+
+3. Run the setup script.
 
 ```bash
 sudo ~/.development-environment/setup.sh
@@ -23,15 +29,15 @@ sudo ~/.development-environment/setup.sh
 
 
 
-| Application       | Description                                                         | Status |
-|-------------------|---------------------------------------------------------------------|--------|
-| zsh               | zsh with oh my zsh, automatically sync changes with this repository | ✅      |
-| zen browser       |                                                                     | ✅      |
-| docker desktop    |                                                                     | ✅      |
-| phpstorm          |                                                                     | ✅      |
-| configure git     | Configure email and name                                            | ✅      |
-| Ghostty           |                                                                     | ✅      |
-| k9s               |                                                                     | ✅      |
+| Application    | Description                                                         | Status |
+|----------------|---------------------------------------------------------------------|--------|
+| zsh            | zsh with oh my zsh, automatically sync changes with this repository | ✅      |
+| Zen browser    |                                                                     | ✅      |
+| Docker desktop |                                                                     | ✅      |
+| Phpstorm       |                                                                     | ✅      |
+| configure git  | Configure email and name                                            | ✅      |
+| Ghostty        |                                                                     | ✅      |
+| k9s            |                                                                     | ✅      |
 
 ## Roadmap
 
@@ -46,7 +52,7 @@ Automatically install basic development tools such as:
 - kubectl
 - composer
 - make
-- mkcert
+- mkcert (with libnss3-tools)
 
 Install the following applications:
 - slack

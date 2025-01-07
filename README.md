@@ -46,6 +46,7 @@ Automatically install basic development tools such as:
 - kubectl
 - composer
 - make
+- mkcert
 
 Install the following applications:
 - slack

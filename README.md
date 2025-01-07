@@ -25,10 +25,6 @@ sudo ~/.development-environment/setup.sh
 
 ## Applications
 
-
-
-
-
 | Application    | Description                                                         | Status |
 |----------------|---------------------------------------------------------------------|--------|
 | zsh            | zsh with oh my zsh, automatically sync changes with this repository | ✅      |
@@ -38,6 +34,7 @@ sudo ~/.development-environment/setup.sh
 | configure git  | Configure email and name                                            | ✅      |
 | Ghostty        |                                                                     | ✅      |
 | k9s            |                                                                     | ✅      |
+
 
 ## Roadmap
 

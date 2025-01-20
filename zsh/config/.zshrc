@@ -105,3 +105,5 @@ source $ZSH/oh-my-zsh.sh
 
 PATH="$PATH:/snap/bin"
 
+export VISUAL=nvim
+export EDITOR=nvim

@@ -5,19 +5,31 @@ started with development.
 
 ## Installation
 
-1. Clone the repository in the home directory.
+1. Generate ssh key:
+```bash
+ssh-keygen -t ed25519
+```
+
+2. Copy the public key:
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+
+3. [Set ssh key in Github](https://github.com/settings/ssh/new)
+
+4. Clone the repository in the home directory.
 
 ```bash
 git clone git@github.com:Rutger505/.development-environment.git ~/.development-environment
 ```
 
-2. Move to the repository directory.
+5. Move to the repository directory.
 
 ```bash
 cd ~/.development-environment
 ```
 
-3. Run the setup script.
+6. Run the setup script.
 
 ```bash
 sudo ~/.development-environment/setup.sh

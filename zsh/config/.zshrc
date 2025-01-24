@@ -107,3 +107,10 @@ PATH="$PATH:/snap/bin"
 
 export VISUAL=nvim
 export EDITOR=nvim
+
+# bun completions
+[ -s "/home/rutger/.bun/_bun" ] && source "/home/rutger/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

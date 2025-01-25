@@ -124,3 +124,4 @@ export NVM_DIR="$HOME/.nvm"
 export KUBECONFIG="$HOME/.kube/config"
 
 
+export PATH=$PATH:/snap/bin

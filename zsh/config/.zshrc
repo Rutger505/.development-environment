@@ -125,3 +125,11 @@ export KUBECONFIG="$HOME/.kube/config"
 
 
 export PATH=$PATH:/snap/bin
+
+# pnpm
+export PNPM_HOME="/home/rutger/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

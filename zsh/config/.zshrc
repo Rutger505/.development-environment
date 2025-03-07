@@ -103,8 +103,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-PATH="$PATH:/snap/bin"
-
 export VISUAL=nvim
 export EDITOR=nvim
 
@@ -123,9 +121,8 @@ export NVM_DIR="$HOME/.nvm"
 # Kubernetes
 export KUBECONFIG="$HOME/.kube/config"
 
-
 export PATH=$PATH:/snap/bin
-export PATH=$PATH:~/.local/share/JetBrains/Toolbox/scripts
+
 # pnpm
 export PNPM_HOME="/home/rutger/.local/share/pnpm"
 case ":$PATH:" in

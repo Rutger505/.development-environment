@@ -125,7 +125,7 @@ export KUBECONFIG="$HOME/.kube/config"
 
 
 export PATH=$PATH:/snap/bin
-
+export PATH=$PATH:~/.local/share/JetBrains/Toolbox/scripts
 # pnpm
 export PNPM_HOME="/home/rutger/.local/share/pnpm"
 case ":$PATH:" in

@@ -131,3 +131,7 @@ esac
 # pnpm end
 
 export PATH=$PATH:/usr/local/go/bin
+
+
+export PATH=$PATH:/home/rutger/typescript-go/built/local
+

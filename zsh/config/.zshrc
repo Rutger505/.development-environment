@@ -1,6 +1,4 @@
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
-fi
+[[ $TERM != "screen" ]] && exec tmux
 
 
 # If you come from bash you might have to change your $PATH.

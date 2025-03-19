@@ -134,4 +134,6 @@ export PATH=$PATH:/usr/local/go/bin
 
 
 export PATH=$PATH:/home/rutger/typescript-go/built/local
+export PATH=$PATH:/home/rutger/.local/bin
 
+eval "$(zoxide init zsh)"

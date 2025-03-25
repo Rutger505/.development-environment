@@ -125,7 +125,7 @@ export NVM_DIR="$HOME/.nvm"
 # Kubernetes
 export KUBECONFIG="$HOME/.kube/config"
 
-export PATH=$PATH:/snap/bin
+
 
 # pnpm
 export PNPM_HOME="/home/rutger/.local/share/pnpm"
@@ -135,6 +135,7 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+export PATH=$PATH:/snap/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/home/rutger/typescript-go/built/local
 export PATH=$PATH:/home/rutger/.local/bin

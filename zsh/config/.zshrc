@@ -135,10 +135,13 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+
+
 export PATH=$PATH:/snap/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/typescript-go/built/local
 export PATH=$PATH:$HOME/.local/bin
+# TODO: Maybe i can add a wsl check here. When i am using wsl this scripts won't wexist and will be in /mnt/c/... 
 export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts
 
 eval "$(zoxide init zsh)"

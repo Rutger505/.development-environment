@@ -137,8 +137,9 @@ esac
 
 export PATH=$PATH:/snap/bin
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/home/rutger/typescript-go/built/local
-export PATH=$PATH:/home/rutger/.local/bin
+export PATH=$PATH:$HOME/typescript-go/built/local
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/share/Jetbrains/Toolbox/scripts
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"

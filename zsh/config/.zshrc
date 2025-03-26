@@ -150,4 +150,4 @@ eval "$(starship init zsh)"
 alias cd="z"
 
 
-alias bruno="flatpak run com.usebruno.Bruno > /dev/null & disown"
+alias bruno="flatpak run com.usebruno.Bruno > /dev/null 2>&1 & disown"

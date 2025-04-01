@@ -128,7 +128,6 @@ export KUBECONFIG="$HOME/.kube/config"
 
 
 # pnpm
-          scheme: https
 export PNPM_HOME="/home/rutger/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;

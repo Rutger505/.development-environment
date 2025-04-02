@@ -1,6 +1,6 @@
-#if [[ -z "$TMUX" && "$TERM" != "screen" ]]; then
- # exec tmux
-#fi
+if [[ -z "$TMUX" && "$TERM" != "screen" ]]; then
+  exec tmux
+fi
 
 
 # If you come from bash you might have to change your $PATH.

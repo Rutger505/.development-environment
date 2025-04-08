@@ -53,33 +53,38 @@ create_space() {
 	echo
 }
 
+process_applications() {
+	package_manager="$1"
+	application_type="$2" # "cli" or "desktop"
+
+	file_path="$package_manager/$application_type.txt"
+
+	if [ ! -f "$file_path" ]; then
+		application_type_capitalized=$(echo "$application_type" | sed 's/^\(.\)/\U\1/')
+		echo "$application_type_capitalized applications for $package_manager  not found... Skipping"
+		return
+	fi
+
+	while IFS= read -r application_name; do
+		install_package "$package_manager" "$application_name"
+	done <"$file_path"
+
+	create_space
+}
+
 package_managers=(apt flatpak snap)
 
 for package_manager in "${package_managers[@]}"; do
-	if [ -d "$package_manager" ]; then
-		if [ -f "$package_manager/cli.txt" ]; then
-			while IFS= read -r application_name; do
-				install_package "$package_manager" "$application_name"
-			done <"$package_manager/cli.txt"
-			create_space
-		else
-			echo "CLI applications for $package_manager not found... Skipping"
-		fi
-
-		if ! is_wsl && [ -f "$package_manager/desktop.txt" ]; then
-			if ! [ -f "$package_manager/desktop.txt" ]; then
-				while IFS= read -r application_name; do
-					install_package "$package_manager" "$application_name"
-				done <"$package_manager/desktop.txt"
-				create_space
-			else
-				echo "Desktop applications for $package_manager not found... Skipping"
-			fi
-		else
-			echo "Detected wsl... Skipping desktop applications for $package_manager"
-		fi
-
-	else
+	if [ ! -d "$package_manager" ]; then
 		echo "$package_manager directory not found. Skipping applications for $package_manager"
+		continue # Skip to the next package manager
+	fi
+
+	process_applications "$package_manager" "cli"
+
+	if ! is_wsl; then
+		process_applications "$package_manager" "desktop"
+	else
+		echo "Detected WSL... Skipping desktop applications for $package_manager"
 	fi
 done

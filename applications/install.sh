@@ -4,56 +4,13 @@ is_wsl() {
 	[[ -n "$WSL_DISTRO_NAME" ]]
 }
 
-prepare_package_manager() {
-	package_manager="$1"
-
-	case "$package_manager" in
-	apt)
-		sudo apt update
-		sudo apt upgrade -y
-		;;
-	flatpak)
-		# TODO install flatpack
-		;;
-	snap)
-		# TODO install snap
-		sudo snap refresh
-		;;
-	*)
-		echo "Error: Unknown package manager: $package_manager"
-		return 1
-		;;
-	esac
-}
-
-install_package() {
-	package_manager="$1"
-	application_name="$2"
-
-	case "$package_manager" in
-	apt)
-		sudo apt install -y "$application_name"
-		;;
-	flatpak)
-		flatpak install --assumeyes flathub "$application_name"
-		;;
-	snap)
-		sudo snap install "$application_name"
-		;;
-	*)
-		echo "Error: Unknown package manager: $package_manager"
-		return 1
-		;;
-	esac
-}
-
 create_space() {
 	echo
 	echo
 	echo
 }
 
-process_applications() {
+process_packages() {
 	package_manager="$1"
 	application_type="$2" # "cli" or "desktop"
 
@@ -79,12 +36,49 @@ for package_manager in "${package_managers[@]}"; do
 		echo "$package_manager directory not found. Skipping applications for $package_manager"
 		continue # Skip to the next package manager
 	fi
+	
+	if [ -f "$package_manager/init.sh" ]; then
+		echo "Running initialization script for $package_manager"
+		source "$package_manager/init.sh"
+	else
+		echo "$package_manager/init.sh not found. Skipping initialization script for $package_manager"
+	fi
 
-	process_applications "$package_manager" "cli"
+	process_packages "$package_manager" "cli"
 
 	if ! is_wsl; then
-		process_applications "$package_manager" "desktop"
+		process_packages "$package_manager" "desktop"
 	else
 		echo "Detected WSL... Skipping desktop applications for $package_manager"
 	fi
 done
+
+process_custom_applications() {
+	application_type="$1" # "cli" or "desktop"
+
+	custom_applications_dir="custom/$application_type"
+	if [ ! -d "$custom_applications_dir" ]; then
+		echo "$custom_applications_dir directory not found. Skipping custom $application_type applications"
+	fi
+	
+	
+	for script in "$custom_applications_dir"/*.sh; do
+		echo "Running $script"
+		source "$script"
+	done
+	
+}
+
+# custom folder. containing a desktop and cli folder containing names of applications preceded by .sh
+if [ -d "custom" ]; then
+	
+	process_custom_applications "cli"
+	
+	if ! is_wsl; then
+		process_custom_applications "desktop"
+	else
+		echo "Detected WSL... Skipping custom desktop applications"
+	fi
+else
+	echo "Custom directory not found. Skipping custom applications"
+fi

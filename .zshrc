@@ -1,3 +1,7 @@
+if [[ -z "$TMUX" && "$TERM" != "screen" ]]; then
+  exec tmux
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -70,7 +74,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git sudo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,7 +107,85 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-PATH="$PATH:/snap/bin"
+export VISUAL=nvim
+export EDITOR=nvim
+
+# bun completions
+[ -s "/home/rutger/.bun/_bun" ] && source "/home/rutger/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# Kubernetes
+export KUBECONFIG="$HOME/.kube/config"
+
+
+
+# pnpm
+export PNPM_HOME="/home/rutger/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+#compdef pnpm
+###-begin-pnpm-completion-###
+if type compdef &>/dev/null; then
+  _pnpm_completion () {
+    local reply
+    local si=$IFS
+
+    IFS=$'\n' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" SHELL=zsh pnpm completion-server -- "${words[@]}"))
+    IFS=$si
+
+    if [ "$reply" = "__tabtab_complete_files__" ]; then
+      _files
+    else
+      _describe 'values' reply
+    fi
+  }
+  # When called by the Zsh completion system, this will end with
+  # "loadautofunc" when initially autoloaded and "shfunc" later on, otherwise,
+  # the script was "eval"-ed so use "compdef" to register it with the
+  # completion system
+  if [[ $zsh_eval_context == *func ]]; then
+    _pnpm_completion "$@"
+  else
+    compdef _pnpm_completion pnpm
+  fi
+fi
+###-end-pnpm-completion-###
+# pnpm end
+
+
+
+export PATH=$PATH:/snap/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/typescript-go/built/local
+export PATH=$PATH:$HOME/.local/bin
+# TODO: Maybe i can add a wsl check here. When i am using wsl this scripts won't wexist and will be in /mnt/c/...
+export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts
+
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
+
+alias cd="z"
+
+
+alias bruno="flatpak run com.usebruno.Bruno > /dev/null 2>&1 & disown"
+
+
+# Dirty fix but starting dir for work laptop
+if [ -d "$HOME/development-environment" ]; then
+	cd "$HOME/development-environment";
+fi;
+
 
 # fnm
 FNM_PATH="/home/rutger/.local/share/fnm"

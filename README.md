@@ -41,7 +41,11 @@ crontab -e
 ```
 Add the following line to the crontab file:
 ```bash
-* * * * * cd ~/.development-environment && git pull && stow . >> ~/.development-environment/sync-cronjob.log 2>&1
+* * * * * (
+  cd ~/.development-environment && \
+  git pull && \
+  stow .
+) > ~/.development-environment/sync-cronjob.log 2>&1
 ```
 
 

@@ -23,17 +23,27 @@ cat ~/.ssh/id_ed25519.pub
 git clone git@github.com:Rutger505/.development-environment.git ~/.development-environment
 ```
 
-5. Move to the repository directory.
+5. Run applications installer script.
+
+```bash
+~/.development-environment/applications/install.sh
+```
+6. Use GNU Stow to symlink the dotfiles in the home directory.
 
 ```bash
 cd ~/.development-environment
+stow .
 ```
-
-6. Run the setup script.
+7. Automate updating .dotfiles with a cron job.
 
 ```bash
-sudo ~/.development-environment/setup.sh
+crontab -e
 ```
+Add the following line to the crontab file:
+```bash
+* * * * * cd ~/.development-environment && git pull && stow . >> ~/.development-environment/sync-cronjob.log 2>&1
+```
+
 
 ## Applications
 

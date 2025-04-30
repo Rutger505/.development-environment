@@ -104,3 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 PATH="$PATH:/snap/bin"
+
+source <(kubectl completion zsh)
+
+eval "$(fnm env --use-on-cd --shell zsh)"

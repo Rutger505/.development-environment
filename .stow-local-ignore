@@ -1,0 +1,7 @@
+\.git
+\.gitignore
+\.idea
+^/README.*
+^/TODO.*
+applications
+sync-cronjob.log

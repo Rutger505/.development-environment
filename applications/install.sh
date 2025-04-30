@@ -46,3 +46,5 @@ if ! is_wsl; then
 else
   echo "Detected WSL... Skipping custom desktop applications"
 fi
+
+echo "Finished installing applications! 🚀✨"

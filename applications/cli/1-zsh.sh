@@ -1,4 +1,6 @@
 #!/bin/bash
 
 sudo apt-get install zsh
-sudo chsh -s "$(which zsh)"
+
+echo "Changing default shell to Zsh. Please enter password below"
+chsh -s "$(which zsh)"

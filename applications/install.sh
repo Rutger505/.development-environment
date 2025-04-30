@@ -8,14 +8,36 @@ is_wsl() {
 	[[ -n "$WSL_DISTRO_NAME" ]]
 }
 
+source_script() {
+  local script="$1"
+
+  while true; do
+    read -rp "Run $script? [y/N]: " yn
+
+    case "$yn" in
+      [Yy]*)
+        echo "Running $script"
+        source "$script"
+        break
+        ;;
+      *)
+        echo "Skipping $script"
+        break
+        ;;
+    esac
+  done
+}
+
 process_applications() {
 	application_type="$1" # "cli" or "desktop"
 
 	for script in "$application_type"/*.sh; do
-		echo "Running $script"
-		source "$script"
-	done
+    source_script "$script"
+  done
 }
+
+source_script "0-update-apt.sh"
+source_script "0-upgrade-apt.sh"
 
 process_applications "cli"
 

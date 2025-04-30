@@ -1,10 +1,9 @@
 #!/bin/bash
 
-sudo apt install \
+sudo apt-get install \
   curl \
   wget \
   git \
-  hyperfine \
   tmux \
   libfuse2 \
   libxi6 \

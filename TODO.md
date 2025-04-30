@@ -7,6 +7,6 @@ k9s
 auto sync
 
 
-# isntall requirements
+# install requirements
 - git
 - gnu stow

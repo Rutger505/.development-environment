@@ -186,6 +186,14 @@ if [ -d "$HOME/development-environment" ]; then
 	cd "$HOME/development-environment";
 fi;
 
+
+# fnm
+FNM_PATH="/home/rutger/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/rutger/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
 # fnm
 FNM_PATH="/home/rutger/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then

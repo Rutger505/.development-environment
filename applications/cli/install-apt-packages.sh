@@ -19,4 +19,5 @@ sudo apt-get install \
   jq \
   composer \
   make \
-  libnss3-tools
+  libnss3-tools \
+  stow

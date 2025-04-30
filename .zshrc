@@ -105,6 +105,14 @@ source $ZSH/oh-my-zsh.sh
 
 PATH="$PATH:/snap/bin"
 
+# fnm
+FNM_PATH="/home/rutger/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/rutger/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+
 source <(kubectl completion zsh)
 
-eval "$(fnm env --use-on-cd --shell zsh)"

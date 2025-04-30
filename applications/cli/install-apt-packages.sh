@@ -13,4 +13,10 @@ sudo apt-get install \
   libfontconfig \
   libgtk-3-bin \
   tar \
-  unzip
+  unzip \
+  less \
+  neovim \
+  jq \
+  composer \
+  make \
+  libnss3-tools

@@ -198,3 +198,9 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 
 source <(kubectl completion zsh)
 
+
+echo "Test zshrc sync"
+
+
+
+

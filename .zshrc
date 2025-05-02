@@ -178,14 +178,7 @@ eval "$(starship init zsh)"
 
 alias cd="z"
 
-
 alias bruno="flatpak run com.usebruno.Bruno > /dev/null 2>&1 & disown"
-
-
-# Dirty fix but starting dir for work laptop
-if [ -d "$HOME/development-environment" ]; then
-	cd "$HOME/development-environment";
-fi;
 
 
 # fnm

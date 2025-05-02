@@ -171,6 +171,7 @@ export PATH=$PATH:$HOME/typescript-go/built/local
 export PATH=$PATH:$HOME/.local/bin
 # TODO: Maybe i can add a wsl check here. When i am using wsl this scripts won't wexist and will be in /mnt/c/...
 export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts
+export PATH=$PATH:$HOME/.config/composer/vendor/bin
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"

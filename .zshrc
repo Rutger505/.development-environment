@@ -182,13 +182,17 @@ alias bruno="flatpak run com.usebruno.Bruno > /dev/null 2>&1 & disown"
 
 
 # fnm
-FNM_PATH="/home/rutger/.local/share/fnm"
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/rutger/.local/share/fnm:$PATH"
+  export PATH="$HOME/.local/share/fnm:$PATH"
   eval "`fnm env`"
 fi
 eval "$(fnm env --use-on-cd --shell zsh)"
 
+PATH="$HOME/.local/share/fnm/aliases/default/bin:$PATH"
+
 
 source <(kubectl completion zsh)
+
+
 

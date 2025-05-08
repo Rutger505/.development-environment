@@ -195,4 +195,5 @@ PATH="$HOME/.local/share/fnm/aliases/default/bin:$PATH"
 source <(kubectl completion zsh)
 
 
+[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 

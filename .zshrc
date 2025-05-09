@@ -1,6 +1,5 @@
 ###### Tmux ######
 if [[ -z "$TMUX" && "$TERM" != "screen" ]]; then
-  tmux source-file ~/.tmux.conf
   exec tmux
 fi
 

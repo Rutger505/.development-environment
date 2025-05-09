@@ -1,0 +1,10 @@
+sudo apt install software-properties-common
+
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt update
+
+sudo apt install neovim
+
+
+git clone https://github.com/NvChad/starter ~/.config/nvim
+

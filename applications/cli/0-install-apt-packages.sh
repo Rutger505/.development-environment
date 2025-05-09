@@ -15,7 +15,6 @@ sudo apt-get install \
   tar \
   unzip \
   less \
-  neovim \
   jq \
   composer \
   make \

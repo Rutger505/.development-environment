@@ -98,7 +98,6 @@ if [ -d "$FNM_PATH" ]; then
 
   eval "$(fnm env --use-on-cd --shell zsh)"
 fi
-PATH="$HOME/.local/share/fnm/aliases/default/bin:$PATH"
 ###### End Fast Node Manager ######
 
 

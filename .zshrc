@@ -4,6 +4,23 @@ if [[ -z "$TMUX" && "$TERM" != "screen" ]]; then
 fi
 
 
+###### PATH ######
+export PATH=$PATH:$HOME/.local/bin
+
+# Snap
+export PATH=$PATH:/snap/bin
+
+# Go installation
+export PATH=$PATH:/usr/local/go/bin
+# Typescript go port
+export PATH=$PATH:$HOME/typescript-go/built/local
+
+# Jetbains Toolbox
+# TODO: Maybe i can add a wsl check here. When i am using wsl this scripts won't wexist and will be in /mnt/c/...
+export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts
+###### End PATH ######
+
+
 ###### ZSH ######
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -64,23 +81,6 @@ fi
 
 export VISUAL=nvim
 ###### End preferred editor ######
-
-
-###### PATH ######
-export PATH=$PATH:$HOME/.local/bin
-
-# Snap
-export PATH=$PATH:/snap/bin
-
-# Go installation
-export PATH=$PATH:/usr/local/go/bin
-# Typescript go port
-export PATH=$PATH:$HOME/typescript-go/built/local
-
-# Jetbains Toolbox
-# TODO: Maybe i can add a wsl check here. When i am using wsl this scripts won't wexist and will be in /mnt/c/...
-export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts
-###### End PATH ######
 
 
 ###### Node Version Manager ######

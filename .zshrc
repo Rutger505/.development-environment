@@ -1,5 +1,6 @@
 ###### Tmux ######
 if [[ -z "$TMUX" && "$TERM" != "screen" ]]; then
+  tmux source-file ~/.tmux.conf
   exec tmux
 fi
 
@@ -158,12 +159,6 @@ fi
 
 
 ###### PHP ######
-if [ -d "$HOME/.phpenv" ]; then
-  export PHPENV_ROOT="$HOME/.phpenv"
-  export PATH="$PHPENV_ROOT/bin:$PATH"
-  eval "$(phpenv init -)"
-fi
-
 # Composer
 export PATH=$PATH:$HOME/.config/composer/vendor/bin
 ###### End PHP ######

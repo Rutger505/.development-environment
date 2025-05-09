@@ -11,14 +11,11 @@ is_wsl() {
 source_script() {
   local script="$1"
 
-    read -rp "Run $script? [y/N]: " yn
-
+  read -rp "Run $script? [y/N]: " yn
   case "$yn" in
     [Yy]*)
       echo "Running $script"
       source "$script"
-      break
-      ;;
   esac
 }
 

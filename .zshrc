@@ -1,100 +1,30 @@
+###### Tmux ######
 if [[ -z "$TMUX" && "$TERM" != "screen" ]]; then
   exec tmux
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your Oh My Zsh installation.
+###### ZSH ######
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+CASE_SENSITIVE="false"
+HYPHEN_INSENSITIVE="false"
 
 # Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(git sudo)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
-
+# TODO This may come in handy for utility scripts
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
 # users are encouraged to define aliases within a top-level file in
@@ -107,26 +37,72 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+###### End ZSH ######
+
+
+###### Zoxide ######
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+    alias cd="z"
+fi
+###### End Zoxide ######
+
+
+###### Starship ######
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init zsh)"
+fi
+###### End Starship ######
+
+
+###### Preferred editor ######
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
+
 export VISUAL=nvim
-export EDITOR=nvim
+###### End preferred editor ######
 
-# bun completions
-[ -s "/home/rutger/.bun/_bun" ] && source "/home/rutger/.bun/_bun"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+###### PATH ######
+export PATH=$PATH:$HOME/.local/bin
 
+# Snap
+export PATH=$PATH:/snap/bin
+
+# Go installation
+export PATH=$PATH:/usr/local/go/bin
+# Typescript go port
+export PATH=$PATH:$HOME/typescript-go/built/local
+
+# Jetbains Toolbox
+# TODO: Maybe i can add a wsl check here. When i am using wsl this scripts won't wexist and will be in /mnt/c/...
+export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts
+###### End PATH ######
+
+
+###### Node Version Manager ######
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+###### End Node Version Manager ######
 
 
-# Kubernetes
-export KUBECONFIG="$HOME/.kube/config"
+###### Fast Node Manager ######
+FNM_PATH="$HOME/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$HOME/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+
+  eval "$(fnm env --use-on-cd --shell zsh)"
+fi
+PATH="$HOME/.local/share/fnm/aliases/default/bin:$PATH"
+###### End Fast Node Manager ######
 
 
-
+###### Performant NPM ######
 # pnpm
 export PNPM_HOME="/home/rutger/.local/share/pnpm"
 case ":$PATH:" in
@@ -134,7 +110,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-#compdef pnpm
 ###-begin-pnpm-completion-###
 if type compdef &>/dev/null; then
   _pnpm_completion () {
@@ -161,40 +136,37 @@ if type compdef &>/dev/null; then
   fi
 fi
 ###-end-pnpm-completion-###
-# pnpm end
+###### End Performant NPM ######
 
 
+###### Bun ######
+# completions
+[ -s "/home/rutger/.bun/_bun" ] && source "/home/rutger/.bun/_bun"
 
-export PATH=$PATH:/snap/bin
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/typescript-go/built/local
-export PATH=$PATH:$HOME/.local/bin
-# TODO: Maybe i can add a wsl check here. When i am using wsl this scripts won't wexist and will be in /mnt/c/...
-export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts
-export PATH=$PATH:$HOME/.config/composer/vendor/bin
-
-eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
-
-alias cd="z"
-
-alias bruno="flatpak run com.usebruno.Bruno > /dev/null 2>&1 & disown"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+###### End Bun ######
 
 
-# fnm
-FNM_PATH="$HOME/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$HOME/.local/share/fnm:$PATH"
-  eval "`fnm env`"
+###### Kubernetes ######
+export KUBECONFIG="$HOME/.kube/config"
 
-  eval "$(fnm env --use-on-cd --shell zsh)"
+if command -v kubectl &>/dev/null; then
+  source <(kubectl completion zsh)
+fi
+###### End Kubernetes ######
+
+
+###### PHP ######
+if [ -d "$HOME/.phpenv" ]; then
+  export PHPENV_ROOT="$HOME/.phpenv"
+  export PATH="$PHPENV_ROOT/bin:$PATH"
+  eval "$(phpenv init -)"
 fi
 
-PATH="$HOME/.local/share/fnm/aliases/default/bin:$PATH"
+# Composer
+export PATH=$PATH:$HOME/.config/composer/vendor/bin
+###### End PHP ######
 
 
-source <(kubectl completion zsh)
-
-
-export PATH="$HOME/.phpenv/bin:$PATH"
-eval "$(phpenv init -)"
+alias bruno="flatpak run com.usebruno.Bruno > /dev/null 2>&1 & disown"

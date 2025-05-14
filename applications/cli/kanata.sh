@@ -2,6 +2,7 @@ wget "https://github.com/jtroo/kanata/releases/latest/download/kanata"
 
 chmod +x kanata
 
+echo "Moving kanata to /usr/bin/kanata"
 sudo mv kanata /usr/bin/kanata
 
 
@@ -19,6 +20,15 @@ Restart=no
 
 [Install]
 WantedBy=sysinit.target
+EOF
+
+echo "Creating kanate config file"
+sudo mkdir -p /etc/kanata
+cat <<EOF | sudo tee "/etc/kanata/kanata.conf" > /dev/null
+;; defsrc is still necessary
+(defsrc)
+(deflayermap (base-layer)
+  caps esc)
 EOF
 
 # Reload systemd to recognize the new service

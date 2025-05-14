@@ -1,5 +1,5 @@
 ###### Tmux ######
-if [[ -z "$TMUX" && "$TERM" != "screen" ]]; then
+if [[ -z "$TMUX" && "$TERM" != "tmux-256color" ]]; then
   exec tmux
 fi
 

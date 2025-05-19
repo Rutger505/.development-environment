@@ -19,4 +19,5 @@ sudo apt-get install \
   composer \
   make \
   libnss3-tools \
-  stow
+  stow \
+  htop

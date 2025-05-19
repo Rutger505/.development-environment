@@ -21,3 +21,7 @@ sudo wget https://desktop.docker.com/linux/main/amd64/docker-desktop-amd64.deb -
 
 # Install the downloaded .deb package
 sudo apt-get install ./docker-desktop-amd64.deb
+
+# Remove downloaded docker deb
+sudo rm ./docker-desktop-amd64.deb
+

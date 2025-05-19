@@ -25,3 +25,17 @@ sudo apt-get install ./docker-desktop-amd64.deb
 # Remove downloaded docker deb
 sudo rm ./docker-desktop-amd64.deb
 
+# Autostart configuration
+echo "Creating autostart configuration"
+cat << EOF > ~/.config/autostart/docker-desktop.desktop
+[Desktop Entry]
+Type=Application
+Exec=/opt/docker-desktop/bin/docker-desktop
+Hidden=true
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
+Name=Docker Desktop
+Icon=/opt/docker-desktop/share/icon.original.png
+StartupNotify=true
+EOF
+

@@ -31,8 +31,8 @@ cat << EOF > ~/.config/autostart/docker-desktop.desktop
 [Desktop Entry]
 Type=Application
 Exec=/opt/docker-desktop/bin/docker-desktop
-Hidden=true
-NoDisplay=true
+Hidden=false
+NoDisplay=false
 X-GNOME-Autostart-enabled=true
 Name=Docker Desktop
 Icon=/opt/docker-desktop/share/icon.original.png

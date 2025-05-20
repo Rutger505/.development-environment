@@ -10,7 +10,6 @@ Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
 Name=Slack
-Comment=Starts the Slack messaging application
 Icon=/snap/slack/196/usr/share/pixmaps/slack.png
 Categories=Network;InstantMessaging;
 StartupNotify=true

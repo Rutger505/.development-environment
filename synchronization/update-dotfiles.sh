@@ -4,7 +4,7 @@ exec >> ~/.development-environment/synchronization/update-dotfiles.log 2>&1
 # Your script content below
 echo "Script started at $(date)"
 
-cd ~/.development-environment
+cd ~/.development-environment || exit 1
 git pull
 stow .
 

@@ -44,3 +44,4 @@ Add the following line to the crontab file:
 * * * * * ~/.development-environment/synchronization/update-dotfiles.sh
 ```
 
+Do a **full system restart** for changing default shell and showing desktop application.

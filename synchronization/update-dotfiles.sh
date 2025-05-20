@@ -13,3 +13,8 @@ if git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD | grep -q '^\.tmux
   ~/.tmux/plugins/tpm/bin/update_plugins all
 fi
 
+
+# Was changed to `init-prettier.sh`
+if [ -f "$HOME/init_prettier.sh" ]; then
+	rm "$HOME/init_prettier.sh"
+fi;

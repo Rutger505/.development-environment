@@ -1,3 +1,7 @@
 [user]
 	email = rutger.pronk11@gmail.com
-	name = Rutger Pronk
+  name = Rutger Pronk
+
+[alias]
+  s = status
+  c = !git add -A && git commit

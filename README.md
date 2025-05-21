@@ -45,3 +45,14 @@ Add the following line to the crontab file:
 ```
 
 Do a **full system restart** for changing default shell and showing desktop application.
+
+
+## Notes 
+
+### Ubuntu scaling beyond settings presets
+
+https://bugs.launchpad.net/ubuntu/+source/mutter/+bug/1724037
+
+- gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 40
+- gsettings set org.gnome.desktop.interface text-scaling-factor 0.8
+

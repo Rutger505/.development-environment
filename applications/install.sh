@@ -28,12 +28,13 @@ process_applications() {
 	done
 }
 
-source_script "0-update-apt.sh"
-source_script "0-upgrade-apt.sh"
+
+process_applications "setup"
 
 process_applications "cli"
 
 if ! is_wsl; then
+	process_applications "desktop/setup"
 	process_applications "desktop"
 else
 	echo "Detected WSL... Skipping custom desktop applications"

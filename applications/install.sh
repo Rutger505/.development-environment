@@ -28,7 +28,6 @@ process_scripts_from_directory() {
 	done
 }
 
-
 process_scripts_from_directory "setup"
 
 process_scripts_from_directory "cli"

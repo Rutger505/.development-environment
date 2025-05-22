@@ -20,7 +20,7 @@ source_script() {
 	esac
 }
 
-process_applications() {
+process_scripts_from_directory() {
 	application_type="$1" # "cli" or "desktop"
 
 	for script in "$application_type"/*.sh; do
@@ -29,13 +29,13 @@ process_applications() {
 }
 
 
-process_applications "setup"
+process_scripts_from_directory "setup"
 
-process_applications "cli"
+process_scripts_from_directory "cli"
 
 if ! is_wsl; then
-	process_applications "desktop/setup"
-	process_applications "desktop"
+	process_scripts_from_directory "desktop/setup"
+	process_scripts_from_directory "desktop"
 else
 	echo "Detected WSL... Skipping custom desktop applications"
 fi

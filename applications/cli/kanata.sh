@@ -5,10 +5,9 @@ chmod +x kanata
 echo "Moving kanata to /usr/bin/kanata"
 sudo mv kanata /usr/bin/kanata
 
-
 echo "Creating system service for kanata."
 
-cat <<EOF | sudo tee "/etc/systemd/system/kanata.service" > /dev/null
+cat <<EOF | sudo tee "/etc/systemd/system/kanata.service" >/dev/null
 [Unit]
 Description=Kanata Service
 Requires=local-fs.target
@@ -24,7 +23,7 @@ EOF
 
 echo "Creating kanate config file"
 sudo mkdir -p /etc/kanata
-cat <<EOF | sudo tee "/etc/kanata/kanata.conf" > /dev/null
+cat <<EOF | sudo tee "/etc/kanata/kanata.conf" >/dev/null
 ;; defsrc is still necessary
 (defsrc)
 (deflayermap (base-layer)
@@ -41,4 +40,3 @@ sudo systemctl enable kanata.service
 sudo systemctl start kanata.service
 
 echo "Kanata service has been created, enabled, and started."
-

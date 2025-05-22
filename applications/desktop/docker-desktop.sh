@@ -10,11 +10,10 @@ sudo chmod a+r /etc/apt/keyrings/docker.asc
 
 # Add the repository to Apt sources:
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+	"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" |
+	sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 sudo apt-get update
-
 
 # 2. Install Docker Desktop .deb
 sudo wget https://desktop.docker.com/linux/main/amd64/docker-desktop-amd64.deb -O ./docker-desktop-amd64.deb
@@ -27,7 +26,7 @@ sudo rm ./docker-desktop-amd64.deb
 
 # Autostart configuration
 echo "Creating autostart configuration"
-cat << EOF > ~/.config/autostart/docker-desktop.desktop
+cat <<EOF >~/.config/autostart/docker-desktop.desktop
 [Desktop Entry]
 Type=Application
 Exec=/opt/docker-desktop/bin/docker-desktop
@@ -38,4 +37,3 @@ Name=Docker Desktop
 Icon=/opt/docker-desktop/share/icon.original.png
 StartupNotify=true
 EOF
-

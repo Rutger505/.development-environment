@@ -9,22 +9,23 @@ is_wsl() {
 }
 
 source_script() {
-  local script="$1"
+	local script="$1"
 
-  read -rp "Run $script? [y/N]: " yn
-  case "$yn" in
-    [Yy]*)
-      echo "Running $script"
-      source "$script"
-  esac
+	read -rp "Run $script? [y/N]: " yn
+	case "$yn" in
+	[Yy]*)
+		echo "Running $script"
+		source "$script"
+		;;
+	esac
 }
 
 process_applications() {
 	application_type="$1" # "cli" or "desktop"
 
 	for script in "$application_type"/*.sh; do
-    source_script "$script"
-  done
+		source_script "$script"
+	done
 }
 
 source_script "0-update-apt.sh"
@@ -33,9 +34,9 @@ source_script "0-upgrade-apt.sh"
 process_applications "cli"
 
 if ! is_wsl; then
-  process_applications "desktop"
+	process_applications "desktop"
 else
-  echo "Detected WSL... Skipping custom desktop applications"
+	echo "Detected WSL... Skipping custom desktop applications"
 fi
 
 echo "Finished installing applications! 🚀✨"

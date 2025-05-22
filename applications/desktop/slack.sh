@@ -2,7 +2,7 @@
 sudo snap install slack
 
 echo "Creating autostart configuration"
-cat << EOF > ~/.config/autostart/slack.desktop
+cat <<EOF >~/.config/autostart/slack.desktop
 [Desktop Entry]
 Type=Application
 Exec=/snap/bin/slack
@@ -14,4 +14,3 @@ Icon=/snap/slack/196/usr/share/pixmaps/slack.png
 Categories=Network;InstantMessaging;
 StartupNotify=true
 EOF
-

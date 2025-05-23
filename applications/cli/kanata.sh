@@ -15,7 +15,8 @@ After=local-fs.target
 
 [Service]
 ExecStart=/usr/bin/kanata -c /etc/kanata/kanata.conf
-Restart=no
+Restart=on-failure
+RestartSec=5
 
 [Install]
 WantedBy=sysinit.target

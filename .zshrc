@@ -159,5 +159,6 @@ fi
 export PATH=$PATH:$HOME/.config/composer/vendor/bin
 ###### End PHP ######
 
-
+# Aliases
 alias bruno="flatpak run com.usebruno.Bruno > /dev/null 2>&1 & disown"
+alias logout="gnome-session-quit --logout --no-prompt"

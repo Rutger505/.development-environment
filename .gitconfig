@@ -5,5 +5,5 @@
 [alias]
   s = status
   a = add
-  c = !git add -A && git commit
+  c = commit
   p = push

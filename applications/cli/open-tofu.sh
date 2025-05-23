@@ -1,4 +1,4 @@
 #!/bin/bash
 
-snap install --classic opentofu
+sudo snap install --classic opentofu
 

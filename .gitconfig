@@ -4,9 +4,16 @@
 
 [alias]
   s = status
+  d = diff
+
   a = add
+
   c = commit
   p = push
+
+  u = pull
+
+  sw = switch
 
 [push]
 	autoSetupRemote = true

@@ -162,3 +162,21 @@ export PATH=$PATH:$HOME/.config/composer/vendor/bin
 # Aliases
 alias bruno="flatpak run com.usebruno.Bruno > /dev/null 2>&1 & disown"
 alias logout="gnome-session-quit --logout --no-prompt"
+
+###### EZA (LS REPLACEMENT) ######
+alias ls='eza --group-directories-first --icons --git'
+
+# Detailed long listing.
+alias l='eza --group-directories-first --icons --git --long'
+alias la='eza --group-directories-first --icons --git --long --group --all'
+
+alias ll='eza --group-directories-first --icons --git --long --group --header'
+alias lla='eza --group-directories-first --icons --git --long --group --header --all'
+
+
+# Display as a tree (2 levels deep).
+alias lt='eza --group-directories-first --icons --git --tree --level=2'
+
+# Display as a deeper tree (4 levels deep).
+alias llt='eza --group-directories-first --icons --git --tree --level=4'
+###### End Eza #######

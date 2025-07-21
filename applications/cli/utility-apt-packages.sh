@@ -8,6 +8,7 @@ sudo apt-get install \
 	libfontconfig \
 	libgtk-3-bin \
 	composer \
+  cloc \
 	make \
 	libnss3-tools \
 	shfmt

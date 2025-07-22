@@ -1,6 +1,6 @@
 ###### Tmux ######
 if [[ -z "$TMUX" && "$TERM" != "tmux-256color" && "$TERM" != "xterm-256color" ]]; then
-  exec tmux
+  exec tmux attach-session
 fi
 
 

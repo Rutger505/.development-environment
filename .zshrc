@@ -29,7 +29,7 @@ ZSH_THEME="robbyrussell"
 CASE_SENSITIVE="false"
 HYPHEN_INSENSITIVE="false"
 
-zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+zstyle ':omz:update' mode disabled  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13

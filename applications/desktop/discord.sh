@@ -1,4 +1,6 @@
 #!/bin/bash
-curl -L "https://discord.com/api/download?platform=linux&format=deb" -o discord.deb
-sudo apt install ./discord.deb
-sudo rm ./discord.deb
+flatpak install flathub com.discordapp.Discord
+
+
+echo "Configuring autostart for Discord"
+ln -s ~/.local/share/flatpak/exports/share/applications/com.discordapp.Discord.desktop ~/.config/autostart/bitwarden.desktop

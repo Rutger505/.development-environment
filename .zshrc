@@ -1,8 +1,7 @@
 ###### Tmux ######
-if [[ -z "$TMUX" && "$TERM" != "tmux-256color" && "$TERM" != "xterm-256color" ]]; then
-  exec tmux
+if [[ -z "$TMUX" ]] && [[ $- == *i* ]] && [[ "$TERM" != "tmux-256color" && "$TERM" != "xterm-256color" ]]; then
+  tmux attach-session -t 0 2>/dev/null || tmux new-session -s 0
 fi
-
 
 ###### PATH ######
 export PATH=$PATH:$HOME/.local/bin

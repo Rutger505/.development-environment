@@ -180,3 +180,11 @@ alias lt='eza --group-directories-first --icons --git --tree --level=2'
 # Display as a deeper tree (4 levels deep).
 alias llt='eza --group-directories-first --icons --git --tree --level=4'
 ###### End Eza #######
+
+###### PlatformIO ######
+if [ -d ~/.platformio/penv ]; then
+  PATH="$PATH:$HOME/.platformio/penv/bin/platformio"
+  PATH="$PATH:$HOME/.platformio/penv/bin/pio"
+  PATH="$PATH:$HOME/.platformio/penv/bin/piodebuggdb"
+fi;
+###### End PlatformIO ######

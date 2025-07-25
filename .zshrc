@@ -1,6 +1,6 @@
 ###### Tmux ######
 if [[ -z "$TMUX" ]] && [[ $- == *i* ]] && [[ "$TERM" != "tmux-256color" && "$TERM" != "xterm-256color" ]]; then
-  tmux attach-session -t 0 2>/dev/null || tmux new-session -s 0
+  tmux attach-session -t 0 2>/dev/null || exec tmux new-session -s 0
 fi
 
 ###### PATH ######
@@ -17,8 +17,11 @@ export PATH=$PATH:$HOME/typescript-go/built/local
 # Jetbains Toolbox
 # TODO: Maybe i can add a wsl check here. When i am using wsl this scripts won't wexist and will be in /mnt/c/...
 export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts
-###### End PATH ######
 
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
 
 ###### ZSH ######
 export ZSH="$HOME/.oh-my-zsh"
@@ -30,8 +33,6 @@ HYPHEN_INSENSITIVE="false"
 
 zstyle ':omz:update' mode disabled  # just remind me to update when it's time
 
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
 
 plugins=(git sudo)
 
@@ -51,22 +52,18 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-###### End ZSH ######
-
 
 ###### Zoxide ######
 if command -v zoxide >/dev/null 2>&1; then
     eval "$(zoxide init zsh)"
     alias cd="z"
 fi
-###### End Zoxide ######
 
 
 ###### Starship ######
 if command -v starship >/dev/null 2>&1; then
     eval "$(starship init zsh)"
 fi
-###### End Starship ######
 
 
 ###### Preferred editor ######
@@ -77,14 +74,12 @@ else
 fi
 
 export VISUAL=nvim
-###### End preferred editor ######
 
 
 ###### Node Version Manager ######
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-###### End Node Version Manager ######
 
 
 ###### Fast Node Manager ######
@@ -95,7 +90,6 @@ if [ -d "$FNM_PATH" ]; then
 
   eval "$(fnm env --use-on-cd --shell zsh)"
 fi
-###### End Fast Node Manager ######
 
 
 ###### Performant NPM ######
@@ -132,7 +126,6 @@ if type compdef &>/dev/null; then
   fi
 fi
 ###-end-pnpm-completion-###
-###### End Performant NPM ######
 
 
 ###### Bun ######
@@ -141,7 +134,6 @@ fi
 
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-###### End Bun ######
 
 
 ###### Kubernetes ######
@@ -150,17 +142,16 @@ export KUBECONFIG="$HOME/.kube/config"
 if command -v kubectl &>/dev/null; then
   source <(kubectl completion zsh)
 fi
-###### End Kubernetes ######
 
 
 ###### PHP ######
 # Composer
 export PATH=$PATH:$HOME/.config/composer/vendor/bin
-###### End PHP ######
 
 # Aliases
 alias bruno="flatpak run com.usebruno.Bruno > /dev/null 2>&1 & disown"
 alias logout="gnome-session-quit --logout --no-prompt"
+
 
 ###### EZA (LS REPLACEMENT) ######
 alias ls='eza --group-directories-first --icons --git'
@@ -178,7 +169,6 @@ alias lt='eza --group-directories-first --icons --git --tree --level=2'
 
 # Display as a deeper tree (4 levels deep).
 alias llt='eza --group-directories-first --icons --git --tree --level=4'
-###### End Eza #######
 
 ###### PlatformIO ######
 if [ -d ~/.platformio/penv ]; then
@@ -186,4 +176,20 @@ if [ -d ~/.platformio/penv ]; then
   PATH="$PATH:$HOME/.platformio/penv/bin/pio"
   PATH="$PATH:$HOME/.platformio/penv/bin/piodebuggdb"
 fi;
-###### End PlatformIO ######
+
+
+###### WGET ######
+alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
+
+
+###### Docker ######
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+
+
+###### Rust #####
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+
+
+###### 
+
+

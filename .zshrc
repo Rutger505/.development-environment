@@ -1,8 +1,7 @@
 ###### Tmux ######
-if [[ -z "$TMUX" && "$TERM" != "tmux-256color" && "$TERM" != "xterm-256color" ]]; then
-  exec tmux attach-session
+if [[ -z "$TMUX" ]] && [[ $- == *i* ]] && [[ "$TERM" != "tmux-256color" && "$TERM" != "xterm-256color" ]]; then
+  tmux attach-session -t 0 2>/dev/null || tmux new-session -s 0
 fi
-
 
 ###### PATH ######
 export PATH=$PATH:$HOME/.local/bin
@@ -180,3 +179,11 @@ alias lt='eza --group-directories-first --icons --git --tree --level=2'
 # Display as a deeper tree (4 levels deep).
 alias llt='eza --group-directories-first --icons --git --tree --level=4'
 ###### End Eza #######
+
+###### PlatformIO ######
+if [ -d ~/.platformio/penv ]; then
+  PATH="$PATH:$HOME/.platformio/penv/bin/platformio"
+  PATH="$PATH:$HOME/.platformio/penv/bin/pio"
+  PATH="$PATH:$HOME/.platformio/penv/bin/piodebuggdb"
+fi;
+###### End PlatformIO ######

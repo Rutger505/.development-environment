@@ -1,7 +1,6 @@
 #!/bin/bash
 
-sudo apt-get install tmux
+sudo yay -S tmux
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.local/share/tmux/plugins/tpm
 
-~/.tmux/plugins/tpm/bin/install_plugins all

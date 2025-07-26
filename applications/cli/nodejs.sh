@@ -11,4 +11,4 @@ if [ -d "$FNM_PATH" ]; then
 fi
 
 # Download and install Node.js:
-fnm install 22
+fnm install 24

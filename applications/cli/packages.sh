@@ -1,4 +1,8 @@
-sudo yay -S \
+yay -S \
 	stow \
 	eza \
-	neovim
+	neovim \
+	snapd \
+	k9s
+
+sudo systemctl enable --now snapd.socket

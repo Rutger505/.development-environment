@@ -1,3 +1,4 @@
 sudo yay -S \
 	stow \
-	eza
+	eza \
+	neovim

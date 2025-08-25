@@ -28,15 +28,7 @@ process_scripts_from_directory() {
 	done
 }
 
-process_scripts_from_directory "setup"
-
 process_scripts_from_directory "cli"
-
-if ! is_wsl; then
-	process_scripts_from_directory "desktop/setup"
-	process_scripts_from_directory "desktop"
-else
-	echo "Detected WSL... Skipping custom desktop applications"
-fi
+process_scripts_from_directory "desktop"
 
 echo "Finished installing applications! 🚀✨"

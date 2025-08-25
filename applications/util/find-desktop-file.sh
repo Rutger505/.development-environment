@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Search system-wide applications
 ls /usr/share/applications/*.desktop | grep -i "$1"
 

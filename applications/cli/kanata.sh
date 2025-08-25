@@ -1,3 +1,5 @@
+#!/bin/bash
+
 wget "https://github.com/jtroo/kanata/releases/latest/download/kanata"
 
 chmod +x kanata

@@ -4,4 +4,5 @@ yay -S \
 	stow \
 	eza \
 	neovim \
-	k9s
+	k9s \
+  cloc

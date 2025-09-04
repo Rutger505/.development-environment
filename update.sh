@@ -1,9 +1,8 @@
 #!/bin/bash
 
 
-echo "Updating apt packages"
-sudo apt-get update
-sudo apt-get upgrade
+echo "Updating yay packages"
+yay -Syu
 
 echo
 echo

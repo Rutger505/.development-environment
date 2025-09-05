@@ -5,4 +5,5 @@ yay -S \
 	eza \
 	neovim \
 	k9s \
-  cloc
+  cloc \
+  btop

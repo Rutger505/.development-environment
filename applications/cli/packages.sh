@@ -7,4 +7,5 @@ yay -S \
   kubectl \
 	k9s \
   cloc \
-  magic-wormhole
+  magic-wormhole \
+  btop

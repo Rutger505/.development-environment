@@ -4,5 +4,7 @@ yay -S \
 	stow \
 	eza \
 	neovim \
+  kubectl \
 	k9s \
-  cloc
+  cloc \
+  magic-wormhole

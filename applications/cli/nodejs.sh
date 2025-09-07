@@ -12,3 +12,5 @@ fi
 
 # Download and install Node.js:
 fnm install 24
+
+yay -S npm

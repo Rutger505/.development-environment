@@ -190,6 +190,19 @@ export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 
 
-###### 
+######
 
+# Modular sourcing
+#for file in $HOME/.development-environment/.config/zsh/aliases.zsh $HOME/.development-environment/.config/zsh/exports.zsh $HOME/.development-environment/.config/zsh/plugins.zsh $HOME/.development-environment/.config/zsh/functions.zsh; do
+#  [ -f "$file" ] && source "$file"
+#done
 
+# Source all completions
+#for completion in $HOME/.development-environment/.config/zsh/completions/*.zsh; do
+#  [ -f "$completion" ] && source "$completion"
+#done
+
+# Source all path modifications
+#for pathfile in $HOME/.development-environment/.config/zsh/paths/*.zsh; do
+#  [ -f "$pathfile" ] && source "$pathfile"
+#done

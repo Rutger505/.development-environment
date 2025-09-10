@@ -8,4 +8,7 @@ yay -S \
 	k9s \
   cloc \
   magic-wormhole \
-  btop
+  btop \
+  envycontrol \
+  powertop \
+  powerstat

@@ -9,8 +9,7 @@ git clone https://aur.archlinux.org/paru.git ~/tmp/paru
 cd ~/tmp/paru || exit 1
 makepkg -si
 
-
-
+# Install applications
 paru -S \
   bun \
   kanata \

@@ -11,4 +11,7 @@ yay -S \
   btop \
   envycontrol \
   powertop \
-  powerstat
+  powerstat \
+  fzf \
+  ripgrep \
+  fd

@@ -34,6 +34,9 @@ plugins=(
   archlinux
   systemd
   # Enhancements
+  zsh-256color
+  zsh-autosuggestions
+  zsh-syntax-highlighting
   eza
   starship
   zoxide

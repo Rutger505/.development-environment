@@ -1,4 +1,4 @@
-. $ZSH_CONFIG_DIR/applications/0-tmux.zsh
+. $ZSH_CONFIG_DIR/packages/0-tmux.zsh
 
 # TODO Move this to .zshenv when getting rid of HyDe
 export ZDOTDIR="$HOME/.config/zsh"
@@ -51,6 +51,6 @@ source $ZSH/oh-my-zsh.sh
 
 source $ZSH_CONFIG_DIR/aliases.zsh
 
-for file in $ZSH_CONFIG_DIR/applications/*.zsh; do
+for file in $ZSH_CONFIG_DIR/packages/*.zsh; do
   [ -r "$file" ] && source "$file"
 done

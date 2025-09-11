@@ -3,75 +3,89 @@
 SCRIPT_DIRECTORY="$(dirname "${BASH_SOURCE[0]}")"
 cd "$SCRIPT_DIRECTORY" || exit 1
 
+source "$SCRIPT_DIRECTORY/functions.sh"
+
+PACKAGES=(
+  # Essential packages
+  "stow"
+  "git"
+  "curl"
+  "wget"
+  "unzip"
+  "zip"
+  "jq"
+  "cloc"
+  "zsh"
+  "snapd"
+  "cronie"
+  "magic-wormhole"
+  # Applications used in dotfiles
+  "zoxide"
+  "neovim"
+  "kitty"
+  # Basic enhancements
+  "exa"
+  "bat"
+  "ripgrep"
+  "fd"
+  "fzf"
+  "btop"
+)
+SERVICE_PACKAGES=("snapd" "cronie")
+AUTOSTART_PACKAGES=()
+
+
+prompt_for_confirmation "kanata" "true" "service"
+# JS/TS
+prompt_for_confirmation "nvm"
+prompt_for_confirmation "bun"
+# DevOps
+prompt_for_confirmation "opentofu"
+prompt_for_confirmation "kubectl"
+prompt_for_confirmation "k9s"
+# Power
+prompt_for_confirmation "powertop"
+prompt_for_confirmation "powerstat"
+# GPU / IGPU
+prompt_for_confirmation "envycontrol"
+# Shell
+prompt_for_confirmation "tmux"
+prompt_for_confirmation "starship"
+# Password Manager
+prompt_for_confirmation "bitwarden"
+# Browsers
+prompt_for_confirmation "chromium"
+prompt_for_confirmation "firefox"
+prompt_for_confirmation "zen-browser"
+# Communication
+prompt_for_confirmation "discord"
+prompt_for_confirmation "slack-desktop"
+# Editors
+prompt_for_confirmation "jetbrains-toolbox"
+prompt_for_confirmation "visual-studio-code-bin"
+# Gaming
+prompt_for_confirmation "steam"
+
+if [[ ${#PACKAGES[@]} -eq 0 ]]; then
+  echo "No packages selected to install."
+
+  exit 0
+fi
+
 # Install paru
-sudo pacman -S --needed base-devel
-git clone https://aur.archlinux.org/paru.git ~/tmp/paru
-cd ~/tmp/paru || exit 1
-makepkg -si
+if ! command -v paru >/dev/null 2>&1; then
+  echo "Paru not found, installing..."
 
-# Install applications
-paru -S \
-  bun \
-  kanata \
-  nvm \
-  npm \
-  opentofu \
-  stow \
-  eza \
-  neovim \
-  kubectl \
-  k9s \
-  cloc \
-  magic-wormhole \
-  btop \
-  envycontrol \
-  powertop \
-  powerstat \
-  fzf \
-  ripgrep \
-  fd \
-  starship \
-  tmux \
-  zoxide \
-  bitwarden \
-  chromium \
-  firefox \
-  zen-browser \
-  discord \
-  slack-desktop \
-  jetbrains-toolbox \
-  visual-studio-code-bin \
-  steam \
-  snapd \
-  cronie
+  sudo pacman -S --needed base-devel
 
-# Nvm
-nvm install
+  git clone https://aur.archlinux.org/paru.git ~/tmp/paru
+  cd ~/tmp/paru || exit 1
+  makepkg -si
 
-# Starship
-echo "Removing $HOME/.config/starship/starship.toml file to prevent GNU Stow conflicts"
-rm -f "$HOME/.config/starship/starship.toml"
+  cd - || exit 1
+  rm -rf ~/tmp/paru
+fi
 
-# Tmux
-git clone https://github.com/tmux-plugins/tpm ~/.local/share/tmux/plugins/tpm
-~/.local/share/tmux/plugins/tpm/bin/install_plugins all
-
-# zsh
-echo "Removing $HOME/.config/zsh/.zshrc file to prevent GNU Stow conflicts"
-rm -f "$HOME/.config/zsh/.zshrc"
-rm -f "$HOME/.zshrc"
-
-# Kitty
-# Remove --logo-type kitty alias.
-sed -i 's/^\(.*fastfetch --logo-type kitty.*\)$/# \1/' ~/.config/zsh/user.zsh
-# Remove close confirmation because tmux. TODO probably make this conditional on tmux being installed.
-echo "confirm_os_window_close 0" >> ~/.config/kitty/kitty.conf
-
-# Snap
-sudo systemctl enable --now snapd.socket
-
-# Cronie
-sudo systemctl enable --now cronie.service
-
+paru -S "${PACKAGES[@]}"
 
 echo "Finished installing applications! 🚀✨"

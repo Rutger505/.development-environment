@@ -16,7 +16,6 @@ export PAGER="less"
 
 export PATH=$PATH:/snap/bin
 
-
 ###### ZSH / Oh My Zsh ######
 # TODO move this into $ZSH_CONFIG_DIR/oh-my-zsh/custom/ ?
 export ZSH="$HOME/.oh-my-zsh"
@@ -30,24 +29,35 @@ zstyle ':omz:update' mode disabled
 plugins=(
   git
   sudo
-  fzf
   safe-paste
-  docker
-  npm
-  bun
-  kubectl
-  eza
-  nvm
-  fnm
-  starship
-  zoxide
+  # System
   archlinux
   systemd
+  # Enhancements
+  eza
+  starship
+  zoxide
+  vi-mode
+  fzf
+  copyfile
+  colorize
+  # Container
+  docker
+  kubectl
+  # JavaScript / TypeScript / Node.js
+  node
+  npm
+  nvm
+  fnm
+  bun
+  # Python
+  python
+  pip
+  # Fun
   lol
 )
 
 source $ZSH/oh-my-zsh.sh
-
 
 source $ZSH_CONFIG_DIR/aliases.zsh
 

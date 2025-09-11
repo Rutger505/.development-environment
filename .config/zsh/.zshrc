@@ -15,6 +15,8 @@ export VISUAL="nvim"
 export PAGER="less"
 
 export PATH=$PATH:/snap/bin
+export PATH=$PATH:$HOME/.development-environment/scripts
+
 
 ###### ZSH / Oh My Zsh ######
 # TODO move this into $ZSH_CONFIG_DIR/oh-my-zsh/custom/ ?

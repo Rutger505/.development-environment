@@ -44,3 +44,46 @@ install_paru() {
   cd - || exit 1
   rm -rf ~/tmp/paru
 }
+
+
+run_post_install_scripts() {
+  local script_dir=$1
+  shift
+  local packages=("$@")
+
+  for package in "${packages[@]}"; do
+    local post_install_script="$script_dir/post-install/${package}.sh"
+
+    if [ -f "$post_install_script" ]; then
+      echo "Running post-install script for $package..."
+      "$post_install_script"
+    fi
+  done
+}
+
+enable_services() {
+  local services=("$@")
+
+  for service in "${services[@]}"; do
+    echo "Enabling and starting $service service..."
+    sudo systemctl enable --now "$service"
+  done
+}
+
+enable_autostart_apps() {
+  local apps=("$@")
+
+  local autostart_dir="$HOME/.config/autostart"
+  mkdir -p "$autostart_dir"
+
+  for app in "${apps[@]}"; do
+    local desktop_file_path="/usr/share/applications/${app}.desktop"
+
+    if [ -f "$desktop_file_path" ]; then
+      echo "Enabling autostart for $app..."
+      ln -sf "$desktop_file_path" "$autostart_dir/"
+    else
+      echo "Warning: Desktop file for $app not found at $desktop_file_path"
+    fi
+  done
+}

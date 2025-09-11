@@ -1,16 +1,42 @@
 # Redirect all output (stdout and stderr) to a log file
 exec >> ~/.development-environment/synchronization/update-dotfiles.log 2>&1
 
-# Your script content below
+ERROR_FILE=~/development-environment-sync-error
+create_error_file() {
+  touch "$ERROR_FILE"
+}
+delete_error_file() {
+  if [ -f "$ERROR_FILE" ]; then
+    rm "$ERROR_FILE"
+  fi
+}
+
 echo "Script started at $(date)"
 
 cd ~/.development-environment || exit 1
 
-git pull
+git fetch
 
+# Compare current commit (HEAD = @) with the upstream branch of the current branch (@{u}).
+# Exit status 1 if there are differences, 0 if not.
+git diff --quiet @ @{upstream} && exit 0
+
+# If HEAD can't be fast-forwarded to upstream, abort
+if ! git merge-base --is-ancestor @ @{upstream}; then
+  echo "Local branch is ahead/diverged, aborting"
+
+  create_error_file
+
+  exit 1
+fi
+
+stow -D .
+git pull --ff-only
 stow .
 
 if git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD | grep -q '^\.tmux\.conf$'; then
   echo ".tmux.conf was modified! Running tpm update"
   ~/.local/share/tmux/plugins/tpm/bin/update_plugins all
 fi
+
+delete_error_file

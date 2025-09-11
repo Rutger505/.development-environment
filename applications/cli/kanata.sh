@@ -1,45 +1,27 @@
 #!/bin/bash
 
-wget "https://github.com/jtroo/kanata/releases/latest/download/kanata"
 
-chmod +x kanata
+yay -S kanata
 
-echo "Moving kanata to /usr/bin/kanata"
-sudo mv kanata /usr/bin/kanata
+KANATA_SERVICE_DIR="$HOME/.config/systemd/user"
+KANATA_SERVICE="$KANATA_SERVICE_DIR/kanata.service"
 
-echo "Creating system service for kanata."
+echo "Creating user systemd service..."
+mkdir -p "$KANATA_SERVICE_DIR"
 
-cat <<EOF | sudo tee "/etc/systemd/system/kanata.service" >/dev/null
+cat <<EOF > "$KANATA_SERVICE"
 [Unit]
-Description=Kanata Service
-Requires=local-fs.target
-After=local-fs.target
+Description=Kanata (User Service)
+After=graphical.target
 
 [Service]
-ExecStart=/usr/bin/kanata -c /etc/kanata/kanata.conf
+ExecStart=/usr/bin/kanata
 Restart=on-failure
 RestartSec=5
 
 [Install]
-WantedBy=sysinit.target
+WantedBy=default.target
 EOF
 
-echo "Creating kanate config file"
-sudo mkdir -p /etc/kanata
-cat <<EOF | sudo tee "/etc/kanata/kanata.conf" >/dev/null
-;; defsrc is still necessary
-(defsrc)
-(deflayermap (base-layer)
-  caps esc)
-EOF
-
-# Reload systemd to recognize the new service
-sudo systemctl daemon-reload
-
-# Enable the service to start on boot
-sudo systemctl enable kanata.service
-
-# Start the service immediately
-sudo systemctl start kanata.service
-
-echo "Kanata service has been created, enabled, and started."
+systemctl --user daemon-reload
+systemctl --user enable --now kanata.service

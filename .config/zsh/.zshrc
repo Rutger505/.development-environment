@@ -29,7 +29,8 @@ ZSH_THEME="robbyrussell"
 
 CASE_SENSITIVE="false"
 HYPHEN_INSENSITIVE="false"
-zstyle ':omz:update' mode disabled  # Only remind me to update. TODO completely disable
+
+zstyle ':omz:update' mode disabled:auto
 
 plugins=(
   git
@@ -54,12 +55,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 ###### Preferred editor ######
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
-
+export EDITOR=nvim
 export VISUAL=nvim
 
 ###### pnpm (no OMZ plugin yet → keep inline) ######

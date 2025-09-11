@@ -1,3 +1,5 @@
+alias cd='z'
+
 alias l='eza --group-directories-first --icons --git --long'
 alias la='eza --long --all --group --icons --git --group-directories-first'
 alias ll='eza --long --group --header --icons --git --group-directories-first'

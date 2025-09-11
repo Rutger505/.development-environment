@@ -34,3 +34,13 @@ prompt_for_confirmation() {
   fi
 }
 
+install_paru() {
+  sudo pacman -S --needed base-devel
+
+  git clone https://aur.archlinux.org/paru.git ~/tmp/paru
+  cd ~/tmp/paru || exit 1
+  makepkg -si
+
+  cd - || exit 1
+  rm -rf ~/tmp/paru
+}

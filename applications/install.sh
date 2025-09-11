@@ -34,7 +34,6 @@ PACKAGES=(
 SERVICE_PACKAGES=("snapd" "cronie")
 AUTOSTART_PACKAGES=()
 
-
 prompt_for_confirmation "kanata" "true" "service"
 # JS/TS
 prompt_for_confirmation "nvm"
@@ -66,26 +65,34 @@ prompt_for_confirmation "visual-studio-code-bin"
 # Gaming
 prompt_for_confirmation "steam"
 
-if [[ ${#PACKAGES[@]} -eq 0 ]]; then
-  echo "No packages selected to install."
-
-  exit 0
-fi
-
 # Install paru
 if ! command -v paru >/dev/null 2>&1; then
   echo "Paru not found, installing..."
 
-  sudo pacman -S --needed base-devel
-
-  git clone https://aur.archlinux.org/paru.git ~/tmp/paru
-  cd ~/tmp/paru || exit 1
-  makepkg -si
-
-  cd - || exit 1
-  rm -rf ~/tmp/paru
+  install_paru
 fi
 
-paru -S "${PACKAGES[@]}"
+paru -S --needed "${PACKAGES[@]}"
+
+# Enable services
+for service in "${SERVICE_PACKAGES[@]}"; do
+  echo "Enabling and starting $service service..."
+  sudo systemctl enable --now "$service"
+done
+
+# Enable autostart applications
+AUTOSTART_DIR="$HOME/.config/autostart"
+mkdir -p "$AUTOSTART_DIR"
+for app in "${AUTOSTART_PACKAGES[@]}"; do
+  DESKTOP_FILE_PATH="/usr/share/applications/${app}.desktop"
+
+  if [ -f "$DESKTOP_FILE_PATH" ]; then
+    echo "Enabling autostart for $app..."
+    ln -s "$DESKTOP_FILE_PATH" "$AUTOSTART_DIR/"
+  else
+    echo "Warning: Desktop file for $app not found at $DESKTOP_FILE_PATH"
+  fi
+done
+
 
 echo "Finished installing applications! 🚀✨"

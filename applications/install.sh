@@ -4,7 +4,15 @@ SCRIPT=$(readlink -f "$0")
 SCRIPT_DIRECTORY=$(dirname "$SCRIPT")
 cd "$SCRIPT_DIRECTORY" || exit 1
 
-yay -S \
+# Install paru
+sudo pacman -S --needed base-devel
+git clone https://aur.archlinux.org/paru.git ~/tmp/paru
+cd ~/tmp/paru || exit 1
+makepkg -si
+
+
+
+paru -S \
   bun \
   kanata \
   nvm \

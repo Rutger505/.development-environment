@@ -1,7 +1,6 @@
 #!/bin/bash
 
-SCRIPT=$(readlink -f "$0")
-SCRIPT_DIRECTORY=$(dirname "$SCRIPT")
+SCRIPT_DIRECTORY="$(dirname "${BASH_SOURCE[0]}")"
 cd "$SCRIPT_DIRECTORY" || exit 1
 
 # Install paru

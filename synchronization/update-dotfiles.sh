@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Redirect output (stdout and stderr) to a log file aswell
-exec > >(tee ~/.development-environment/synchronization/update-dotfiles.log) 2>&1
+exec > >(tee -a ~/.development-environment/synchronization/update-dotfiles.log) 2>&1
 
 ERROR_FILE=~/development-environment-sync-error
 create_error_file() {

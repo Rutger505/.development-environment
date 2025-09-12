@@ -1,5 +1,7 @@
-# Redirect all output (stdout and stderr) to a log file
-exec >> ~/.development-environment/synchronization/update-dotfiles.log 2>&1
+#!/bin/bash
+
+# Redirect output (stdout and stderr) to a log file aswell
+exec > >(tee ~/.development-environment/synchronization/update-dotfiles.log) 2>&1
 
 ERROR_FILE=~/development-environment-sync-error
 create_error_file() {
@@ -19,7 +21,13 @@ git fetch
 
 # Compare current commit (HEAD = @) with the upstream branch of the current branch (@{u}).
 # Exit status 1 if there are differences, 0 if not.
-git diff --quiet @ @{upstream} && exit 0
+if git diff --quiet @ @{upstream}; then
+  echo "Nothing changed"
+
+  delete_error_file
+
+  exit 0
+fi
 
 # If HEAD can't be fast-forwarded to upstream, abort
 if ! git merge-base --is-ancestor @ @{upstream}; then
@@ -40,3 +48,4 @@ if git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD | grep -q '^\.tmux
 fi
 
 delete_error_file
+

@@ -21,6 +21,7 @@ git fetch
 
 # Compare current commit (HEAD = @) with the upstream branch of the current branch (@{u}).
 # Exit status 1 if there are differences, 0 if not.
+# TODO and when error does not file exist
 if git diff --quiet @ @{upstream}; then
   echo "Nothing changed"
 

@@ -76,7 +76,7 @@ if ! command -v paru >/dev/null 2>&1; then
   install_paru
 fi
 
-paru -S --needed "${PACKAGES[@]}"
+paru -Sy --needed "${PACKAGES[@]}"
 
 run_post_install_scripts "$SCRIPT_DIRECTORY" "${PACKAGES[@]}"
 enable_services "${SERVICE_PACKAGES[@]}"

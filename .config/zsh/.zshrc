@@ -1,4 +1,4 @@
-. $ZSH_CONFIG_DIR/packages/0-tmux.zsh
+source $ZSH_CONFIG_DIR/packages/0-tmux.zsh
 
 # TODO Move this to .zshenv when getting rid of HyDe
 export ZDOTDIR="$HOME/.config/zsh"

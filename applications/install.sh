@@ -19,6 +19,7 @@ PACKAGES=(
   "snapd"
   "cronie"
   "magic-wormhole"
+  "gparted"
   # Applications used in dotfiles
   "zoxide"
   "neovim"
@@ -64,6 +65,7 @@ prompt_for_confirmation "jetbrains-toolbox"
 prompt_for_confirmation "visual-studio-code-bin"
 # Gaming
 prompt_for_confirmation "steam"
+prompt_for_confirmation "minecraft-launcher"
 
 # Install paru
 if ! command -v paru >/dev/null 2>&1; then

@@ -10,7 +10,7 @@ PACKAGES=(
   "sddm" # TODO enable autostart
   "hyprland" 
   "dunst" # TODO enable autostart
-  "pipewire"
+  "pipewire" # TODO enable autostart
   "wireplumber"
   "hyprpolkitagent"
   "xdg-desktop-portal-hyprland"
@@ -18,6 +18,7 @@ PACKAGES=(
   "nwg-displays"
   "qt5-wayland"
   "qt6-wayland"
+  "pavucontrol"
   # TODO maybe add and configure qt(5/6)ct
   "hyprqt6engine"
   "hyprcursor"
@@ -52,6 +53,7 @@ PACKAGES=(
   "zoxide"
   "neovim"
   "kitty"
+  "ghostty"
   # Basic enhancements
   "exa"
   "bat"
@@ -60,7 +62,9 @@ PACKAGES=(
   "fzf"
   "btop"
 )
-SERVICE_PACKAGES=("snapd" "cronie" "sddm")
+SERVICE_PACKAGES=(
+  "snapd" "cronie" "sddm"
+)
 AUTOSTART_PACKAGES=()
 
 prompt_for_confirmation "kanata" "true" "service"

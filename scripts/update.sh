@@ -2,13 +2,17 @@
 
 
 echo "Updating yay packages"
-yay -Syu
+paru -Syu
 
 echo
 echo
 
 echo "Updating snap packages"
-sudo snap refresh
+if command -v snap >/dev/null 2>&1; then
+  sudo snap refresh
+else
+  echo "Snap is not installed. Skipping update."
+fi
 
 echo
 echo

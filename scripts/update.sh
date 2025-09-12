@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -eu
 
 echo "Updating paru packages"
 paru -Syu

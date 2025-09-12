@@ -21,7 +21,7 @@ git fetch
 
 # Compare current commit (HEAD = @) with the upstream branch of the current branch (@{u}).
 # Exit status 1 if there are differences, 0 if not and 128 on error.
-if git diff --quiet @ @{upstream} || [ ! -f "$ERROR_FILE" ]; then
+if git diff --quiet @ @{upstream} && [ ! -f "$ERROR_FILE" ]; then
   echo "Nothing changed"
 
   exit 0

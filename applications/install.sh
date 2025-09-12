@@ -39,6 +39,8 @@ prompt_for_confirmation "kanata" "true" "service"
 # JS/TS
 prompt_for_confirmation "nvm"
 prompt_for_confirmation "bun"
+# Github
+prompt_for_confirmation "github-cli"
 # DevOps
 prompt_for_confirmation "opentofu"
 prompt_for_confirmation "kubectl"

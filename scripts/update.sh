@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-echo "Updating yay packages"
+echo "Updating paru packages"
 paru -Syu
 
 echo

@@ -6,7 +6,34 @@ cd "$SCRIPT_DIRECTORY" || exit 1
 source "$SCRIPT_DIRECTORY/functions.sh"
 
 PACKAGES=(
-  # Essential packages
+  # System essentials
+  "sddm" # TODO enable autostart
+  "hyprland" 
+  "dunst" # TODO enable autostart
+  "pipewire"
+  "wireplumber"
+  "hyprpolkitagent"
+  "xdg-desktop-portal-hyprland"
+  "xdg-desktop-portal-gtk"
+  "nwg-displays"
+  "qt5-wayland"
+  "qt6-wayland"
+  # TODO maybe add and configure qt(5/6)ct
+  "hyprqt6engine"
+  "hyprcursor"
+  "hyprland-qt-support"
+  "ttf-jetbrains-mono-nerd"
+  "nwg-look"
+  "waybar"
+  "hyprpaper"
+  "hypridle"
+  "hyprlock"
+  "hyprpicker"
+  "wofi"
+  "cliphist"
+  "dolphin"
+
+  # User Essential
   "stow"
   "git"
   "curl"
@@ -20,6 +47,7 @@ PACKAGES=(
   "cronie"
   "magic-wormhole"
   "gparted"
+
   # Applications used in dotfiles
   "zoxide"
   "neovim"
@@ -32,7 +60,7 @@ PACKAGES=(
   "fzf"
   "btop"
 )
-SERVICE_PACKAGES=("snapd" "cronie")
+SERVICE_PACKAGES=("snapd" "cronie" "sddm")
 AUTOSTART_PACKAGES=()
 
 prompt_for_confirmation "kanata" "true" "service"

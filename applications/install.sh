@@ -100,6 +100,7 @@ prompt_for_confirmation "visual-studio-code-bin"
 # Gaming
 prompt_for_confirmation "steam"
 prompt_for_confirmation "minecraft-launcher"
+prompt_for_confirmation "prismlauncher"
 
 # Install paru
 if ! command -v paru >/dev/null 2>&1; then

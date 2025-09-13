@@ -7,6 +7,7 @@ source "$SCRIPT_DIRECTORY/functions.sh"
 
 PACKAGES=(
   # System essentials
+  "os-prober"
   "sddm" # TODO enable autostart
   "hyprland" 
   "dunst" # TODO enable autostart
@@ -90,7 +91,8 @@ prompt_for_confirmation "bitwarden"
 # Browsers
 prompt_for_confirmation "chromium"
 prompt_for_confirmation "firefox"
-prompt_for_confirmation "zen-browser"
+prompt_for_confirmation "zen-browser-bin"
+
 # Communication
 prompt_for_confirmation "discord"
 prompt_for_confirmation "slack-desktop"

@@ -4,5 +4,3 @@
 # Remove --logo-type kitty alias.
 sed -i 's/^\(.*fastfetch --logo-type kitty.*\)$/# \1/' ~/.config/zsh/user.zsh
 
-echo "Removing ~/.config/kitty/kitty.conf file to prevent GNU Stow conflicts"
-rm -f "$HOME/.config/kitty/kitty.conf"

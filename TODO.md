@@ -9,3 +9,4 @@ fix zoxide alias when not installed
 add auto boot sddm script
 Add chaotic aur
 Add xwayland
+Fix a proper place for oh my zsh installation 

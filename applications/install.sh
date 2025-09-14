@@ -52,6 +52,7 @@ PACKAGES=(
 
   # Applications used in dotfiles
   "zoxide"
+  "starship"
   "neovim"
   "kitty"
   "ghostty"
@@ -85,7 +86,6 @@ prompt_for_confirmation "powerstat"
 prompt_for_confirmation "envycontrol"
 # Shell
 prompt_for_confirmation "tmux"
-prompt_for_confirmation "starship"
 # Password Manager
 prompt_for_confirmation "bitwarden"
 # Browsers

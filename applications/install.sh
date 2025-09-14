@@ -35,6 +35,9 @@ PACKAGES=(
   "cliphist"
   "dolphin"
 
+  # Lol
+  sl
+
   # User Essential
   "stow"
   "git"

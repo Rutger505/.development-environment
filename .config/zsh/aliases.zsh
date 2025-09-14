@@ -1,4 +1,6 @@
-alias cd='z'
+if command -v z >/dev/null @>&1; then
+  alias cd='z'
+fi
 
 alias l='eza --group-directories-first --icons --git --long'
 alias la='eza --long --all --group --icons --git --group-directories-first'

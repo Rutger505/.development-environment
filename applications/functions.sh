@@ -49,10 +49,10 @@ install_paru() {
 run_scripts_in_dir() {
   local script_dir=$1
 
-  for script in script_dir; do
+  for script in $script_dir/*.sh; do
     if [ -f "$script" ]; then
-      echo "Sourcing: $script"
-      ./"$script"
+      echo "Running script: $(basename "$script")"
+      "$script"
     fi
   done
 }

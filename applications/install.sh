@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 SCRIPT_PATH="$(realpath "${BASH_SOURCE[0]}")"
 SCRIPT_DIRECTORY="$(dirname "$SCRIPT_PATH")"
 cd "$SCRIPT_DIRECTORY" || exit 1
@@ -16,9 +18,6 @@ if ! command -v paru >/dev/null 2>&1; then
 
   install_paru
 fi
-
-
-run_scripts_in_dir "$SCRIPT_DIRECTORY/pre-install"
 
 mapfile -t PACKAGE_LIST < <( \
   find "./package-lists/" -name "*.lst" -print0 | \

@@ -46,17 +46,13 @@ install_paru() {
 }
 
 
-run_post_install_scripts() {
+run_scripts_in_dir() {
   local script_dir=$1
-  shift
-  local packages=("$@")
 
-  for package in "${packages[@]}"; do
-    local post_install_script="$script_dir/post-install/${package}.sh"
-
-    if [ -f "$post_install_script" ]; then
-      echo "Running post-install script for $package..."
-      "$post_install_script"
+  for script in script_dir; do
+    if [ -f "$script" ]; then
+      echo "Sourcing: $script"
+      ./"$script"
     fi
   done
 }

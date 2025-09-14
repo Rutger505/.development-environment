@@ -63,7 +63,7 @@ cronie
 # Partition manager
 gparted
 # Map caps to esc
-kanata
+kanata-bin
 
 # Manage IGPU and GPU switching
 envycontrol

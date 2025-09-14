@@ -10,3 +10,4 @@ add auto boot sddm script
 Add chaotic aur
 Add xwayland
 Fix a proper place for oh my zsh installation 
+Replace jetbrains toolbox with aur installation

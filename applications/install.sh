@@ -17,16 +17,20 @@ if ! command -v paru >/dev/null 2>&1; then
   install_paru
 fi
 
-find "$SCRIPT_DIRECTORY/package-lists/" -name "*.lst" -print0 | \
+
+run_scripts_in_dir "$SCRIPT_DIRECTORY/pre-install"
+
+mapfile -t PACKAGE_LIST < <( \
+  find "./package-lists/" -name "*.lst" -print0 | \
   xargs -0 cat | \
   grep -vE '^\s*#' | \
-  grep -vE '^\s*$' | \
-  paru -Sy --needed -
+  grep -vE '^\s*$' \
+)
+paru -S --needed "${PACKAGE_LIST[@]}"
 
 
+run_scripts_in_dir "$SCRIPT_DIRECTORY/post-install"
 
-
-run_post_install_scripts "$SCRIPT_DIRECTORY" "${PACKAGES[@]}"
 enable_services "${SERVICE_PACKAGES[@]}"
 enable_autostart_apps "${AUTOSTART_PACKAGES[@]}"
 

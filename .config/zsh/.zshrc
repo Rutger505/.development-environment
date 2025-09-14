@@ -3,12 +3,10 @@ source $XDG_CONFIG_HOME/zsh/packages/0-tmux.zsh
 # TODO Move this to .zshenv when getting rid of HyDe
 export ZDOTDIR="$HOME/.config/zsh"
 export ZSH_CONFIG_DIR="$ZDOTDIR"
-
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
-
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -20,7 +18,7 @@ export PATH=$PATH:$HOME/.development-environment/scripts
 
 ###### ZSH / Oh My Zsh ######
 # TODO move this into $ZSH_CONFIG_DIR/oh-my-zsh/custom/ ?
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 CASE_SENSITIVE="false"
@@ -36,7 +34,6 @@ plugins=(
   archlinux
   systemd
   # Enhancements
-  zsh-256color
   zsh-autosuggestions
   zsh-syntax-highlighting
   eza

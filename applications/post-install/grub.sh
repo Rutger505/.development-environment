@@ -6,5 +6,10 @@ sudo sed -i -E 's/^#?GRUB_DISABLE_OS_PROBER=.*/GRUB_DISABLE_OS_PROBER=false/' /e
 echo "Shorting timeout to 1 second"
 sudo sed -i -E 's/^#?\s*GRUB_TIMEOUT=.*/GRUB_TIMEOUT=1/' /etc/default/grub
 
-sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB --removable --boot-directory=/boot
+sudo grub-install --target=x86_64-efi \
+	--bootloader-id=GRUB \
+	--removable \
+	--efi-directory=/boot/efi \
+	--boot-directory=/boot \
+	--recheck
 sudo grub-mkconfig -o /boot/grub/grub.cfg

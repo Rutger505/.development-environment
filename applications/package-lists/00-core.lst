@@ -29,7 +29,7 @@ hyprlock
 # Color picker
 hyprpicker
 # App lancher
-rofi
+wofi
 # Clipboard manager
 cliphist
 # File manager

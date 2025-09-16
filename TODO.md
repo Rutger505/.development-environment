@@ -11,3 +11,4 @@ Add chaotic aur
 Add xwayland
 Fix a proper place for oh my zsh installation 
 Replace jetbrains toolbox with aur installation
+Enable legacy openssl for conda

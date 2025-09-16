@@ -8,7 +8,7 @@ cd "$SCRIPT_DIRECTORY" || exit 1
 source "$SCRIPT_DIRECTORY/functions.sh"
 
 SERVICE_PACKAGES=(
-  "snapd" "cronie" "sddm" "kanata"
+  "snapd" "cronie" "sddm" "kanata" "iwr"
 )
 AUTOSTART_PACKAGES=()
 

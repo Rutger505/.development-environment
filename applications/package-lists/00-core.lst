@@ -72,4 +72,8 @@ envycontrol
 powertop
 powerstat
 
+# Network
+iwr
+impala
+
 snapd

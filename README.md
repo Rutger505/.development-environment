@@ -12,7 +12,7 @@ ssh-keygen -t ed25519
 
 2. Copy the public key:
 ```bash
-cat ~/.ssh/id_ed25519.pub
+copyfile ~/.ssh/id_ed25519.pub
 ```
 
 3. [Set ssh key in Github](https://github.com/settings/ssh/new)

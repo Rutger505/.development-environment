@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -euo pipefail
 
 SCRIPT_PATH="$(realpath "${BASH_SOURCE[0]}")"
 SCRIPT_DIRECTORY="$(dirname "$SCRIPT_PATH")"
@@ -27,6 +26,7 @@ mapfile -t PACKAGE_LIST < <( \
 )
 paru -S --needed "${PACKAGE_LIST[@]}"
 
+run_scripts_in_dir "$SCRIPT_DIRECTORY/package-scripts"
 
 run_scripts_in_dir "$SCRIPT_DIRECTORY/post-install"
 

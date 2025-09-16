@@ -22,3 +22,6 @@ bun-bin
 kubectl
 k9s
 opentofu
+
+miniconda3
+

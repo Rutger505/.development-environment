@@ -35,8 +35,7 @@
         "group/pill#right2",
         "group/pill#right3",
         "group/pill#right4",
-        "clock",
-        "custom/power"
+        "group/pill#right5"
     ],
     "group/pill#right1": {
         "modules": [
@@ -62,6 +61,12 @@
     "group/pill#right4": {
         "modules": [
             "clock"
+        ],
+        "orientation": "inherit"
+    },
+    "group/pill#right5": {
+        "modules": [
+            "custom/powermenu"
         ],
         "orientation": "inherit"
     },
@@ -163,35 +168,9 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
-    "custom/power": {
+    "custom/powermenu": {
         "format": "⏻",
         "tooltip": false,
-        "menu": "on-click",
-        "menu-items": [
-            {
-                "label": "Shutdown",
-                "action": "systemctl poweroff"
-            },
-            {
-                "label": "Reboot",
-                "action": "systemctl reboot"
-            },
-            {
-                "label": "Suspend",
-                "action": "systemctl suspend"
-            },
-            {
-                "label": "Hibernate",
-                "action": "systemctl hibernate"
-            },
-            {
-                "label": "Lock",
-                "action": "hyprlock || loginctl lock-session"
-            },
-            {
-                "label": "Logout",
-                "action": "hyprctl dispatch exit 0 || loginctl terminate-user $USER"
-            }
-        ]
+        "on-click": "powermenu.sh" // TODO fix
     }
 }

@@ -56,13 +56,12 @@
         "modules": [
             "backlight",
             "battery",
-            "pulsea"
         ],
         "orientation": "inherit"
     },
     "group/pill#right4": {
         "modules": [
-            "cloc"
+            "clock"
         ],
         "orientation": "inherit"
     },

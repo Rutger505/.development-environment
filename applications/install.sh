@@ -8,7 +8,7 @@ cd "$SCRIPT_DIRECTORY" || exit 1
 source "$SCRIPT_DIRECTORY/functions.sh"
 
 SERVICE_PACKAGES=(
-  "snapd" "cronie" "sddm" "kanata" "iwr"
+  "snapd" "cronie" "sddm" "kanata" "iwd"
 )
 AUTOSTART_PACKAGES=()
 
@@ -24,7 +24,7 @@ mapfile -t PACKAGE_LIST < <( \
   grep -vE '^\s*#' | \
   grep -vE '^\s*$' \
 )
-paru -S --needed "${PACKAGE_LIST[@]}"
+paru -Sy --needed "${PACKAGE_LIST[@]}"
 
 run_scripts_in_dir "$SCRIPT_DIRECTORY/package-scripts"
 

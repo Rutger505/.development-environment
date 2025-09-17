@@ -73,7 +73,7 @@ powertop
 powerstat
 
 # Network
-iwr
+iwd
 impala
 
 snapd

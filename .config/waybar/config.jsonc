@@ -1,13 +1,13 @@
 // -*- mode: jsonc -*-
 {
+    "include": [
+        "modules/*json*"
+    ],
     "reload_style_on_change": true,
     "layer": "top",
     "position": "top",
     "height": 10,
     "spacing": 4, // PX 
-    "include": [
-        "$XDG_CONFIG_HOME/waybar/modules/*json*"
-    ],
     "modules-left": [
         "group/#left1"
     ],

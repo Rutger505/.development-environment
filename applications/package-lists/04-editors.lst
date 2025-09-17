@@ -1,8 +1,12 @@
 visual-studio-code-bin
 neovim
 webstorm
+webstorm-jre
 phpstorm
+phpstorm-jre
 pycharm-professional
+pycharm-professional-jre
 clion
+clion-jre
 rider
-
+rider-jre

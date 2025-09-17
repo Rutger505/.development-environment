@@ -1,9 +1,13 @@
 // -*- mode: jsonc -*-
 {
+    "reload_style_on_change": true,
     "layer": "top",
     "position": "top",
-    "height": 30,
+    "height": 10,
     "spacing": 4, // PX 
+    "include": [
+        "$XDG_CONFIG_HOME/waybar/modules/*json*"
+    ],
     "modules-left": [
         "group/#left1"
     ],
@@ -26,7 +30,6 @@
     },
     "modules-right": [
         "mpd",
-        "idle_inhibitor",
         "pulseaudio",
         "network",
         "power-profiles-daemon",
@@ -49,10 +52,6 @@
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
-    },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
     },
     "memory": {
         "format": "{}% "
@@ -96,7 +95,7 @@
         }
     },
     "network": {
-        "interface": "iwd",
+        "interface": "wlan0",
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",

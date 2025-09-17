@@ -7,7 +7,7 @@
     "layer": "top",
     "position": "top",
     "height": 10,
-    "spacing": 4, // PX 
+    "spacing": 4, // PX
     "modules-left": [
         "group/#left1"
     ],
@@ -15,7 +15,9 @@
         "orientation": "inherit",
         "modules": [
             "cpu",
-            "memory"
+            "memory",
+            "temperature",
+            "power-profiles-daemon"
         ]
     },
     "modules-center": [
@@ -29,20 +31,44 @@
         "orientation": "inherit"
     },
     "modules-right": [
-        "mpd",
-        "pulseaudio",
-        "network",
-        "power-profiles-daemon",
-        "backlight",
-        "keyboard-state",
-        "battery",
+        "group/pill#right1",
+        "group/pill#right2",
+        "group/pill#right3",
+        "group/pill#right4",
         "clock",
-        "tray",
         "custom/power"
     ],
+    "group/pill#right1": {
+        "modules": [
+            "tray"
+        ],
+        "orientation": "inherit"
+    },
+    "group/pill#right2": {
+        "modules": [
+            "network",
+            "bluetooth",
+            "pulseaudio"
+        ],
+        "orientation": "inherit"
+    },
+    "group/pill#right3": {
+        "modules": [
+            "backlight",
+            "battery",
+            "pulsea"
+        ],
+        "orientation": "inherit"
+    },
+    "group/pill#right4": {
+        "modules": [
+            "cloc"
+        ],
+        "orientation": "inherit"
+    },
     "tray": {
         // "icon-size": 21,
-        "spacing": 10,
+        "spacing": 10
         // "icons": {
         //   "blueman": "bluetooth",
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
@@ -139,15 +165,34 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
-        "format": "⏻ ",
+        "format": "⏻",
         "tooltip": false,
         "menu": "on-click",
-        "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-        "menu-actions": {
-            "shutdown": "shutdown",
-            "reboot": "reboot",
-            "suspend": "systemctl suspend",
-            "hibernate": "systemctl hibernate"
-        }
+        "menu-items": [
+            {
+                "label": "Shutdown",
+                "action": "systemctl poweroff"
+            },
+            {
+                "label": "Reboot",
+                "action": "systemctl reboot"
+            },
+            {
+                "label": "Suspend",
+                "action": "systemctl suspend"
+            },
+            {
+                "label": "Hibernate",
+                "action": "systemctl hibernate"
+            },
+            {
+                "label": "Lock",
+                "action": "hyprlock || loginctl lock-session"
+            },
+            {
+                "label": "Logout",
+                "action": "hyprctl dispatch exit 0 || loginctl terminate-user $USER"
+            }
+        ]
     }
 }

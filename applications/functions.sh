@@ -57,15 +57,6 @@ run_scripts_in_dir() {
   done
 }
 
-enable_services() {
-  local services=("$@")
-
-  for service in "${services[@]}"; do
-    echo "Enabling and starting $service service..."
-    sudo systemctl enable --now "$service"
-  done
-}
-
 enable_autostart_apps() {
   local apps=("$@")
 

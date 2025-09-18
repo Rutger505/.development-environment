@@ -30,7 +30,10 @@ run_scripts_in_dir "$SCRIPT_DIRECTORY/package-scripts"
 
 run_scripts_in_dir "$SCRIPT_DIRECTORY/post-install"
 
-enable_services "${SERVICE_PACKAGES[@]}"
+echo "Enabling and starting services:"
+echo ${SERVICE_PACKAGES[@]}
+sudo systemctl enable --now ${SERVICE_PACKAGES[@]}
+
 enable_autostart_apps "${AUTOSTART_PACKAGES[@]}"
 
 echo "Finished installing applications! 🚀✨"

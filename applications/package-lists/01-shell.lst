@@ -8,6 +8,7 @@ bat
 ripgrep
 fd
 fzf
+yazi
 
 cloc
 magic-wormhole

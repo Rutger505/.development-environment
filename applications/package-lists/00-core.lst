@@ -76,4 +76,9 @@ powerstat
 iwd
 impala
 
+# Bluetooth
+bluez
+bluez-utils
+blueman
+
 snapd

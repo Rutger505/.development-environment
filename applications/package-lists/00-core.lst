@@ -13,6 +13,7 @@ os-prober
 
 # Hyprland
 hyprland
+xdg-desktop-portal
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
 # Authentication via modal

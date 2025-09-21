@@ -10,9 +10,8 @@ source "$SCRIPT_DIRECTORY/functions.sh"
 SERVICE_PACKAGES=(
   "snapd" "cronie" "sddm" "kanata" "iwd" "bluetooth" "xdg-desktop-portal" "xdg-desktop-portal-hyprland"
 )
-AUTOSTART_PACKAGES=()
 
-if ! command -v paru >/dev/null 2>&1; then
+if ! command -v paru > /dev/null 2>&1; then
   echo "Paru not found, installing..."
 
   install_paru
@@ -28,12 +27,12 @@ paru -Sy --needed "${PACKAGE_LIST[@]}"
 
 run_scripts_in_dir "$SCRIPT_DIRECTORY/package-scripts"
 
+
 run_scripts_in_dir "$SCRIPT_DIRECTORY/post-install"
 
 echo "Enabling and starting services:"
 echo ${SERVICE_PACKAGES[@]}
 sudo systemctl enable --now ${SERVICE_PACKAGES[@]}
 
-enable_autostart_apps "${AUTOSTART_PACKAGES[@]}"
 
 echo "Finished installing applications! 🚀✨"

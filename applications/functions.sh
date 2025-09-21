@@ -56,21 +56,3 @@ run_scripts_in_dir() {
     fi
   done
 }
-
-enable_autostart_apps() {
-  local apps=("$@")
-
-  local autostart_dir="$HOME/.config/autostart"
-  mkdir -p "$autostart_dir"
-
-  for app in "${apps[@]}"; do
-    local desktop_file_path="/usr/share/applications/${app}.desktop"
-
-    if [ -f "$desktop_file_path" ]; then
-      echo "Enabling autostart for $app..."
-      ln -sf "$desktop_file_path" "$autostart_dir/"
-    else
-      echo "Warning: Desktop file for $app not found at $desktop_file_path"
-    fi
-  done
-}

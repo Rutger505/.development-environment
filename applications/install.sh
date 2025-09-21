@@ -22,14 +22,8 @@ if ! command -v paru > /dev/null 2>&1; then
 fi
 
 
-
-mapfile -t PACKAGE_LIST < <( \
-  find "./package-lists/" -name "*.lst" -print0 | \
-  xargs -0 cat | \
-  grep -vE '^\s*#' | \
-  grep -vE '^\s*$' \
-)
-paru -Sy --needed "${PACKAGE_LIST[@]}"
+load_package_list_from_dir PACKAGE_LIST "./package-lists/"
+paru -Sy --needed ${PACKAGE_LIST[@]}
 
 run_scripts_in_dir "$SCRIPT_DIRECTORY/package-scripts"
 

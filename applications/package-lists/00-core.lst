@@ -47,6 +47,9 @@ pavucontrol
 nwg-displays
 
 # Qt support
+qt6-svg
+qt6-virtualkeyboard
+qt6-multimedia-ffmpeg
 qt5-wayland
 qt6-wayland
 hyprqt6engine

@@ -1,106 +1,74 @@
 // -*- mode: jsonc -*-
 {
-    "include": [
-        "modules/*json*"
-    ],
-    "reload_style_on_change": true,
     "layer": "top",
     "position": "top",
-    "height": 10,
-    "spacing": 4, // PX
     "modules-left": [
-        "group/#left1"
+        "cpu",
+        "memory",
+        "temperature",
+        "power-profiles-daemon"
     ],
-    "group/#left1": {
-        "orientation": "inherit",
-        "modules": [
-            "cpu",
-            "memory",
-            "temperature",
-            "power-profiles-daemon"
+    "modules-center": [
+        "custom/music",
+        "hyprland/workspaces",
+        "hyprland/window",
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "backlight",
+        "battery",
+        "clock",
+        "tray",
+        "custom/lock",
+        "custom/powermenu"
+    ],
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
         ]
     },
-    "modules-center": [
-        "group/pill#center"
-    ],
-    "group/pill#center": {
-        "modules": [
-            "hyprland/workspaces",
-            "hyprland/window"
-        ],
-        "orientation": "inherit"
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
     },
-    "modules-right": [
-        "group/pill#right1",
-        "group/pill#right2",
-        "group/pill#right3",
-        "group/pill#right4",
-        "group/pill#right5"
-    ],
-    "group/pill#right1": {
-        "modules": [
-            "tray"
-        ],
-        "orientation": "inherit"
-    },
-    "group/pill#right2": {
-        "modules": [
-            "network",
-            "bluetooth",
-            "pulseaudio"
-        ],
-        "orientation": "inherit"
-    },
-    "group/pill#right3": {
-        "modules": [
-            "backlight",
-            "battery",
-        ],
-        "orientation": "inherit"
-    },
-    "group/pill#right4": {
-        "modules": [
-            "clock"
-        ],
-        "orientation": "inherit"
-    },
-    "group/pill#right5": {
-        "modules": [
-            "custom/powermenu"
-        ],
-        "orientation": "inherit"
-    },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10
-        // "icons": {
-        //   "blueman": "bluetooth",
-        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-        // }
+    "custom/music": {
+        "format": "  {}",
+        "escape": true,
+        "interval": 5,
+        "tooltip": false,
+        "exec": "playerctl metadata --format='{{ title }}'",
+        "on-click": "playerctl play-pause",
+        "max-length": 50
     },
     "clock": {
-        // "timezone": "America/New_York",
+        "timezone": "Europe/Amsterdam",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": [
-            "",
-            "",
-            ""
-        ]
+        "format-alt": " {:%d/%m/%Y}",
+        "format": " {:%H:%M}"
     },
     "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
+        "device": "intel_backlight",
+        "format": "{icon}",
         "format-icons": [
             "",
             "",
@@ -134,12 +102,11 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
+        "format-muted": " {format_source}",
+        "format-source": "",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
@@ -151,26 +118,14 @@
             "default": [
                 "",
                 "",
-                ""
+                " "
             ]
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
-        "format": "{icon} {text}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    },
     "custom/powermenu": {
         "format": "⏻",
         "tooltip": false,
-        "on-click": "powermenu.sh" // TODO fix
+        "on-click": "powermenu.sh",
     }
 }

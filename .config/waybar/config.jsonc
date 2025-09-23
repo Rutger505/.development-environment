@@ -114,12 +114,12 @@
             "headphone": " ",
             "hands-free": "",
             "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
             "default": [
-                "",
-                "",
+                " ",
+                " ",
                 " "
             ]
         },

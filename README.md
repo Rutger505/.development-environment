@@ -6,11 +6,13 @@ started with development.
 ## Installation
 
 1. Generate ssh key:
+
 ```bash
 ssh-keygen -t ed25519
 ```
 
 2. Copy the public key:
+
 ```bash
 copyfile ~/.ssh/id_ed25519.pub
 ```
@@ -28,22 +30,12 @@ git clone git@github.com:Rutger505/.development-environment.git ~/.development-e
 ```bash
 ~/.development-environment/applications/install.sh
 ```
+
 6. Use GNU Stow to symlink the dotfiles in the home directory.
 
 ```bash
 cd ~/.development-environment
 stow .
 ```
-7. Automate updating .dotfiles with a cron job.
-
-```bash
-crontab -e
-```
-Add the following line to the crontab file:
-```bash
-* * * * * ~/.development-environment/synchronization/update-dotfiles.sh
-```
 
 Do a **full system restart** for changing default shell and showing desktop application.
-
-

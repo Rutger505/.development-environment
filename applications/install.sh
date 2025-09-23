@@ -14,6 +14,9 @@ SERVICE_PACKAGES=(
   "kanata" 
   "snapd"
 )
+SERVICE_USER_PACKAGES=(
+  "update-dotfiles.timer"
+)
 
 
 run_scripts_in_dir "$SCRIPT_DIRECTORY/pre-install"
@@ -37,6 +40,9 @@ run_scripts_in_dir "$SCRIPT_DIRECTORY/post-install"
 echo "Enabling and starting services:"
 echo ${SERVICE_PACKAGES[@]}
 sudo systemctl enable --now ${SERVICE_PACKAGES[@]}
+echo "Enabling and starting user services:"
+echo ${SERVICE_USER_PACKAGES[@]}
+systemctl --user enable --now ${SERVICE_USER_PACKAGES[@]}
 
 
 echo "Finished installing applications! 🚀✨"

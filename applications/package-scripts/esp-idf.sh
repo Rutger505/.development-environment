@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # TODO move to pachage lists
-sudo pacman -S --needed gcc git make flex bison gperf python cmake ninja ccache dfu-util libusb python-pip
+sudo pacman -S --needed gcc git make flex bison gperf python cmake ninja ccache dfu-util libusb python-pip lldb
 
 dir=${XDG_DATA_HOME:-$HOME/.local/share}/esp
 if [ -d "$dir/esp-idf" ]; then

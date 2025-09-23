@@ -1,1 +1,1 @@
-export PATH="/opt/miniforge/bin:$PATH"
+export PATH="$HOME/miniforge3/bin:$PATH"

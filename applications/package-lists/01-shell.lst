@@ -24,5 +24,4 @@ kubectl
 k9s
 opentofu
 
-miniconda3
-
+miniforge

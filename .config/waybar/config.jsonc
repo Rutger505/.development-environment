@@ -52,7 +52,7 @@
         "tooltip": false
     },
     "memory": {
-        "format": "{}%  "
+        "format": "{}%  "
     },
     "custom/music": {
         "format": "  {}",

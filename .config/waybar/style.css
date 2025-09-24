@@ -1,8 +1,8 @@
 @import "mocha.css";
 
 * {
-  font-family: FantasqueSansMono Nerd Font;
-  font-size: 17px;
+  font-family: JetbrainsMono Nerd Font;
+  font-size: 12px;
   min-height: 0;
 }
 
@@ -42,7 +42,7 @@
 #battery,
 #pulseaudio,
 #custom-lock,
-#custom-power {
+#custom-powermenu {
   background-color: @surface0;
   padding: 0.5rem 1rem;
   margin: 5px 0;
@@ -90,7 +90,7 @@
     color: @lavender;
 }
 
-#custom-power {
+#custom-powermenu {
     margin-right: 1rem;
     border-radius: 0px 1rem 1rem 0px;
     color: @red;

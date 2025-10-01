@@ -1,68 +1,4 @@
 stow
-git
-curl
-wget
-unzip
-zip
-jq
-
-# Session manager
-sddm
-os-prober
-
-
-# Hyprland
-hyprland
-xdg-desktop-portal
-xdg-desktop-portal-hyprland
-xdg-desktop-portal-gtk
-# Authentication via modal
-hyprpolkitagent
-hyprcursor
-# Bar
-waybar
-# Wallpaper
-hyprpaper
-# Idle timeout
-hypridle
-# Lockscreen
-hyprlock
-# Color picker
-hyprpicker
-# App lancher
-wofi
-# Clipboard manager
-cliphist
-# File manager
-dolphin
-# Notification
-dunst
-
-# Sound
-pipewire
-wireplumber
-pavucontrol
-
-# Display
-nwg-displays
-
-# Qt support
-qt6-svg
-qt6-virtualkeyboard
-qt6-multimedia-ffmpeg
-qt5-wayland
-qt6-wayland
-hyprqt6engine
-hyprland-qt-support
-
-# Font
-ttf-jetbrains-mono-nerd
-
-# Theme
-nwg-look
-
-# Crontab implementation
-cronie
 
 # Partition manager
 gparted
@@ -75,15 +11,6 @@ envycontrol
 # Power insight tools
 powertop
 powerstat
-
-# Network
-iwd
-impala
-
-# Bluetooth
-bluez
-bluez-utils
-blueman
 
 snapd
 

@@ -1,10 +1,2 @@
-visual-studio-code-bin
-neovim
-webstorm
-webstorm-jre
-phpstorm
-phpstorm-jre
-pycharm-professional
-clion
-clion-jre
-rider
+code
+jetbrains-toolbox

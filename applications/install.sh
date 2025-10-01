@@ -7,30 +7,16 @@ cd "$SCRIPT_DIRECTORY" || exit 1
 
 source "$SCRIPT_DIRECTORY/functions.sh"
 
-SERVICE_PACKAGES=(
-  "cronie" "sddm" 
-  "iwd" "bluetooth"
-  "xdg-desktop-portal-hyprland"
-  "kanata" 
-  "snapd"
-)
 SERVICE_USER_PACKAGES=(
   "update-dotfiles.timer"
 )
 
 
-run_scripts_in_dir "$SCRIPT_DIRECTORY/pre-install"
-
-
-if ! command -v paru > /dev/null 2>&1; then
-  echo "Paru not found, installing..."
-
-  install_paru
-fi
-
-
 load_package_list_from_dir PACKAGE_LIST "./package-lists/"
-paru -Sy --needed ${PACKAGE_LIST[@]}
+whereis ${PACKAGE_LIST[@]}
+#yay -Sy --needed ${PACKAGE_LIST[@]}
+
+exit 0 
 
 run_scripts_in_dir "$SCRIPT_DIRECTORY/package-scripts"
 

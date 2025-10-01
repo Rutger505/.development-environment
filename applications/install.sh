@@ -18,6 +18,8 @@ if ! command -v paru > /dev/null 2>&1; then
   install_paru
 fi;
 
+run_scripts_in_dir "$SCRIPT_DIRECTORY/pre-install"
+
 
 load_package_list_from_dir PACKAGE_LIST "./package-lists/"
 paru -Sy --needed ${PACKAGE_LIST[@]}

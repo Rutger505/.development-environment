@@ -13,10 +13,7 @@ SERVICE_USER_PACKAGES=(
 
 
 load_package_list_from_dir PACKAGE_LIST "./package-lists/"
-whereis ${PACKAGE_LIST[@]}
-#yay -Sy --needed ${PACKAGE_LIST[@]}
-
-exit 0 
+yay -Sy --needed ${PACKAGE_LIST[@]}
 
 run_scripts_in_dir "$SCRIPT_DIRECTORY/package-scripts"
 

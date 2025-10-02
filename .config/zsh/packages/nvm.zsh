@@ -1,1 +1,2 @@
-[ -s /usr/share/nvm/nvm.sh ] && source /usr/share/nvm/nvm.sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/share/nvm/nvm.sh" ] && . "/usr/share/nvm/nvm.sh"

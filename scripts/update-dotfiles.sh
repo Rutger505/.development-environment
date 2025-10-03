@@ -36,7 +36,7 @@ fi
 
 stow -D .
 git pull --ff-only
-stow . || create_error_file
+stow --adopt . || create_error_file
 
 hyprctl reload
 

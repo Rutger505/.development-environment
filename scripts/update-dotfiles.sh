@@ -34,8 +34,7 @@ if ! git merge-base --is-ancestor @ @{upstream}; then
   exit 1
 fi
 
-stow -D .
-git pull --ff-only
+git pull --ff-only || create_error_file
 stow --adopt . || create_error_file
 
 hyprctl reload

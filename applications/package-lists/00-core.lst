@@ -15,8 +15,6 @@ powerstat
 
 snapd
 
-reboot-arch-btw
-
 # Monitors
 hyprmon-bin
 

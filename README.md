@@ -14,7 +14,7 @@ ssh-keygen -t ed25519
 2. Copy the public key:
 
 ```bash
-copyfile ~/.ssh/id_ed25519.pub
+cat ~/.ssh/id_ed25519.pub
 ```
 
 3. [Set ssh key in Github](https://github.com/settings/ssh/new)
@@ -25,13 +25,18 @@ copyfile ~/.ssh/id_ed25519.pub
 git clone git@github.com:Rutger505/.development-environment.git ~/.development-environment
 ```
 
-5. Run applications installer script.
+5. Switch to omarchy branch
+```bash
+git switch omarchy
+```
+
+6. Run applications installer script.
 
 ```bash
 ~/.development-environment/applications/install.sh
 ```
 
-6. Use GNU Stow to symlink the dotfiles in the home directory.
+7. Use GNU Stow to symlink the dotfiles in the home directory.
 
 ```bash
 cd ~/.development-environment

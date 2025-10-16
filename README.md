@@ -36,7 +36,13 @@ git switch omarchy
 ~/.development-environment/applications/install.sh
 ```
 
-7. Use GNU Stow to symlink the dotfiles in the home directory.
+7. Do a full system update
+```bash
+~/.development-environment/scripts/update.sh
+
+```
+
+8. Use GNU Stow to symlink the dotfiles in the home directory.
 
 ```bash
 cd ~/.development-environment

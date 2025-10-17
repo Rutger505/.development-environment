@@ -5,29 +5,30 @@ started with development.
 
 ## Installation
 
-1. Generate ssh key:
+1. Install and login to bitwarden
+```bash
+pacman -Sy bitwarden
+bitwarden
+```
+
+2. Generate ssh key:
 
 ```bash
 ssh-keygen -t ed25519
 ```
 
-2. Copy the public key:
+3. Copy the public key:
 
 ```bash
 cat ~/.ssh/id_ed25519.pub
 ```
 
-3. [Set ssh key in Github](https://github.com/settings/ssh/new)
+4. [Set ssh key in Github](https://github.com/settings/ssh/new)
 
-4. Clone the repository in the home directory.
+5. Clone the repository in the home directory.
 
 ```bash
 git clone git@github.com:Rutger505/.development-environment.git ~/.development-environment
-```
-
-5. Switch to omarchy branch
-```bash
-git switch omarchy
 ```
 
 6. Run applications installer script.
@@ -36,17 +37,17 @@ git switch omarchy
 ~/.development-environment/applications/install.sh
 ```
 
-7. Do a full system update
-```bash
-~/.development-environment/scripts/update.sh
-
-```
-
-8. Use GNU Stow to symlink the dotfiles in the home directory.
+7. Use GNU Stow to symlink the dotfiles in the home directory.
 
 ```bash
 cd ~/.development-environment
 stow .
 ```
+
+8. Do a full system update
+```bash
+~/.development-environment/scripts/update.sh
+```
+
 
 Do a **full system restart** for changing default shell and showing desktop application.

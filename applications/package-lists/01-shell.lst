@@ -9,6 +9,7 @@ ripgrep
 fd
 fzf
 yazi
+mkcert
 
 cloc
 magic-wormhole
@@ -27,3 +28,5 @@ opentofu
 miniforge
 
 xdg-ninja
+
+azure-cli

@@ -1,0 +1,1 @@
+DEVELOPMENT_ENVIRONMENT_ERROR_FILE="$HOME/development-environment-synchronization-error"

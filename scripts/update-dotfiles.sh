@@ -1,6 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
-DEVELOPMENT_ENVIRONMENT_ERROR_FILE="$HOME/development-environment-sync-error"
 create_error_file() {
   touch "$DEVELOPMENT_ENVIRONMENT_ERROR_FILE"
 }
@@ -9,6 +8,7 @@ delete_error_file() {
     rm "$DEVELOPMENT_ENVIRONMENT_ERROR_FILE"
   fi
 }
+
 
 echo "Script started at $(date)"
 

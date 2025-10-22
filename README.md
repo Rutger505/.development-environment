@@ -82,3 +82,12 @@ Do a **full system restart** for changing default shell and showing desktop appl
 
 1. Open & signin
 2. Install wanted games
+
+
+
+## TODO
+
+Enable legacy openssl for conda
+Fix post install scripts reliying on binaries or path not set yet
+Make discord autostart webapp from omarchy.
+Replace esp-idf script with aur package

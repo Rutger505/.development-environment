@@ -1,25 +1,24 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
-
-ERROR_FILE=~/development-environment-sync-error
 create_error_file() {
-  touch "$ERROR_FILE"
+  touch "$DEVELOPMENT_ENVIRONMENT_ERROR_FILE"
 }
 delete_error_file() {
-  if [ -f "$ERROR_FILE" ]; then
-    rm "$ERROR_FILE"
+  if [ -f "$DEVELOPMENT_ENVIRONMENT_ERROR_FILE" ]; then
+    rm "$DEVELOPMENT_ENVIRONMENT_ERROR_FILE"
   fi
 }
 
+
 echo "Script started at $(date)"
 
-cd ~/.development-environment || exit 1
+cd ~/.development-environment || create_error_file && exit 1
 
 git fetch
 
 # Compare current commit (HEAD = @) with the upstream branch of the current branch (@{u}).
 # Exit status 1 if there are differences, 0 if not and 128 on error.
-if git diff --quiet @ @{upstream} && [ ! -f "$ERROR_FILE" ]; then
+if git diff --quiet @ @{upstream} && [ ! -f "$DEVELOPMENT_ENVIRONMENT_ERROR_FILE" ]; then
   echo "Nothing changed"
 
   exit 0
@@ -36,8 +35,6 @@ fi
 
 git pull --ff-only || create_error_file
 stow --adopt . || create_error_file
-
-hyprctl reload
 
 
 if git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD | grep -q '^\.tmux\.conf$'; then

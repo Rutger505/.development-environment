@@ -1,3 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
-nvm install
+[ -s "/usr/share/nvm/nvm.sh" ] && . "/usr/share/nvm/nvm.sh"
+nvm install --lts

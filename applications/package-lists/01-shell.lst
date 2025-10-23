@@ -10,6 +10,7 @@ fd
 fzf
 yazi
 glow
+mkcert
 
 cloc
 magic-wormhole
@@ -30,3 +31,4 @@ miniforge
 xdg-ninja
 
 speedtest-cli
+azure-cli

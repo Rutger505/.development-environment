@@ -13,10 +13,10 @@ envycontrol
 powertop
 powerstat
 
+flatpak
 snapd
-
-reboot-arch-btw
 
 # Monitors
 hyprmon-bin
+nwg-displays
 

@@ -55,6 +55,13 @@ Do a **full system restart** for changing default shell and showing desktop appl
 
 ## Post install manual steps
 
+### Install ghostty
+
+1. open use omarchy menu `SUPER + ALT + SPACE`
+2. Select `Install`
+3. Select `Terminal`
+4. Select `Ghostty`
+
 ### Jetbrains editors
 
 1. Open jetbrains toolbox

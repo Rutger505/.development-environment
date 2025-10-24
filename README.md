@@ -49,18 +49,10 @@ stow .
 ~/.development-environment/scripts/update.sh
 ```
 
-
 Do a **full system restart** for changing default shell and showing desktop application.
 
 
 ## Post install manual steps
-
-### Install ghostty
-
-1. open use omarchy menu `SUPER + ALT + SPACE`
-2. Select `Install`
-3. Select `Terminal`
-4. Select `Ghostty`
 
 ### Jetbrains editors
 
@@ -86,11 +78,11 @@ Do a **full system restart** for changing default shell and showing desktop appl
 1. Open
 2. Login and sync all settings
 
+
 ### Steam
 
 1. Open & signin
 2. Install wanted games
-
 
 
 ## TODO

@@ -49,5 +49,49 @@ stow .
 ~/.development-environment/scripts/update.sh
 ```
 
-
 Do a **full system restart** for changing default shell and showing desktop application.
+
+
+## Post install manual steps
+
+### Jetbrains editors
+
+1. Open jetbrains toolbox
+2. Login to jetbrains toolbox
+3. Install editor(s)
+4. Open an editor
+5. In the bottom left click the gear > Edit Custom VM Options
+6. Add: `-Dawt.toolkit.name=WLToolkit` To enable wayland
+6. Go to settings > Backup and Sync > Enable Backup and Sync -> true
+7. Go to settings > plugins > plugin settings > update automatically
+
+
+### Zen browser
+
+1. Open
+2. Login to sync extensions, spaces etc.
+3. Login to bitwarden
+
+
+### VsCode
+
+1. Open
+2. Login and sync all settings
+
+
+### Steam
+
+1. Open & signin
+2. Install wanted games
+
+
+## TODO
+
+- Enable legacy openssl for conda
+- Fix post install scripts reliying on binaries or path not set yet
+- Make discord autostart webapp from omarchy.
+- Replace esp-idf script with aur package
+- Add shortcuts for:
+    - Opening audio settings
+    - Display settings
+    - Wifi settings

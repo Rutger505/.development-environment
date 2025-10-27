@@ -9,12 +9,15 @@ ripgrep
 fd
 fzf
 yazi
+glow
 mkcert
 
 cloc
 magic-wormhole
 btop
 sl
+
+hyperfine
 
 github-cli
 
@@ -29,4 +32,5 @@ miniforge
 
 xdg-ninja
 
+speedtest-cli
 azure-cli

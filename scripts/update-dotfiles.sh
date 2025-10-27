@@ -12,7 +12,9 @@ delete_error_file() {
 
 echo "Script started at $(date)"
 
-cd ~/.development-environment || create_error_file && exit 1
+echo "Changing directory to ~/.development-environment"
+cd ~/.development-environment || (create_error_file && exit 1)
+echo "Changed directory to $(pwd)"
 
 git fetch
 

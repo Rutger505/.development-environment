@@ -5,6 +5,7 @@
 [alias]
   s = status
   d = diff
+  r = restore
 
   a = add
 

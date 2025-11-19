@@ -2,13 +2,9 @@
 
 SESSION_NAME="system-update"
 
-attach_session() {
-  ghostty -e tmux attach-session -t "$SESSION_NAME"
-}
-
 # Check if the tmux session already exists
 if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
-  attach_session
+  tmux attach-session -t "system-update"
   exit 0
 fi
 
@@ -58,4 +54,4 @@ tmux split-window -t "$SESSION_NAME" bash -c '
 tmux select-layout -t "$SESSION_NAME" tiled
 
 # Attach to the session
-attach_session
+tmux attach-session -t "system-update"

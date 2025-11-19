@@ -92,4 +92,4 @@ Do a **full system restart** for changing default shell and showing desktop appl
 - Make discord autostart webapp from omarchy.
 - Replace esp-idf script with aur package
 - Autostart apps in workspace: https://github.com/hyprwm/Hyprland/discussions/10207
-- Shortcut for bluetooth SUPER + B
+- Fix float steam 

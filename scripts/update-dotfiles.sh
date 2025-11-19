@@ -39,8 +39,8 @@ git pull --ff-only || create_error_file
 stow --adopt . || create_error_file
 
 
-if git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD | grep -q '^\.tmux\.conf$'; then
-  echo ".tmux.conf was modified! Running tpm update"
+if git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD | grep -q '^\.config/tmux/tmux\.conf$'; then
+  echo ".config/tmux/tmux.conf was modified! Running tpm update"
   ~/.local/share/tmux/plugins/tpm/bin/update_plugins all
 fi
 

@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+# TODO this should also create error file when there are open changes. Then it cannot be synced to another device
+
 create_error_file() {
   touch "$DEVELOPMENT_ENVIRONMENT_ERROR_FILE"
 }

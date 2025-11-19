@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-# TODO this should also create error file when there are open changes. Then it cannot be synced to another device
-
 create_error_file() {
   touch "$DEVELOPMENT_ENVIRONMENT_ERROR_FILE"
 }
@@ -31,7 +29,6 @@ git fetch
 # Exit status 1 if there are differences, 0 if not and 128 on error.
 if git diff --quiet @ @{upstream} && [ ! -f "$DEVELOPMENT_ENVIRONMENT_ERROR_FILE" ]; then
   echo "Nothing changed"
-
   exit 0
 fi
 
@@ -44,8 +41,8 @@ if ! git merge-base --is-ancestor @ @{upstream}; then
   exit 1
 fi
 
-git pull --ff-only || create_error_file
-stow --adopt . || create_error_file
+git pull --ff-only || (create_error_file && exit 1)
+stow --adopt . || (create_error_file && exit 1)
 
 # Path to tmux config relative to repo root
 TMUX_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"

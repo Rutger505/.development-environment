@@ -1,25 +1,58 @@
 #!/bin/bash
 
-# TODO open a new popup terminal with tmux and panes for earch update. 
+SESSION_NAME="system-update"
 
-echo "Updating paru packages"
-omarchy-update
+# Check if the tmux session already exists
+if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+  # Session exists, attach to it and exit
+  tmux attach-session -t "$SESSION_NAME"
+  exit 0
+fi
 
-echo
+# Create new session with first pane for system packages
+tmux new-session -d -s "$SESSION_NAME" bash -c '
+  set -eu
+  echo "Updating paru packages"
+  omarchy-update
+  echo
+  echo "Paru update completed!"
+  echo "Press any key to close this pane..."
+  read -n 1
+'
 
-echo "Updating Flatpak packages"
-if command -v flatpak >/dev/null 2>&1; then
+# Split window and create pane for flatpak
+tmux split-window -t "$SESSION_NAME" bash -c '
+  set -eu
+  echo "Updating Flatpak packages"
+  if command -v flatpak >/dev/null 2>&1; then
     flatpak update
-else
+  else
     echo "Flatpak is not installed. Skipping flatpak update."
-fi
+  fi
+  echo
+  echo "Flatpak update completed!"
+  echo "Press any key to close this pane..."
+  read -n 1
+'
 
-echo
-
-echo "Updating OMZ"
-OMZ_UPDATE_FILE="$ZSH/upgrade.sh"
-if [ -f "$OMZ_UPDATE_FILE" ]; then
+# Split window and create pane for OMZ
+tmux split-window -t "$SESSION_NAME" bash -c '
+  set -eu
+  echo "Updating OMZ"
+  OMZ_UPDATE_FILE="$ZSH/upgrade.sh"
+  if [ -f "$OMZ_UPDATE_FILE" ]; then
     $OMZ_UPDATE_FILE
-else
+  else
     echo "OMZ is not installed."
-fi
+  fi
+  echo
+  echo "OMZ update completed!"
+  echo "Press any key to close this pane..."
+  read -n 1
+'
+
+# Arrange panes in tiled layout
+tmux select-layout -t "$SESSION_NAME" tiled
+
+# Attach to the session
+tmux attach-session -t "$SESSION_NAME"

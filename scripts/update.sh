@@ -1,21 +1,11 @@
 #!/bin/bash
 
-set -eu
+# TODO open a new popup terminal with tmux and panes for earch update. 
 
 echo "Updating paru packages"
-paru -Syu
+omarchy-update
 
 echo
-
-echo "Updating snap packages"
-if command -v snap >/dev/null 2>&1; then
-  sudo snap refresh
-else
-  echo "Snap is not installed. Skipping update."
-fi
-
-echo
-
 
 echo "Updating Flatpak packages"
 if command -v flatpak >/dev/null 2>&1; then
@@ -27,8 +17,9 @@ fi
 echo
 
 echo "Updating OMZ"
-if [ -d "$HOME/.oh-my-zsh" ]; then
-    ~/.oh-my-zsh/tools/upgrade.sh
+OMZ_UPDATE_FILE="$ZSH/upgrade.sh"
+if [ -f "$OMZ_UPDATE_FILE" ]; then
+    $OMZ_UPDATE_FILE
 else
     echo "OMZ is not installed."
 fi

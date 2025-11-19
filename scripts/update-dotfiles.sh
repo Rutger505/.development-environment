@@ -16,6 +16,13 @@ echo "Changing directory to ~/.development-environment"
 cd ~/.development-environment || (create_error_file && exit 1)
 echo "Changed directory to $(pwd)"
 
+# Check for open changes (uncommitted changes)
+if ! git diff --quiet || ! git diff --cached --quiet; then
+  echo "Repository has uncommitted changes, aborting"
+  create_error_file
+  exit 1
+fi
+
 git fetch
 
 # Compare current commit (HEAD = @) with the upstream branch of the current branch (@{u}).
@@ -38,9 +45,11 @@ fi
 git pull --ff-only || create_error_file
 stow --adopt . || create_error_file
 
+# Set default tmux config path using XDG_CONFIG_HOME
+TMUX_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"
 
-if git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD | grep -q '^\.config/tmux/tmux\.conf$'; then
-  echo ".config/tmux/tmux.conf was modified! Running tpm update"
+if git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD | grep -q "^$(echo "$TMUX_CONFIG" | sed "s|^$HOME/||" | sed 's/\./\\./g')$"; then
+  echo "$TMUX_CONFIG was modified! Running tpm update"
   ~/.local/share/tmux/plugins/tpm/bin/update_plugins all
 fi
 

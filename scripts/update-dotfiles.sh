@@ -45,10 +45,10 @@ fi
 git pull --ff-only || create_error_file
 stow --adopt . || create_error_file
 
-# Set default tmux config path using XDG_CONFIG_HOME
-TMUX_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"
+# Path to tmux config relative to repo root
+TMUX_CONFIG=".config/tmux/tmux.conf"
 
-if git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD | grep -q "^$(echo "$TMUX_CONFIG" | sed "s|^$HOME/||" | sed 's/\./\\./g')$"; then
+if git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD | grep -q "^$TMUX_CONFIG$"; then
   echo "$TMUX_CONFIG was modified! Running tpm update"
   ~/.local/share/tmux/plugins/tpm/bin/update_plugins all
 fi

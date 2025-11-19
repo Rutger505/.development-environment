@@ -46,7 +46,7 @@ git pull --ff-only || create_error_file
 stow --adopt . || create_error_file
 
 # Path to tmux config relative to repo root
-TMUX_CONFIG=".config/tmux/tmux.conf"
+TMUX_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"
 # Path to tpm (tmux plugin manager)
 TPM_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/tmux/plugins/tpm"
 

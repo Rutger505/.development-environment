@@ -1,6 +1,5 @@
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.development-environment/scripts"
-export PATH="$PATH:/snap/bin"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"

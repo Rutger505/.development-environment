@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -eu
-
 SESSION_NAME="system-update"
 
 # Check if the tmux session already exists
@@ -11,28 +9,13 @@ if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
   exit 0
 fi
 
-# Create new session with first pane for paru
+# Create new session with first pane for system packages
 tmux new-session -d -s "$SESSION_NAME" bash -c '
   set -eu
   echo "Updating paru packages"
-  paru -Syu
+  omarchy-update
   echo
   echo "Paru update completed!"
-  echo "Press any key to close this pane..."
-  read -n 1
-'
-
-# Split window and create pane for snap
-tmux split-window -t "$SESSION_NAME" bash -c '
-  set -eu
-  echo "Updating snap packages"
-  if command -v snap >/dev/null 2>&1; then
-    sudo snap refresh
-  else
-    echo "Snap is not installed. Skipping update."
-  fi
-  echo
-  echo "Snap update completed!"
   echo "Press any key to close this pane..."
   read -n 1
 '
@@ -56,8 +39,9 @@ tmux split-window -t "$SESSION_NAME" bash -c '
 tmux split-window -t "$SESSION_NAME" bash -c '
   set -eu
   echo "Updating OMZ"
-  if [ -d "$HOME/.oh-my-zsh" ]; then
-    ~/.oh-my-zsh/tools/upgrade.sh
+  OMZ_UPDATE_FILE="$ZSH/upgrade.sh"
+  if [ -f "$OMZ_UPDATE_FILE" ]; then
+    $OMZ_UPDATE_FILE
   else
     echo "OMZ is not installed."
   fi

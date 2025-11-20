@@ -93,3 +93,5 @@ Do a **full system restart** for changing default shell and showing desktop appl
 - Replace esp-idf script with aur package
 - Autostart apps in workspace: https://github.com/hyprwm/Hyprland/discussions/10207
 - Fix float steam 
+- Create a way to persist not locking on idle:
+  - File that when exists makes a startup script run `omarchy-stop-idle` something

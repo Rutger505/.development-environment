@@ -106,3 +106,5 @@ Useful Optimizations:
     misc:vfr = true, since it’ll lower the amount of sent frames when nothing is happening on-screen.
 ```
 Source: https://wiki.hypr.land/Configuring/Performance/
+
+https://jumptuck.com/blog/2025-05-26-hyprland-conditional-config/

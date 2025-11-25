@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if grep -q '^\[chaotic-aur\]' /etc/pacman.conf; then
+  echo Chaotic aur already installed :\)
+  exit 0
+fi
+
+
 if ! sudo pacman-key --list-keys | grep -q 3056513887B78AEB; then
     echo "Initializing pacman keyring..."
     sudo pacman-key --init

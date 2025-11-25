@@ -15,7 +15,7 @@ install_paru() {
 run_scripts_in_dir() {
   local script_dir=$1
 
-  for script in $script_dir/*.sh; do
+  for script in $script_dir/*; do
     if [ -f "$script" ]; then
       echo "Running script: $(basename "$script")"
       "$script"

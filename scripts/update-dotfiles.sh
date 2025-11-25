@@ -44,15 +44,16 @@ fi
 git pull --ff-only || (create_error_file && exit 1)
 stow --adopt . || (create_error_file && exit 1)
 
-# Path to tmux config relative to repo root
+
+# Check if updating plugins is necessary
 TMUX_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"
-# Path to tpm (tmux plugin manager)
 TPM_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/tmux/plugins/tpm"
 
 if git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD | grep -q "^$TMUX_CONFIG$"; then
   echo "$TMUX_CONFIG was modified! Running tpm update"
   "$TPM_PATH/bin/update_plugins" all
 fi
+
 
 delete_error_file
 

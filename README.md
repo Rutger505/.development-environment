@@ -87,24 +87,8 @@ Do a **full system restart** for changing default shell and showing desktop appl
 
 ## TODO
 
-- Enable legacy openssl for conda
 - Fix post install scripts reliying on binaries or path not set yet
-- Make discord autostart webapp from omarchy.
 - Replace esp-idf script with aur package
-- Autostart apps in workspace: https://github.com/hyprwm/Hyprland/discussions/10207
-- Fix float steam 
 - Create a way to persist not locking on idle:
   - File that when exists makes a startup script run `omarchy-stop-idle` something
-- Implement battery saving configuration
-```
-How do I make Hyprland draw as little power as possible on my laptop?
-
-Useful Optimizations:
-
-    decoration:blur:enabled = false and decoration:shadow:enabled = false to disable fancy but battery hungry effects.
-
-    misc:vfr = true, since it’ll lower the amount of sent frames when nothing is happening on-screen.
-```
-Source: https://wiki.hypr.land/Configuring/Performance/
-
-https://jumptuck.com/blog/2025-05-26-hyprland-conditional-config/
+- Keybinds for sizing window without mouse button, SUPER + Z 

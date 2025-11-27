@@ -92,3 +92,34 @@ Do a **full system restart** for changing default shell and showing desktop appl
 - Create a way to persist not locking on idle:
   - File that when exists makes a startup script run `omarchy-stop-idle` something
 - Keybinds for sizing window without mouse button, SUPER + Z 
+- Fix monitor plugin with workspaces:
+```
+Source: https://wiki.hypr.land/FAQ/#how-do-i-move-my-favorite-workspaces-to-a-new-monitor-when-i-plug-it-in
+How do I move my favorite workspaces to a new monitor when I plug it in?
+
+If you want workspaces to automatically go to a monitor upon connection, use the following:
+
+In hyprland.conf:
+
+exec-once = handle_monitor_connect.sh
+
+where handle_monitor_connect.sh is: (example)
+handle_monitor_connect.sh
+
+#!/bin/sh
+
+handle() {
+  case $1 in monitoradded*)
+    hyprctl dispatch moveworkspacetomonitor "1 1"
+    hyprctl dispatch moveworkspacetomonitor "2 1"
+    hyprctl dispatch moveworkspacetomonitor "4 1"
+    hyprctl dispatch moveworkspacetomonitor "5 1"
+  esac
+}
+
+socat - "UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/${HYPRLAND_INSTANCE_SIGNATURE}/.socket2.sock" | while read -r line; do handle "$line"; done
+
+This makes workspaces 1, 2, 4, and 5 go to monitor 1 when connecting it.
+
+Please note this requires socat to be installed.
+```

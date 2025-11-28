@@ -1,13 +1,7 @@
-ARGS+=(
-  '--icons'
-  '--git'
-  '--group-directories-first'
-)
-
-alias l='eza $ARGS --long'
-alias la='eza $ARGS --long --all --group'
-alias ll='eza $ARGS --long --group --header'
-alias lla='eza $ARGS --long --all --group --header'
-alias lt='eza $ARGS --tree --level=2'
-alias llt='eza $ARGS --tree --level=4'
-alias lr='eza $ARGS --long --recurse'
+alias l='eza --icons --git --group-directories-first --long'
+alias la='eza --icons --git --group-directories-first --long --all --group'
+alias ll='eza --icons --git --group-directories-first --long --group --header'
+alias lla='eza --icons --git --group-directories-first --long --all --group --header'
+alias lt='eza --icons --git --group-directories-first --tree --level=2'
+alias llt='eza --icons --git --group-directories-first --tree --level=4'
+alias lr='eza --icons --git --group-directories-first --long --recurse'

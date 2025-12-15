@@ -13,3 +13,5 @@ export PAGER="less"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZSH_CONFIG_DIR="$XDG_CONFIG_HOME/zsh"
 export ZSH="$XDG_DATA_HOME/oh-my-zsh"
+
+export PATH="$XDG_DATA_HOME/JetBrains/Toolbox/scripts:$PATH"

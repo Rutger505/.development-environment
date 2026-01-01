@@ -1,0 +1,9 @@
+[Unit]
+Description=Terminal
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/xdg-terminal-exec
+
+[Install]
+WantedBy=graphical-session.target

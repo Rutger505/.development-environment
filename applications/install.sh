@@ -11,6 +11,10 @@ SERVICE_USER_PACKAGES=(
   "update-dotfiles.timer"
 )
 
+SERVICE_PACKAGES=(
+  "tailscaled"
+)
+
 
 if ! command -v paru > /dev/null 2>&1; then
   echo "Paru not found, installing..."
@@ -33,5 +37,8 @@ echo "Enabling and starting user services:"
 echo ${SERVICE_USER_PACKAGES[@]}
 systemctl --user enable --now ${SERVICE_USER_PACKAGES[@]}
 
+echo "Enabling and starting services:"
+echo ${SERVICE_PACKAGES[@]}
+sudo systemctl enable --now ${SERVICE_PACKAGES[@]}
 
 echo "Finished installing applications! 🚀✨"

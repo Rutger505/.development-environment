@@ -4,7 +4,8 @@ After=graphical-session.target network-online.target
 Wants=network-online.target
 
 [Service]
-ExecStart=/usr/bin/gtk-launch Snapchat.desktop
+Type=oneshot
+ExecStart=%h/.local/bin/autostart-tagged omarchy-launch-webapp https://www.snapchat.com/web
 
 [Install]
 WantedBy=graphical-session.target

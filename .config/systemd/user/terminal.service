@@ -3,7 +3,8 @@ Description=Terminal
 After=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/xdg-terminal-exec
+Type=oneshot
+ExecStart=%h/.local/bin/autostart-tagged ghostty
 
 [Install]
 WantedBy=graphical-session.target

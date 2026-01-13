@@ -180,13 +180,13 @@
     },
     "custom/cpu-percentage": {
         "format": "{}%",
-        "exec": "top -bn1 | grep 'Cpu(s)' | sed 's/.*, *\\([0-9.]*\\)%* id.*/\\1/' | awk '{print 100 - $1}'",
+        "exec": "top -bn2 -d 0.5 | grep 'Cpu(s)' | tail -1 | awk '{print int($2)}'",
         "interval": 5,
         "tooltip": false
     },
     "custom/battery-power": {
         "format": "{}",
-        "exec": "cat /sys/class/power_supply/BAT*/power_now 2>/dev/null | awk '{watts=$1/1000000; status=system(\"cat /sys/class/power_supply/BAT*/status 2>/dev/null | grep -q Charging\"); if(status==0) printf \"↑ %.1fW\", watts; else printf \"↓ %.1fW\", watts}'",
+        "exec": "upower -i /org/freedesktop/UPower/devices/battery_BAT1 | awk '/state:/ {state=$2} /energy-rate:/ {printf \"%s %dW\", (state==\"charging\" ? \"↑\" : \"↓\"), int($2)}'",
         "interval": 5,
         "tooltip": false
     },

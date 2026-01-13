@@ -19,7 +19,9 @@
         "network",
         "pulseaudio",
         "cpu",
-        "battery"
+        "custom/cpu-percentage",
+        "battery",
+        "custom/battery-power"
     ],
     "hyprland/workspaces": {
         "on-click": "activate",
@@ -175,6 +177,18 @@
         "exec": "$OMARCHY_PATH/default/waybar/indicators/screen-recording.sh",
         "signal": 8,
         "return-type": "json"
+    },
+    "custom/cpu-percentage": {
+        "format": "{}%",
+        "exec": "top -bn1 | grep 'Cpu(s)' | sed 's/.*, *\\([0-9.]*\\)%* id.*/\\1/' | awk '{print 100 - $1}'",
+        "interval": 5,
+        "tooltip": false
+    },
+    "custom/battery-power": {
+        "format": "{}",
+        "exec": "cat /sys/class/power_supply/BAT*/power_now 2>/dev/null | awk '{watts=$1/1000000; status=system(\"cat /sys/class/power_supply/BAT*/status 2>/dev/null | grep -q Charging\"); if(status==0) printf \"↑ %.1fW\", watts; else printf \"↓ %.1fW\", watts}'",
+        "interval": 5,
+        "tooltip": false
     },
     "tray": {
         "icon-size": 12,

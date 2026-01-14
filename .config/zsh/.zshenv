@@ -21,11 +21,6 @@ export BUN_INSTALL="$XDG_DATA_HOME/.bun"
 export W3M_DIR="$XDG_DATA_HOME/w3m"
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
-
-
-
-
 
 
 export EDITOR="nvim"

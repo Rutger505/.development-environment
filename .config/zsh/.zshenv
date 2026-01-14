@@ -4,20 +4,27 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+# Application specific environment variables
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZSH_CONFIG_DIR="$XDG_CONFIG_HOME/zsh"
 export ZSH="$XDG_DATA_HOME/oh-my-zsh"
-
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export XCOMPOSEFILE="$XDG_CONFIG_HOME"/X11/xcompose
 
 export NVM_DIR="$XDG_DATA_HOME"/nvm
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export PNPM_HOME="$XDG_DATA_HOME/pnpm"
-export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
-export BUN_INSTALL="$HOME/.bun"
+export BUN_INSTALL="$XDG_DATA_HOME/.bun"
 export W3M_DIR="$XDG_DATA_HOME/w3m"
-export XCOMPOSEFILE="$XDG_CONFIG_HOME"/X11/xcompose
+export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+
+
+
 
 
 

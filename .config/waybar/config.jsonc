@@ -19,7 +19,9 @@
         "network",
         "pulseaudio",
         "cpu",
-        "battery"
+        "custom/cpu-percentage",
+        "battery",
+        "custom/battery-power"
     ],
     "hyprland/workspaces": {
         "on-click": "activate",
@@ -175,6 +177,18 @@
         "exec": "$OMARCHY_PATH/default/waybar/indicators/screen-recording.sh",
         "signal": 8,
         "return-type": "json"
+    },
+    "custom/cpu-percentage": {
+        "format": "{}%",
+        "exec": "top -bn2 -d 0.5 | grep 'Cpu(s)' | tail -1 | awk '{print int($2)}'",
+        "interval": 5,
+        "tooltip": false
+    },
+    "custom/battery-power": {
+        "format": "{}",
+        "exec": "upower -i /org/freedesktop/UPower/devices/battery_BAT1 | awk '/state:/ {state=$2} /energy-rate:/ {printf \"%s %dW\", (state==\"charging\" ? \"↑\" : \"↓\"), int($2)}'",
+        "interval": 5,
+        "tooltip": false
     },
     "tray": {
         "icon-size": 12,

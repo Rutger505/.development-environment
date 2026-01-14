@@ -10,11 +10,15 @@ export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 
+
+export NVM_DIR="$XDG_DATA_HOME"/nvm
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export BUN_INSTALL="$HOME/.bun"
 export W3M_DIR="$XDG_DATA_HOME/w3m"
+export XCOMPOSEFILE="$XDG_CONFIG_HOME"/X11/xcompose
+
 
 
 export EDITOR="nvim"

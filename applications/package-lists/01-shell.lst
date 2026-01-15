@@ -22,13 +22,10 @@ hyperfine
 github-cli
 
 nvm
-bun-bin
 
 kubectl
 k9s
 opentofu
-
-miniforge
 
 xdg-ninja
 

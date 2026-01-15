@@ -1,0 +1,16 @@
+# ESP-IDF dependencies
+# The actual ESP-IDF is cloned and installed via optional-scripts/esp-idf.sh
+gcc
+git
+make
+flex
+bison
+gperf
+python
+cmake
+ninja
+ccache
+dfu-util
+libusb
+python-pip
+lldb

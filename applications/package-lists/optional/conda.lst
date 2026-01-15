@@ -1,0 +1,3 @@
+# Miniforge package is installed via yay, but the actual conda setup
+# is done via the optional-scripts/conda.sh script
+miniforge

@@ -1,4 +1,5 @@
 visual-studio-code-bin
 jetbrains-toolbox
 
-graphviz # Used for plantuml rendering
+# Used for plantuml rendering
+graphviz

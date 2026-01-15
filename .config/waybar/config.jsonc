@@ -20,8 +20,7 @@
         "pulseaudio",
         "cpu",
         "custom/cpu-percentage",
-        "battery",
-        "custom/battery-power"
+        "battery"
     ],
     "hyprland/workspaces": {
         "on-click": "activate",
@@ -93,10 +92,10 @@
         "on-click": "omarchy-launch-wifi"
     },
     "battery": {
-        "format": "{capacity}% {icon}",
-        "format-discharging": "{capacity}% (↓{power:>1.0f}W) {icon}",
-        "format-charging": "{capacity}% (↑{power:>1.0f}W) {icon}",
-        "format-plugged": "",
+        "format": "{icon} {capacity}%",
+        "format-discharging": "{icon} {capacity}% (↓{power:>1.0f}W)",
+        "format-charging": "{icon} {capacity}% (↑{power:>1.0f}W)",
+        "format-plugged": " {capacity}%",
         "format-icons": {
             "charging": [
                 "󰢜",
@@ -180,13 +179,13 @@
     },
     "custom/cpu-percentage": {
         "format": "{}%",
-        "exec": "top -bn2 -d 0.5 | grep 'Cpu(s)' | tail -1 | awk '{print int($2)}'",
+        "exec": "waybar-cpu-percentage",
         "interval": 5,
         "tooltip": false
     },
     "custom/battery-power": {
         "format": "{}",
-        "exec": "upower -i /org/freedesktop/UPower/devices/battery_BAT1 | awk '/state:/ {state=$2} /energy-rate:/ {printf \"%s %dW\", (state==\"charging\" ? \"↑\" : \"↓\"), int($2)}'",
+        "exec": "waybar-battery-power",
         "interval": 5,
         "tooltip": false
     },

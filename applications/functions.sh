@@ -33,22 +33,33 @@ load_package_list_from_dir() {
 }
 
 select_optional_packages() {
-  local optional_dir="$1"
-
-  if [[ ! -d "$optional_dir" ]]; then
-    echo "Optional packages directory not found: $optional_dir" >&2
-    return 1
-  fi
+  local package_lists_dir="$1"
+  local scripts_dir="$2"
 
   mkdir -p "$(dirname "$OPTIONAL_CONFIG_FILE")"
 
-  # Get list of available optional packages (basename without .lst)
-  local available=()
-  for lst in "$optional_dir"/*.lst; do
-    if [[ -f "$lst" ]]; then
-      available+=("$(basename "$lst" .lst)")
-    fi
-  done
+  # Get list of available optional packages from both directories
+  local -A available_map
+
+  # From package lists
+  if [[ -d "$package_lists_dir" ]]; then
+    for lst in "$package_lists_dir"/*.lst; do
+      if [[ -f "$lst" ]]; then
+        available_map["$(basename "$lst" .lst)"]=1
+      fi
+    done
+  fi
+
+  # From scripts
+  if [[ -d "$scripts_dir" ]]; then
+    for script in "$scripts_dir"/*.sh; do
+      if [[ -f "$script" ]]; then
+        available_map["$(basename "$script" .sh)"]=1
+      fi
+    done
+  fi
+
+  local available=("${!available_map[@]}")
 
   if [[ ${#available[@]} -eq 0 ]]; then
     echo "No optional packages available"
@@ -57,10 +68,10 @@ select_optional_packages() {
 
   # Use fzf to select packages
   local selected
-  selected=$(printf '%s\n' "${available[@]}" | fzf --multi --prompt="Select optional packages: " \
+  selected=$(printf '%s\n' "${available[@]}" | sort | fzf --multi --prompt="Select optional packages: " \
     --header="Press SPACE to select, ENTER to confirm" \
     --bind "j:down,k:up,ctrl-a:select-all,ctrl-d:deselect-all,space:toggle" \
-    --preview "cat '$optional_dir/{}.lst'" \
+    --preview "[[ -f '$package_lists_dir/{}.lst' ]] && echo '=== Packages ===' && cat '$package_lists_dir/{}.lst'; [[ -f '$scripts_dir/{}.sh' ]] && echo -e '\n=== Script ===' && cat '$scripts_dir/{}.sh'" \
     --preview-window=right:50%) || true
 
   # Save selection to config file
@@ -113,6 +124,22 @@ run_optional_scripts() {
     if [[ -f "$script" ]]; then
       echo "Running optional script: $pkg_name"
       "$script"
+    fi
+  done < "$OPTIONAL_CONFIG_FILE"
+}
+
+enable_optional_services() {
+  local -n service_map="$1"
+
+  if [[ ! -f "$OPTIONAL_CONFIG_FILE" ]]; then
+    return 0
+  fi
+
+  while IFS= read -r pkg_name; do
+    [[ -z "$pkg_name" ]] && continue
+    if [[ -n "${service_map[$pkg_name]}" ]]; then
+      echo "Enabling service: ${service_map[$pkg_name]}"
+      sudo systemctl enable --now "${service_map[$pkg_name]}"
     fi
   done < "$OPTIONAL_CONFIG_FILE"
 }

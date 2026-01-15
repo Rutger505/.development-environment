@@ -94,8 +94,8 @@
     },
     "battery": {
         "format": "{capacity}% {icon}",
-        "format-discharging": "{icon}",
-        "format-charging": "{icon}",
+        "format-discharging": "{capacity}% (↓{power:>1.0f}W) {icon}",
+        "format-charging": "{capacity}% (↑{power:>1.0f}W) {icon}",
         "format-plugged": "",
         "format-icons": {
             "charging": [

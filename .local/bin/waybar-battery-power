@@ -1,0 +1,3 @@
+#!/bin/bash
+# Get battery power consumption/charge rate for waybar
+upower -i /org/freedesktop/UPower/devices/battery_BAT1 | awk '/state:/ {state=$2} /energy-rate:/ {printf "%s %dW", (state=="charging" ? "↑" : "↓"), int($2)}'

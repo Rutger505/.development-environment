@@ -1,0 +1,10 @@
+[Unit]
+Description=Update dev-env repo
+Documentation=man:systemd.unit(5)
+ConditionPathExists=%h/.local/share/dev-env/scripts/update-dev-env.sh
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/share/dev-env/scripts/update-dev-env.sh
+StandardOutput=journal
+StandardError=journal

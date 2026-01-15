@@ -25,28 +25,33 @@ cat ~/.ssh/id_ed25519.pub
 
 4. [Set ssh key in Github](https://github.com/settings/ssh/new)
 
-5. Clone the repository in the home directory.
+5. Clone the repository (default location is `~/.local/share/dev-env`).
 
 ```bash
-git clone git@github.com:Rutger505/.development-environment.git ~/.development-environment
+git clone git@github.com:Rutger505/.development-environment.git ~/.local/share/dev-env
 ```
+
+> **Custom location:** You can clone to any location. Set `DEV_ENV` in your environment before running scripts:
+> ```bash
+> export DEV_ENV="$HOME/my-custom-location"
+> ```
 
 6. Run applications installer script.
 
 ```bash
-~/.development-environment/applications/install.sh
+~/.local/share/dev-env/applications/install.sh
 ```
 
-7. Use GNU Stow to symlink the dotfiles in the home directory.
+7. Use GNU Stow to symlink the config files to the home directory.
 
 ```bash
-cd ~/.development-environment
-stow .
+cd ~/.local/share/dev-env
+stow --target="$HOME" .
 ```
 
 8. Do a full system update
 ```bash
-~/.development-environment/scripts/update.sh
+~/.local/share/dev-env/scripts/update.sh
 ```
 
 Do a **full system restart** for changing default shell and showing desktop application.

@@ -4,10 +4,13 @@ SCRIPT_PATH="$(realpath "${BASH_SOURCE[0]}")"
 SCRIPT_DIRECTORY="$(dirname "$SCRIPT_PATH")"
 cd "$SCRIPT_DIRECTORY" || exit 1
 
+# Set DEV_ENV for scripts that need it
+export DEV_ENV="${DEV_ENV:-$(dirname "$SCRIPT_DIRECTORY")}"
+
 source "$SCRIPT_DIRECTORY/functions.sh"
 
 SERVICE_USER_PACKAGES=(
-  "update-dotfiles.timer"
+  "update-dev-env.timer"
 )
 
 declare -A SERVICE_OPTIONAL_PACKAGES=(

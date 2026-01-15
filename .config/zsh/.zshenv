@@ -4,6 +4,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+# Dev-env location (can be overridden before sourcing)
+export DEV_ENV="${DEV_ENV:-$XDG_DATA_HOME/dev-env}"
+
 # Application specific environment variables
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZSH_CONFIG_DIR="$XDG_CONFIG_HOME/zsh"
@@ -28,11 +31,11 @@ export VISUAL="nvim"
 export PAGER="less"
 
 export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.development-environment/scripts"
+export PATH="$PATH:$DEV_ENV/scripts"
 export PATH="$XDG_DATA_HOME/JetBrains/Toolbox/scripts:$PATH"
 export PATH="$PNPM_HOME:$PATH"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-export DEVELOPMENT_ENVIRONMENT_ERROR_FILE="$HOME/development-environment-synchronization-error"
+export DEV_ENV_ERROR_FILE="$XDG_STATE_HOME/dev-env-sync-error"
 
 

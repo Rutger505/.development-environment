@@ -24,6 +24,9 @@ export BUN_INSTALL="$XDG_DATA_HOME/.bun"
 export W3M_DIR="$XDG_DATA_HOME/w3m"
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
+export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
+export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME"/platformio
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
 
 export EDITOR="nvim"

@@ -11,10 +11,10 @@ fi
 # Create new session with first pane for system packages
 tmux new-session -d -s "$SESSION_NAME" bash -c '
   set -eu
-  echo "Updating paru packages"
+  echo "Updating yay packages"
   omarchy-update
   echo
-  echo "Paru update completed!"
+  echo "Yay update completed!"
   echo "Press any key to close this pane..."
   read -n 1
 '

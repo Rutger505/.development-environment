@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-paru -R signal-desktop 1password-beta
+yay -R signal-desktop 1password-beta
 
 cd ~/.local/share/applications || (echo "Can't change directory to ~/.local/share/applications" && exit 1)
 rm Basecamp.desktop

@@ -1,17 +1,5 @@
 #!/bin/bash
 
-install_paru() {
-  sudo pacman -S --needed base-devel
-
-  git clone https://aur.archlinux.org/paru.git ~/tmp/paru
-  cd ~/tmp/paru || exit 1
-  makepkg -si
-
-  cd - || exit 1
-  rm -rf ~/tmp/paru
-}
-
-
 run_scripts_in_dir() {
   local script_dir=$1
 

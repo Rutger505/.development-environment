@@ -1,8 +1,10 @@
 #!/usr/bin/env zsh
 
-yay -R signal-desktop 1password-beta
+# Remove packages if installed
+yay -Q signal-desktop &> /dev/null && yay -R signal-desktop
+yay -Q 1password-beta &> /dev/null && yay -R 1password-beta
 
 cd ~/.local/share/applications || (echo "Can't change directory to ~/.local/share/applications" && exit 1)
-rm Basecamp.desktop
-rm Discord.desktop # The omarchy-web-application variant    
-rm HEY.desktop
+[ -f Basecamp.desktop ] && rm Basecamp.desktop
+[ -f Discord.desktop ] && rm Discord.desktop # The omarchy-web-application variant
+[ -f HEY.desktop ] && rm HEY.desktop

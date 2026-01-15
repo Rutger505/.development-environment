@@ -2,4 +2,4 @@
 
 cd "$HOME" || exit 1
 
-rm .bash*
+ls .bash* &> /dev/null && rm .bash*

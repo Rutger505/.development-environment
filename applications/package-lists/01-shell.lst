@@ -21,15 +21,8 @@ hyperfine
 
 github-cli
 
-nvm
-
-kubectl
-k9s
-opentofu
-
 xdg-ninja
 
 ookla-speedtest-bin
-azure-cli
 
 claude-code

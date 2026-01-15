@@ -6,13 +6,6 @@ gparted
 # Map caps to esc
 kanata-bin
 
-# Manage IGPU and GPU switching
-envycontrol
-
-# Power insight tools
-powertop
-powerstat
-
 flatpak
 
 # Monitors

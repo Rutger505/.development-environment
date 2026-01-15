@@ -11,10 +11,6 @@ SERVICE_USER_PACKAGES=(
   "update-dotfiles.timer"
 )
 
-SERVICE_PACKAGES=(
-  "tailscaled"
-)
-
 OPTIONAL_DIR="$SCRIPT_DIRECTORY/package-lists/optional"
 
 
@@ -54,8 +50,10 @@ echo "Enabling and starting user services:"
 echo ${SERVICE_USER_PACKAGES[@]}
 systemctl --user enable --now ${SERVICE_USER_PACKAGES[@]}
 
-echo "Enabling and starting services:"
-echo ${SERVICE_PACKAGES[@]}
-sudo systemctl enable --now ${SERVICE_PACKAGES[@]}
+# Enable tailscaled if tailscale is selected
+if grep -q "^tailscale$" "$OPTIONAL_CONFIG_FILE" 2>/dev/null; then
+  echo "Enabling and starting tailscaled service"
+  sudo systemctl enable --now tailscaled
+fi
 
 echo "Finished installing applications! 🚀✨"

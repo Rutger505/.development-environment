@@ -11,14 +11,6 @@ source "$SCRIPT_DIRECTORY/functions.sh"
 
 echo "Detected distro: $DISTRO"
 
-SERVICE_USER_PACKAGES=(
-  "update-dev-env.timer"
-)
-
-declare -A SERVICE_OPTIONAL_PACKAGES=(
-  ["tailscale"]="tailscaled"
-)
-
 OPTIONAL_PACKAGE_LISTS_DIR="$SCRIPT_DIRECTORY/package-lists/optional"
 OPTIONAL_SCRIPTS_DIR="$SCRIPT_DIRECTORY/package-scripts/optional"
 
@@ -53,10 +45,4 @@ run_optional_scripts "$OPTIONAL_SCRIPTS_DIR"
 
 run_scripts_in_dir "$SCRIPT_DIRECTORY/post-install"
 
-echo "Enabling and starting user services:"
-echo ${SERVICE_USER_PACKAGES[@]}
-systemctl --user enable --now ${SERVICE_USER_PACKAGES[@]}
-
-enable_optional_services SERVICE_OPTIONAL_PACKAGES
-
-echo "Finished installing applications! 🚀✨"
+echo "Finished installing applications!"

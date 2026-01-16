@@ -140,6 +140,5 @@ To add support for a new distribution:
 - Fix post install scripts relying on binaries or path not set yet
 - Create a way to persist not locking on idle (Omarchy)
 - Merge package-lists and package-scripts to `packages` directory and search based on file extension (`.lst`, or `.sh`)
-- Make enabeling services be in package's script instead
 - Make post install scripts for specific packages be in the package's script instead
 - Merge this brainch to main

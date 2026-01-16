@@ -318,18 +318,3 @@ run_optional_scripts() {
   done < "$OPTIONAL_CONFIG_FILE"
 }
 
-enable_optional_services() {
-  local -n service_map="$1"
-
-  if [[ ! -f "$OPTIONAL_CONFIG_FILE" ]]; then
-    return 0
-  fi
-
-  while IFS= read -r pkg_name; do
-    [[ -z "$pkg_name" ]] && continue
-    if [[ -n "${service_map[$pkg_name]}" ]]; then
-      echo "Enabling service: ${service_map[$pkg_name]}"
-      sudo systemctl enable --now "${service_map[$pkg_name]}"
-    fi
-  done < "$OPTIONAL_CONFIG_FILE"
-}

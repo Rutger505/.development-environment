@@ -1,16 +1,6 @@
+# Common core packages (same name on arch and debian)
 cmake
 stow
-
-# Partition manager
 gparted
-# Map caps to esc
-kanata-bin
-
 flatpak
-
-# Monitors
-hyprmon-bin
-nwg-displays
-
 udisks2
-

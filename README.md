@@ -1,31 +1,35 @@
 # Development environment
 
-Repo to setup development environment on a new machine. It installs all the necessary tools and configurations to get
-started with development.
+Cross-distribution development environment setup for Arch Linux (including Omarchy) and Debian/Ubuntu. It installs all the necessary tools and configurations to get started with development.
+
+## Supported Distributions
+
+- **Arch Linux** (including Omarchy/Hyprland)
+- **Debian/Ubuntu**
+
+The install scripts automatically detect your distribution and install the appropriate packages.
 
 ## Installation
 
-1. Install and login to bitwarden
-```bash
-pacman -Sy bitwarden
-bitwarden
-```
+### Prerequisites
 
-2. Generate ssh key:
+1. Generate ssh key:
 
 ```bash
 ssh-keygen -t ed25519
 ```
 
-3. Copy the public key:
+2. Copy the public key:
 
 ```bash
 cat ~/.ssh/id_ed25519.pub
 ```
 
-4. [Set ssh key in Github](https://github.com/settings/ssh/new)
+3. [Set ssh key in Github](https://github.com/settings/ssh/new)
 
-5. Clone the repository (default location is `~/.local/share/dev-env`).
+### Install
+
+1. Clone the repository (default location is `~/.local/share/dev-env`).
 
 ```bash
 git clone git@github.com:Rutger505/.development-environment.git ~/.local/share/dev-env
@@ -36,26 +40,56 @@ git clone git@github.com:Rutger505/.development-environment.git ~/.local/share/d
 > export DEV_ENV="$HOME/my-custom-location"
 > ```
 
-6. Run applications installer script.
+2. Run applications installer script.
 
 ```bash
 ~/.local/share/dev-env/applications/install.sh
 ```
 
-7. Use GNU Stow to symlink the config files to the home directory.
+The script will:
+- Detect your distribution (Arch or Debian)
+- Install base packages using the appropriate package manager
+- Let you select optional packages (gaming, kubernetes, etc.)
+- Run post-install configuration scripts
+
+3. Use GNU Stow to symlink the config files to the home directory.
 
 ```bash
 cd ~/.local/share/dev-env
 stow --target="$HOME" .
 ```
 
-8. Do a full system update
+4. Do a full system update
+
 ```bash
 ~/.local/share/dev-env/scripts/update.sh
 ```
 
 Do a **full system restart** for changing default shell and showing desktop application.
 
+## Directory Structure
+
+```
+applications/
+├── package-lists/
+│   ├── *.lst              # Common packages (same name on both distros)
+│   ├── arch/              # Arch-specific packages
+│   ├── debian/            # Debian-specific packages
+│   └── optional/          # Optional package groups
+│       ├── arch/
+│       └── debian/
+├── package-scripts/
+│   ├── *.sh               # Common scripts
+│   ├── arch/              # Arch-specific scripts
+│   └── debian/            # Debian-specific scripts
+├── pre-install/
+│   ├── arch/              # Arch pre-install (chaotic-aur, etc.)
+│   └── debian/            # Debian pre-install (PPAs, etc.)
+└── post-install/
+    ├── *.sh               # Common post-install
+    ├── arch/              # Arch-specific post-install
+    └── debian/            # Debian-specific post-install
+```
 
 ## Post install manual steps
 
@@ -66,12 +100,12 @@ Do a **full system restart** for changing default shell and showing desktop appl
 3. Install editor(s)
 4. Open an editor
 5. In the bottom left click the gear > Edit Custom VM Options
-6. Add: `-Dawt.toolkit.name=WLToolkit` To enable wayland
+6. Add: `-Dawt.toolkit.name=WLToolkit` To enable wayland (Arch/Hyprland only)
 6. Go to settings > Backup and Sync > Enable Backup and Sync -> true
 7. Go to settings > plugins > plugin settings > update automatically
 
 
-### Zen browser
+### Zen browser (Arch only)
 
 1. Open
 2. Login to sync extensions, spaces etc.
@@ -84,47 +118,26 @@ Do a **full system restart** for changing default shell and showing desktop appl
 2. Login and sync all settings
 
 
-### Steam
+### Steam (optional gaming packages)
 
 1. Open & signin
 2. Install wanted games
 
 
+## Adding Support for New Distributions
+
+To add support for a new distribution:
+
+1. Update `detect_distro()` in `applications/functions.sh`
+2. Add package manager support in `pkg_install()` and `pkg_update()`
+3. Create `package-lists/<distro>/` directory with distro-specific package names
+4. Create `package-scripts/<distro>/` for any scripts needing custom installation
+5. Create `pre-install/<distro>/` for repository setup
+6. Create `post-install/<distro>/` for distro-specific configuration
+
 ## TODO
 
-- Fix post install scripts reliying on binaries or path not set yet
-- Replace esp-idf script with aur package
-- Create a way to persist not locking on idle:
-  - File that when exists makes a startup script run `omarchy-stop-idle` something
-- Keybinds for sizing window without mouse button, SUPER + Z 
-- Fix monitor plugin with workspaces:
-```
-Source: https://wiki.hypr.land/FAQ/#how-do-i-move-my-favorite-workspaces-to-a-new-monitor-when-i-plug-it-in
-How do I move my favorite workspaces to a new monitor when I plug it in?
-
-If you want workspaces to automatically go to a monitor upon connection, use the following:
-
-In hyprland.conf:
-
-exec-once = handle_monitor_connect.sh
-
-where handle_monitor_connect.sh is: (example)
-handle_monitor_connect.sh
-
-#!/bin/sh
-
-handle() {
-  case $1 in monitoradded*)
-    hyprctl dispatch moveworkspacetomonitor "1 1"
-    hyprctl dispatch moveworkspacetomonitor "2 1"
-    hyprctl dispatch moveworkspacetomonitor "4 1"
-    hyprctl dispatch moveworkspacetomonitor "5 1"
-  esac
-}
-
-socat - "UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/${HYPRLAND_INSTANCE_SIGNATURE}/.socket2.sock" | while read -r line; do handle "$line"; done
-
-This makes workspaces 1, 2, 4, and 5 go to monitor 1 when connecting it.
-
-Please note this requires socat to be installed.
-```
+- Fix post install scripts relying on binaries or path not set yet
+- Replace esp-idf script with aur package (Arch)
+- Create a way to persist not locking on idle (Omarchy)
+- Keybinds for sizing window without mouse button, SUPER + Z (Omarchy)

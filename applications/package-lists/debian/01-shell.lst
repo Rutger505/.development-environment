@@ -1,0 +1,11 @@
+# Debian-specific shell packages
+eza
+fd-find
+wormhole
+
+# These are installed via package-scripts/debian/:
+# - starship (curl script)
+# - glow (binary)
+# - mkcert (binary)
+# - github-cli (apt repo)
+# - claude-code (npm)

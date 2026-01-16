@@ -1,0 +1,12 @@
+# Arch-specific shell packages
+starship
+eza
+fd
+yazi
+glow
+mkcert
+github-cli
+xdg-ninja
+magic-wormhole
+ookla-speedtest-bin
+claude-code

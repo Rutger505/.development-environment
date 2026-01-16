@@ -9,6 +9,8 @@ export DEV_ENV="${DEV_ENV:-$(dirname "$SCRIPT_DIRECTORY")}"
 
 source "$SCRIPT_DIRECTORY/functions.sh"
 
+echo "Detected distro: $DISTRO"
+
 SERVICE_USER_PACKAGES=(
   "update-dev-env.timer"
 )
@@ -20,12 +22,11 @@ declare -A SERVICE_OPTIONAL_PACKAGES=(
 OPTIONAL_PACKAGE_LISTS_DIR="$SCRIPT_DIRECTORY/package-lists/optional"
 OPTIONAL_SCRIPTS_DIR="$SCRIPT_DIRECTORY/package-scripts/optional"
 
+# Run distro-specific pre-install scripts
 run_scripts_in_dir "$SCRIPT_DIRECTORY/pre-install"
 
-# Bootstrap fzf first for optional package selection
-if ! command -v fzf &> /dev/null; then
-  sudo pacman -S --noconfirm fzf
-fi
+# Bootstrap essential packages (including fzf for optional package selection)
+pkg_bootstrap
 
 # Handle optional package selection
 if [[ -f "$OPTIONAL_CONFIG_FILE" ]]; then
@@ -44,8 +45,8 @@ fi
 load_package_list_from_dir PACKAGE_LIST "./package-lists/"
 load_optional_packages PACKAGE_LIST "$OPTIONAL_PACKAGE_LISTS_DIR"
 
-# Install all packages in a single call
-yay -Sy --needed ${PACKAGE_LIST[@]}
+# Install all packages
+pkg_install ${PACKAGE_LIST[@]}
 
 run_scripts_in_dir "$SCRIPT_DIRECTORY/package-scripts"
 run_optional_scripts "$OPTIONAL_SCRIPTS_DIR"

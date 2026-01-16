@@ -1,0 +1,7 @@
+# Debian-specific gaming packages
+wine
+winetricks
+lutris
+steam
+
+openjdk-21-jdk

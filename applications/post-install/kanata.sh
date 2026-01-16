@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Check if kanata is installed
+if ! command -v kanata &> /dev/null; then
+  echo "Kanata is not installed, skipping service setup"
+  exit 0
+fi
+
 echo "Creating system service"
 cat <<EOF | sudo tee "/etc/systemd/system/kanata.service" >/dev/null
 [Unit]

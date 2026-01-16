@@ -138,6 +138,8 @@ To add support for a new distribution:
 ## TODO
 
 - Fix post install scripts relying on binaries or path not set yet
-- Replace esp-idf script with aur package (Arch)
 - Create a way to persist not locking on idle (Omarchy)
-- Keybinds for sizing window without mouse button, SUPER + Z (Omarchy)
+- Remove esp-idf
+- Merge package-lists and package-scripts to `packages` directory and search based on file extension (`.lst`, or `.sh`)
+- Make enabeling services be in package's script instead
+- Make post install scripts for specific packages be in the package's script instead

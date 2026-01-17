@@ -11,8 +11,8 @@ source "$SCRIPT_DIRECTORY/functions.sh"
 
 echo "Detected distro: $DISTRO"
 
-OPTIONAL_PACKAGE_LISTS_DIR="$SCRIPT_DIRECTORY/package-lists/optional"
-OPTIONAL_SCRIPTS_DIR="$SCRIPT_DIRECTORY/package-scripts/optional"
+PACKAGES_DIR="$SCRIPT_DIRECTORY/packages"
+OPTIONAL_PACKAGES_DIR="$PACKAGES_DIR/optional"
 
 # Run distro-specific pre-install scripts
 run_scripts_in_dir "$SCRIPT_DIRECTORY/pre-install"
@@ -27,21 +27,21 @@ if [[ -f "$OPTIONAL_CONFIG_FILE" ]]; then
   echo ""
   read -p "Keep current selection? [Y/n] " choice
   if [[ "$choice" =~ ^[Nn]$ ]]; then
-    select_optional_packages "$OPTIONAL_PACKAGE_LISTS_DIR" "$OPTIONAL_SCRIPTS_DIR"
+    select_optional_packages "$OPTIONAL_PACKAGES_DIR"
   fi
 else
-  select_optional_packages "$OPTIONAL_PACKAGE_LISTS_DIR" "$OPTIONAL_SCRIPTS_DIR"
+  select_optional_packages "$OPTIONAL_PACKAGES_DIR"
 fi
 
 # Load base packages and optional packages
-load_package_list_from_dir PACKAGE_LIST "./package-lists/"
-load_optional_packages PACKAGE_LIST "$OPTIONAL_PACKAGE_LISTS_DIR"
+load_package_list_from_dir PACKAGE_LIST "$PACKAGES_DIR"
+load_optional_packages PACKAGE_LIST "$OPTIONAL_PACKAGES_DIR"
 
 # Install all packages
 pkg_install ${PACKAGE_LIST[@]}
 
-run_scripts_in_dir "$SCRIPT_DIRECTORY/package-scripts"
-run_optional_scripts "$OPTIONAL_SCRIPTS_DIR"
+run_scripts_in_dir "$PACKAGES_DIR"
+run_optional_scripts "$OPTIONAL_PACKAGES_DIR"
 
 run_scripts_in_dir "$SCRIPT_DIRECTORY/post-install"
 

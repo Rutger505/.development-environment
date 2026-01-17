@@ -64,9 +64,9 @@ pkg_bootstrap() {
 run_scripts_in_dir() {
   local script_dir=$1
 
-  # Run common scripts
-  for script in $script_dir/*; do
-    if [ -f "$script" ]; then
+  # Run common scripts (.sh and .py files)
+  for script in "$script_dir"/*.sh "$script_dir"/*.py; do
+    if [[ -f "$script" ]]; then
       echo "Running script: $(basename "$script")"
       "$script"
     fi
@@ -75,8 +75,8 @@ run_scripts_in_dir() {
   # Run distro-specific scripts
   local distro_dir="$script_dir/$DISTRO"
   if [[ -d "$distro_dir" ]]; then
-    for script in $distro_dir/*; do
-      if [ -f "$script" ]; then
+    for script in "$distro_dir"/*.sh "$distro_dir"/*.py; do
+      if [[ -f "$script" ]]; then
         echo "Running script ($DISTRO): $(basename "$script")"
         "$script"
       fi
@@ -134,46 +134,36 @@ load_package_list_from_dir() {
 }
 
 select_optional_packages() {
-  local package_lists_dir="$1"
-  local scripts_dir="$2"
+  local packages_dir="$1"
 
   mkdir -p "$(dirname "$OPTIONAL_CONFIG_FILE")"
 
   # Get list of available optional packages from common and distro-specific directories
   local -A available_map
 
-  # From common package lists
-  if [[ -d "$package_lists_dir" ]]; then
-    for lst in "$package_lists_dir"/*.lst; do
+  # From common package lists and scripts
+  if [[ -d "$packages_dir" ]]; then
+    for lst in "$packages_dir"/*.lst; do
       if [[ -f "$lst" ]]; then
         available_map["$(basename "$lst" .lst)"]=1
       fi
     done
-  fi
-
-  # From distro-specific package lists
-  local distro_lists_dir="$package_lists_dir/$DISTRO"
-  if [[ -d "$distro_lists_dir" ]]; then
-    for lst in "$distro_lists_dir"/*.lst; do
-      if [[ -f "$lst" ]]; then
-        available_map["$(basename "$lst" .lst)"]=1
-      fi
-    done
-  fi
-
-  # From common scripts
-  if [[ -d "$scripts_dir" ]]; then
-    for script in "$scripts_dir"/*.sh; do
+    for script in "$packages_dir"/*.sh; do
       if [[ -f "$script" ]]; then
         available_map["$(basename "$script" .sh)"]=1
       fi
     done
   fi
 
-  # From distro-specific scripts
-  local distro_scripts_dir="$scripts_dir/$DISTRO"
-  if [[ -d "$distro_scripts_dir" ]]; then
-    for script in "$distro_scripts_dir"/*.sh; do
+  # From distro-specific package lists and scripts
+  local distro_dir="$packages_dir/$DISTRO"
+  if [[ -d "$distro_dir" ]]; then
+    for lst in "$distro_dir"/*.lst; do
+      if [[ -f "$lst" ]]; then
+        available_map["$(basename "$lst" .lst)"]=1
+      fi
+    done
+    for script in "$distro_dir"/*.sh; do
       if [[ -f "$script" ]]; then
         available_map["$(basename "$script" .sh)"]=1
       fi
@@ -192,10 +182,10 @@ select_optional_packages() {
   # Build preview command that checks both common and distro-specific locations
   local preview_cmd="
     pkg={}
-    lst_common='$package_lists_dir/{}.lst'
-    lst_distro='$package_lists_dir/$DISTRO/{}.lst'
-    script_common='$scripts_dir/{}.sh'
-    script_distro='$scripts_dir/$DISTRO/{}.sh'
+    lst_common='$packages_dir/{}.lst'
+    lst_distro='$packages_dir/$DISTRO/{}.lst'
+    script_common='$packages_dir/{}.sh'
+    script_distro='$packages_dir/$DISTRO/{}.sh'
 
     if [[ -f \"\$lst_distro\" ]]; then
       echo '=== Packages ($DISTRO) ==='
@@ -317,4 +307,3 @@ run_optional_scripts() {
     fi
   done < "$OPTIONAL_CONFIG_FILE"
 }
-

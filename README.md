@@ -71,24 +71,21 @@ Do a **full system restart** for changing default shell and showing desktop appl
 
 ```
 applications/
-├── package-lists/
-│   ├── *.lst              # Common packages (same name on both distros)
-│   ├── arch/              # Arch-specific packages
-│   ├── debian/            # Debian-specific packages
+├── packages/
+│   ├── *.lst              # Common package lists
+│   ├── *.sh/*.py          # Common package scripts
+│   ├── arch/              # Arch-specific packages and scripts
+│   ├── debian/            # Debian-specific packages and scripts
 │   └── optional/          # Optional package groups
-│       ├── arch/
-│       └── debian/
-├── package-scripts/
-│   ├── *.sh               # Common scripts
-│   ├── arch/              # Arch-specific scripts
-│   └── debian/            # Debian-specific scripts
+│       ├── *.sh           # Common optional scripts
+│       ├── arch/          # Arch-specific optional packages
+│       └── debian/        # Debian-specific optional packages
 ├── pre-install/
 │   ├── arch/              # Arch pre-install (chaotic-aur, etc.)
 │   └── debian/            # Debian pre-install (PPAs, etc.)
 └── post-install/
     ├── *.sh               # Common post-install
-    ├── arch/              # Arch-specific post-install
-    └── debian/            # Debian-specific post-install
+    └── arch/              # Arch-specific post-install
 ```
 
 ## Post install manual steps
@@ -130,13 +127,11 @@ To add support for a new distribution:
 
 1. Update `detect_distro()` in `applications/functions.sh`
 2. Add package manager support in `pkg_install()` and `pkg_update()`
-3. Create `package-lists/<distro>/` directory with distro-specific package names
-4. Create `package-scripts/<distro>/` for any scripts needing custom installation
-5. Create `pre-install/<distro>/` for repository setup
-6. Create `post-install/<distro>/` for distro-specific configuration
+3. Create `packages/<distro>/` directory with distro-specific package lists (`.lst`) and scripts (`.sh`)
+4. Create `pre-install/<distro>/` for repository setup
+5. Create `post-install/<distro>/` for distro-specific configuration
 
 ## TODO
 
 - Fix post install scripts relying on binaries or path not set yet
 - Create a way to persist not locking on idle (Omarchy)
-- Merge package-lists and package-scripts to `packages` directory and search based on file extension (`.lst`, or `.sh`)

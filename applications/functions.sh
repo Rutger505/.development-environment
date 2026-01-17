@@ -64,8 +64,8 @@ pkg_bootstrap() {
 run_scripts_in_dir() {
   local script_dir=$1
 
-  # Run common scripts (.sh and .py files)
-  for script in "$script_dir"/*.sh "$script_dir"/*.py; do
+  # Run common scripts
+  for script in "$script_dir"/*.sh; do
     if [[ -f "$script" ]]; then
       echo "Running script: $(basename "$script")"
       "$script"
@@ -75,7 +75,7 @@ run_scripts_in_dir() {
   # Run distro-specific scripts
   local distro_dir="$script_dir/$DISTRO"
   if [[ -d "$distro_dir" ]]; then
-    for script in "$distro_dir"/*.sh "$distro_dir"/*.py; do
+    for script in "$distro_dir"/*.sh; do
       if [[ -f "$script" ]]; then
         echo "Running script ($DISTRO): $(basename "$script")"
         "$script"

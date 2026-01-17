@@ -6,6 +6,11 @@ if ! command -v kanata &> /dev/null; then
   exit 0
 fi
 
+# Add user to input group (required for kanata on Arch)
+if [ -f /etc/arch-release ]; then
+  sudo usermod -aG input "$USER"
+fi
+
 echo "Creating system service"
 cat <<EOF | sudo tee "/etc/systemd/system/kanata.service" >/dev/null
 [Unit]

@@ -4,6 +4,7 @@
 ^/README.*
 ^/TODO.*
 ^/CLAUDE.*
+\.claude
 applications
 synchronization
 scripts

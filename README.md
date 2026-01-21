@@ -62,7 +62,7 @@ stow --target="$HOME" .
 4. Do a full system update
 
 ```bash
-~/.local/share/dev-env/scripts/update.sh
+dev-env-update-system
 ```
 
 Do a **full system restart** for changing default shell and showing desktop application.
@@ -134,4 +134,3 @@ To add support for a new distribution:
 ## TODO
 
 - Create a way to persist not locking on idle (Omarchy)
-- Create univercal screp suffix like omarchy

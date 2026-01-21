@@ -133,5 +133,5 @@ To add support for a new distribution:
 
 ## TODO
 
-- Fix post install scripts relying on binaries or path not set yet
 - Create a way to persist not locking on idle (Omarchy)
+- Create univercal screp suffix like omarchy

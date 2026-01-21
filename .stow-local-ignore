@@ -3,6 +3,7 @@
 \.idea
 ^/README.*
 ^/TODO.*
+^/CLAUDE.*
 applications
 synchronization
 scripts

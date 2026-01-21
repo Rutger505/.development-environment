@@ -6,21 +6,10 @@ Read the README.md for project overview and structure.
 
 This repository uses GNU Stow to symlink config files to the home directory. After making changes:
 
-1. **Stow files** when adding/modifying configs:
-   ```bash
-   cd ~/.local/share/dev-env && stow --target="$HOME" .
-   ```
-
-2. **Check for broken symlinks** after changes:
-   ```bash
-   fd --type l . ~ 2>/dev/null | while read link; do [ ! -e "$link" ] && echo "$link"; done
-   ```
-
-3. **Reload Hyprland** when editing files in `.config/hypr/`:
-   ```bash
-   hyprctl reload
-   ```
-   Note: Hyprland auto-reloads on save, but manual reload ensures changes are applied.
+1. **Stow files**: `dev-env-stow`
+2. **Stow with adopt**: `dev-env-stow-adopt` - Use when stow conflicts with existing files. Adopts the existing file into the repo.
+3. **Check for broken symlinks**: `dev-env-check-broken-stowlinks`
+4. **Reload Hyprland** (when editing `.config/hypr/`): `dev-env-reload-hyprland`
 
 ## File locations
 

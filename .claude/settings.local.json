@@ -4,7 +4,11 @@
       "Bash(git status:*)",
       "Bash(git diff:*)",
       "Bash(git log:*)",
-      "Bash(git branch:*)"
+      "Bash(git branch:*)",
+      "Bash(dev-env-stow)",
+      "Bash(dev-env-stow-adopt)",
+      "Bash(dev-env-check-broken-stowlinks)",
+      "Bash(dev-env-reload-hyprland)"
     ]
   }
 }

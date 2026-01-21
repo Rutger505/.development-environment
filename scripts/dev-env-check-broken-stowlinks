@@ -1,0 +1,2 @@
+#!/bin/bash
+fd --type l . ~ 2>/dev/null | while read link; do [ ! -e "$link" ] && echo "$link"; done | grep -v miniforge3

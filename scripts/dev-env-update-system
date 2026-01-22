@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SESSION_NAME="system-update"
+WINDOW_NAME="system-update"
 
 # Distro detection
 detect_distro() {
@@ -15,15 +15,9 @@ detect_distro() {
 
 DISTRO="$(detect_distro)"
 
-# Check if the tmux session already exists
-if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
-  tmux attach-session -t "$SESSION_NAME"
-  exit 0
-fi
-
-# Create new session with first pane for system packages
+# Build the first pane command based on distro
 if [ "$DISTRO" = "arch" ]; then
-  tmux new-session -d -s "$SESSION_NAME" bash -c '
+  FIRST_PANE_CMD='
     set -eu
     echo "Updating yay packages"
     if command -v omarchy-update >/dev/null 2>&1; then
@@ -37,7 +31,7 @@ if [ "$DISTRO" = "arch" ]; then
     read -n 1
   '
 elif [ "$DISTRO" = "debian" ]; then
-  tmux new-session -d -s "$SESSION_NAME" bash -c '
+  FIRST_PANE_CMD='
     set -eu
     echo "Updating apt packages"
     sudo apt-get update && sudo apt-get upgrade -y
@@ -51,9 +45,19 @@ else
   exit 1
 fi
 
-# Split window and create pane for snap (debian only)
+# Check if already in tmux
+if [ -n "${TMUX:-}" ]; then
+  # Create new window in current session with first pane command
+  TARGET=$(tmux new-window -P -n "$WINDOW_NAME" bash -c "$FIRST_PANE_CMD")
+else
+  # Create new session with first pane command
+  tmux new-session -d -s "$WINDOW_NAME" bash -c "$FIRST_PANE_CMD"
+  TARGET="$WINDOW_NAME"
+fi
+
+# Snap pane (debian only)
 if [ "$DISTRO" = "debian" ]; then
-  tmux split-window -t "$SESSION_NAME" bash -c '
+  tmux split-window -t "$TARGET" bash -c '
     set -eu
     echo "Updating snap packages"
     if command -v snap >/dev/null 2>&1; then
@@ -68,8 +72,8 @@ if [ "$DISTRO" = "debian" ]; then
   '
 fi
 
-# Split window and create pane for flatpak
-tmux split-window -t "$SESSION_NAME" bash -c '
+# Flatpak pane
+tmux split-window -t "$TARGET" bash -c '
   set -eu
   echo "Updating Flatpak packages"
   if command -v flatpak >/dev/null 2>&1; then
@@ -83,8 +87,8 @@ tmux split-window -t "$SESSION_NAME" bash -c '
   read -n 1
 '
 
-# Split window and create pane for OMZ
-tmux split-window -t "$SESSION_NAME" bash -c '
+# OMZ pane
+tmux split-window -t "$TARGET" bash -c '
   set -eu
   echo "Updating OMZ"
   OMZ_UPDATE_FILE="${ZSH:-$HOME/.local/share/oh-my-zsh}/upgrade.sh"
@@ -100,7 +104,9 @@ tmux split-window -t "$SESSION_NAME" bash -c '
 '
 
 # Arrange panes in tiled layout
-tmux select-layout -t "$SESSION_NAME" tiled
+tmux select-layout -t "$TARGET" tiled
 
-# Attach to the session
-tmux attach-session -t "$SESSION_NAME"
+# Attach to the session (only if not already in tmux)
+if [ -z "${TMUX:-}" ]; then
+  tmux attach-session -t "$WINDOW_NAME"
+fi

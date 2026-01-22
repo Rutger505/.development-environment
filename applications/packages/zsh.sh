@@ -5,7 +5,7 @@ if [[ "$SHELL" != *zsh* ]]; then
   chsh -s $(which zsh)
 fi
 
-if [ ! -f /etc/zsh/zshenv ] || ! grep -q "zsh" /etc/zsh/zshenv; then
+if [ ! -f /etc/zsh/zshenv ] || ! grep -q "export ZDOTDIR=" /etc/zsh/zshenv; then
   sudo mkdir -p /etc/zsh
   echo 'export ZDOTDIR="$HOME/.config/zsh"' | sudo tee -a /etc/zsh/zshenv > /dev/null
 fi

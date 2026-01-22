@@ -19,7 +19,7 @@ Requires=local-fs.target
 After=local-fs.target
 
 [Service]
-ExecStart=/usr/bin/kanata -c /etc/kanata/kanata.conf
+ExecStart=$(command -v kanata) -c /etc/kanata/kanata.conf
 Restart=on-failure
 RestartSec=5
 

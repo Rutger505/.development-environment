@@ -8,7 +8,9 @@
       "Bash(dev-env-stow)",
       "Bash(dev-env-stow-adopt)",
       "Bash(dev-env-check-broken-stowlinks)",
-      "Bash(dev-env-reload-hyprland)"
+      "Bash(dev-env-reload-hyprland)",
+      "Bash(command -v:*)",
+      "Bash(kanata:*)"
     ]
   }
 }

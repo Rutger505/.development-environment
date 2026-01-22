@@ -1,6 +1,4 @@
-# Debian-specific core packages
 build-essential
 curl
 wget
 git
-neovim

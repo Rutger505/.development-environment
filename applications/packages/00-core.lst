@@ -1,4 +1,3 @@
-# Common core packages (same name on arch and debian)
 cmake
 stow
 gparted

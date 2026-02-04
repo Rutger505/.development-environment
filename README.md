@@ -135,4 +135,4 @@ To add support for a new distribution:
 
 - Create a way to persist not locking on idle (Omarchy)
 - discord to seperate optional config
-- NVM is still running a script or post install script when not selected,
+- When selecting no preset there is still a preset selected

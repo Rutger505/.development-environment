@@ -1,4 +1,5 @@
-{  
-    "cleanmenu": false,  
-    "answerclean": "None"  
+{
+    "cleanmenu": false,
+    "answerclean": "None",
+    "devel": true
 }

@@ -28,6 +28,7 @@ export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
 export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME"/platformio
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export OMNISHARPHOME="$XDG_CONFIG_HOME"/omnisharp
+export VCPKG_ROOT="$XDG_DATA_HOME/vcpkg"
 
 
 export EDITOR="nvim"

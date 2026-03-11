@@ -30,6 +30,9 @@ export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export OMNISHARPHOME="$XDG_CONFIG_HOME"/omnisharp
 export VCPKG_ROOT="$XDG_DATA_HOME/vcpkg"
 
+export FONTCONFIG_PATH="/etc/fonts/"
+export FONTCONFIG_FILE="/etc/fonts/fonts.conf"
+
 
 export EDITOR="nvim"
 export VISUAL="nvim"

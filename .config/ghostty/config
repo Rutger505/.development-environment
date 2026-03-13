@@ -1,0 +1,5 @@
+maximize = true
+
+window-decoration = none
+
+confirm-close-surface = false

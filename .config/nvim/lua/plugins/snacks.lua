@@ -19,7 +19,13 @@ return {
       },
     },
     keys = {
-      { "<leader>gg", function() Snacks.lazygit() end, desc = "LazyGit" },
+      {
+        "<leader>gg",
+        function()
+          Snacks.lazygit()
+        end,
+        desc = "LazyGit"
+      },
     },
   },
 }

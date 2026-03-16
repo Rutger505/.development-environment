@@ -5,10 +5,14 @@ vim.g.have_nerd_font = true
 vim.o.number = true
 vim.o.relativenumber = true
 
+vim.o.showmode = false
+
 vim.o.undofile = true
 
 vim.o.ignorecase = true
 vim.o.smartcase = true
+
+vim.opt.termguicolors = true
 
 vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }

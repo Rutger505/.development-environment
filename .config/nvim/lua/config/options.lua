@@ -1,5 +1,5 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 
 vim.o.number = true
@@ -19,11 +19,9 @@ vim.o.cursorline = true
 vim.opt.termguicolors = true
 
 vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
 -- Defer communicating to system clipboard after startup
 vim.schedule(function()
 	vim.o.clipboard = "unnamedplus"
 end)
-
-

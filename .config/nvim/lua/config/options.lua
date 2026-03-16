@@ -12,6 +12,10 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+vim.o.scrolloff = 10
+
+vim.o.cursorline = true
+
 vim.opt.termguicolors = true
 
 vim.o.list = true

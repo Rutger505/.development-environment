@@ -3,3 +3,5 @@ maximize = true
 window-decoration = none
 
 confirm-close-surface = false
+
+mouse-scroll-multiplier = 0.5

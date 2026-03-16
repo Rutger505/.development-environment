@@ -33,6 +33,28 @@ Plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim), bootstra
 - `<leader>s*` — Telescope search commands
 - `gr*` — LSP actions (rename, references, definition, etc.)
 
+## Active Plugins
+
+| Plugin | Purpose |
+|--------|---------|
+| `guess-indent.nvim` | Auto-detects indentation style per buffer |
+| `gitsigns.nvim` | Git change indicators in the sign column |
+| `which-key.nvim` | Shows available keybindings as you type |
+| `telescope.nvim` | Fuzzy finder for files, LSP, grep, etc. |
+| `mason.nvim` | LSP/formatter/linter installer UI |
+| `mason-lspconfig.nvim` | Bridges Mason and nvim-lspconfig |
+| `mason-tool-installer.nvim` | Auto-installs tools declared in config |
+| `fidget.nvim` | LSP progress notifications |
+| `nvim-lspconfig` | LSP client configuration |
+| `conform.nvim` | Autoformatting (format on save) |
+| `blink.cmp` | Autocompletion engine |
+| `LuaSnip` | Snippet engine (used by blink.cmp) |
+| `tokyonight.nvim` | Colorscheme (tokyonight-night variant) |
+| `todo-comments.nvim` | Highlights TODO/FIXME/NOTE in comments |
+| `mini.nvim` | Collection: `mini.ai` (text objects), `mini.surround`, `mini.statusline` |
+| `nvim-treesitter` | Syntax highlighting and indentation |
+| `neo-tree.nvim` | File explorer sidebar |
+
 ## Adding Plugins
 
 To add a new plugin, either:

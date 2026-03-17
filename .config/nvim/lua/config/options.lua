@@ -21,6 +21,9 @@ vim.opt.termguicolors = true
 vim.o.list = true
 vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Defer communicating to system clipboard after startup
 vim.schedule(function()
 	vim.o.clipboard = "unnamedplus"

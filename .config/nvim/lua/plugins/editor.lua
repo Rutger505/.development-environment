@@ -55,40 +55,19 @@ return {
 	},
 
 	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		lazy = false,
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-		},
-		keys = {
-			{ "<leader>e", "<cmd>Neotree focus<cr>", desc = "Focus Neo-tree" },
-			{ "<leader>E", "<cmd>Neotree close<cr>", desc = "Close Neo-tree" },
-		},
-		opts = {
-			window = {
-				mappings = {
-					["<space>"] = "noop",
-				},
-			},
-			filesystem = {
-				hijack_netrw_behavior = "open_current",
-			},
-		},
-	},
-
-	{
 		"stevearc/conform.nvim",
-		event = "BufWritePre",
-		opts = {
-			formatters_by_ft = {
-				-- Add your formatters here, e.g.:
-				-- lua = { "stylua" },
-				-- python = { "black" },
+		event = "bufwritepre",
+		keys = {
+			{
+				"<leader>cf",
+				function()
+					require("conform").format({ async = true, lsp_fallback = true })
+				end,
+				mode = { "n", "v" },
+				desc = "Format buffer (or selection)",
 			},
 		},
+		opts = {},
 	},
 
 	{

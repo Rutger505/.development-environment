@@ -8,7 +8,7 @@ return {
       scroll  = {
         enabled = true,
         animate = {
-          duration = { step = 10, total = 100 },
+          duration = { step = 10, total = 150 },
           easing = "linear",
         },
         animate_repeat = {

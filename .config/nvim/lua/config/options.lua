@@ -21,6 +21,8 @@ vim.opt.termguicolors = true
 vim.o.list = true
 vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
+vim.opt.tabstop = 4
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 

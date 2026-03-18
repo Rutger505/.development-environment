@@ -5,6 +5,7 @@ require("which-key").add({
   { "<leader>c", group = "code" },
   { "<leader>f", group = "find" },
   { "<leader>g", group = "git" },
+  { "<leader>t", group = "tab" },
   { "<leader>w", group = "window" },
   { "<leader>x", group = "diagnostics" },
 })
@@ -26,11 +27,15 @@ vim.keymap.set("n", "[b", "<cmd>bprev<cr>", { desc = "Prev Buffer" })
 vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 
 -- Window
-vim.keymap.set("n", "<leader>wc", "<cmd>close<cr>", { desc = "Close Window" })
+vim.keymap.set("n", "<leader>wc", "<cmd>close<cr>",   { desc = "Close Window" })
+vim.keymap.set("n", "<leader>ws", "<cmd>split<cr>",   { desc = "Split Horizontal" })
+vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<cr>",  { desc = "Split Vertical" })
 
 -- Tabs
-vim.keymap.set("n", "[t", "<cmd>tabprev<cr>", { desc = "Prev Tab" })
-vim.keymap.set("n", "]t", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+vim.keymap.set("n", "[t",         "<cmd>tabprev<cr>",  { desc = "Prev Tab" })
+vim.keymap.set("n", "]t",         "<cmd>tabnext<cr>",  { desc = "Next Tab" })
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>",   { desc = "New Tab" })
+vim.keymap.set("n", "<leader>tc", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 
 -- Quickfix
 vim.keymap.set("n", "[q", "<cmd>cprev<cr>", { desc = "Prev Quickfix" })

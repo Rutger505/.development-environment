@@ -4,7 +4,7 @@ return {
 		branch = "v3.x",
 		cmd = { "Neotree" },
 		init = function()
-			vim.api.nvim_create_autocmd("VimEnter", {
+			vim.api.nvim_create_autocmd({ "VimEnter", "TabNew" }, {
 				callback = function()
 					vim.cmd("Neotree show")
 				end,

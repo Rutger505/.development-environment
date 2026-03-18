@@ -69,6 +69,12 @@ Personal Neovim configuration built on [Lazy.nvim](https://github.com/folke/lazy
 |-----|--------|
 | `<leader>gg` | Open LazyGit |
 
+### Plugin Manager
+
+| Key | Action |
+|-----|--------|
+| `<leader>l` | Open Lazy |
+
 ## Language Servers
 
 Language servers are managed by [Mason](https://github.com/williamboman/mason.nvim). `lua_ls` is pre-installed. To add more, either:

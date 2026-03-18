@@ -36,6 +36,9 @@ vim.keymap.set("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.posit
 -- Git
 vim.keymap.set("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "LazyGit" })
 
+-- Lazy
+vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+
 -- LSP (buffer-local, set on attach)
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(event)

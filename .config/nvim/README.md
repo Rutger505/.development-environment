@@ -45,8 +45,11 @@ Personal Neovim configuration built on [Lazy.nvim](https://github.com/folke/lazy
 | `gr` | Go to references |
 | `K` | Hover documentation |
 | `<leader>gd` | Go to declaration |
+| `<leader>ci` | Go to implementation |
 | `<leader>rn` | Rename symbol |
 | `<leader>ca` | Code actions |
+| `<leader>cd` | Show diagnostic float |
+| `[d` / `]d` | Prev / next diagnostic |
 
 ### Code
 
@@ -74,6 +77,7 @@ Personal Neovim configuration built on [Lazy.nvim](https://github.com/folke/lazy
 | Key | Action |
 |-----|--------|
 | `<leader>l` | Open Lazy |
+| `<leader>m` | Open Mason |
 
 ## Language Servers
 

@@ -39,6 +39,9 @@ vim.keymap.set("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Laz
 -- Lazy
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
+-- Mason
+vim.keymap.set("n", "<leader>m", "<cmd>Mason<cr>", { desc = "Mason" })
+
 -- LSP (buffer-local, set on attach)
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(event)
@@ -51,6 +54,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("<leader>rn",  vim.lsp.buf.rename,       "Rename")
     map("<leader>ca",  vim.lsp.buf.code_action,  "Code Action")
     map("<leader>gd",  vim.lsp.buf.declaration,  "Go to Declaration")
+    map("<leader>ci",  vim.lsp.buf.implementation, "Go to Implementation")
+    map("[d",          vim.diagnostic.goto_prev, "Prev Diagnostic")
+    map("]d",          vim.diagnostic.goto_next, "Next Diagnostic")
+    map("<leader>cd",  vim.diagnostic.open_float, "Diagnostic Float")
   end,
 })
 

@@ -2,9 +2,11 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Which-key groups
 require("which-key").add({
+  { "<leader>b", group = "buffer" },
   { "<leader>c", group = "code" },
   { "<leader>f", group = "find" },
   { "<leader>g", group = "git" },
+  { "<leader>q", group = "quit" },
   { "<leader>t", group = "tab" },
   { "<leader>w", group = "window" },
   { "<leader>x", group = "diagnostics" },
@@ -23,8 +25,9 @@ vim.keymap.set("n", "<C-Up>",    "<cmd>resize -2<cr>",          { desc = "Increa
 vim.keymap.set("n", "<C-Down>",  "<cmd>resize +2<cr>",          { desc = "Decrease window height" })
 
 -- Buffers
-vim.keymap.set("n", "[b", "<cmd>bprev<cr>", { desc = "Prev Buffer" })
-vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+vim.keymap.set("n", "[b",         "<cmd>bprev<cr>",                 { desc = "Prev Buffer" })
+vim.keymap.set("n", "]b",         "<cmd>bnext<cr>",                 { desc = "Next Buffer" })
+vim.keymap.set("n", "<leader>bc", function() Snacks.bufdelete() end, { desc = "Close Buffer" })
 
 -- Window
 vim.keymap.set("n", "<leader>wc", "<cmd>close<cr>",   { desc = "Close Window" })
@@ -72,6 +75,13 @@ vim.keymap.set("n", "<leader>gp", function() require("gitsigns").preview_hunk() 
 vim.keymap.set("n", "<leader>gb", function() require("gitsigns").blame_line() end,   { desc = "Blame Line" })
 vim.keymap.set("n", "[h", function() require("gitsigns").prev_hunk() end, { desc = "Prev Hunk" })
 vim.keymap.set("n", "]h", function() require("gitsigns").next_hunk() end, { desc = "Next Hunk" })
+
+-- Quit
+vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+
+-- Comment (built-in nvim 0.10+ gc operator)
+vim.keymap.set("n", "<leader>cc", "gcc", { desc = "Comment Line",      remap = true })
+vim.keymap.set("v", "<leader>cc", "gc",  { desc = "Comment Selection", remap = true })
 
 -- Lazy
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })

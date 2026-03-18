@@ -31,6 +31,7 @@ Personal Neovim configuration built on [Lazy.nvim](https://github.com/folke/lazy
 | `<leader>tn` | New tab |
 | `<leader>tc` | Close tab |
 | `[b` / `]b` | Prev / next buffer |
+| `<leader>bc` | Close buffer |
 | `[h` / `]h` | Prev / next git hunk |
 | `[d` / `]d` | Prev / next diagnostic |
 | `[e` / `]e` | Prev / next error |
@@ -69,6 +70,7 @@ Personal Neovim configuration built on [Lazy.nvim](https://github.com/folke/lazy
 
 | Key | Action |
 |-----|--------|
+| `<leader>cc` | Comment line / selection (normal + visual) |
 | `<leader>cf` | Format buffer or selection |
 | `<leader>cs` | Symbol browser |
 | `<leader>cl` | LSP definitions panel |
@@ -97,6 +99,7 @@ Personal Neovim configuration built on [Lazy.nvim](https://github.com/folke/lazy
 |-----|--------|
 | `<leader>l` | Open Lazy |
 | `<leader>m` | Open Mason |
+| `<leader>qq` | Quit all |
 
 ## Language Servers
 

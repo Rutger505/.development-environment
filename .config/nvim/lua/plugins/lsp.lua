@@ -33,21 +33,6 @@ return {
 
 			-- Enable all servers installed via mason-lspconfig
 			vim.lsp.enable(require("mason-lspconfig").get_installed_servers())
-
-			-- Keymaps on attach
-			vim.api.nvim_create_autocmd("LspAttach", {
-				callback = function(event)
-					local map = function(keys, func, desc)
-						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = desc })
-					end
-					map("gd", vim.lsp.buf.definition, "Go to Definition")
-					map("gr", vim.lsp.buf.references, "Go to References")
-					map("K", vim.lsp.buf.hover, "Hover Docs")
-					map("<leader>rn", vim.lsp.buf.rename, "Rename")
-					map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
-					map("<leader>gd", vim.lsp.buf.declaration, "Go to Declaration")
-				end,
-			})
 		end,
 	},
 }

@@ -1,15 +1,10 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
+		cmd = { "Telescope" },
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		},
-		keys = {
-			{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-			{ "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
-			{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
 		},
 		opts = {},
 	},
@@ -38,32 +33,17 @@ return {
 		event = "BufReadPre",
 		opts = {},
 	},
- 
+
 	{
 		"stevearc/conform.nvim",
-		event = "bufwritepre",
-		keys = {
-			{
-				"<leader>cf",
-				function()
-					require("conform").format({ async = true, lsp_fallback = true })
-				end,
-				mode = { "n", "v" },
-				desc = "Format buffer (or selection)",
-			},
-		},
+		event = "BufWritePre",
 		opts = {},
 	},
 
 	{
 		"folke/trouble.nvim",
+		cmd = { "Trouble" },
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		keys = {
-			{ "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics" },
-			{ "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics" },
-			{ "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Symbols" },
-			{ "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", desc = "LSP Definitions" },
-		},
 		opts = {},
 	},
 
@@ -71,9 +51,6 @@ return {
 		"folke/todo-comments.nvim",
 		event = "BufReadPre",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		keys = {
-			{ "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Todo Comments" },
-		},
 		opts = {},
 	},
 }

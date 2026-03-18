@@ -13,7 +13,39 @@ return {
   {
     "echasnovski/mini.statusline",
     version = "*",
-    opts = { use_icons = true },
+    config = function()
+      require("mini.statusline").setup({
+        use_icons = true,
+        content = {
+          active = function()
+            local sl = require("mini.statusline")
+            local mode, mode_hl = sl.section_mode({ trunc_width = 120 })
+            local git           = sl.section_git({ trunc_width = 75 })
+            local diagnostics   = sl.section_diagnostics({ trunc_width = 75 })
+            local filename      = vim.fn.expand("%:~:.")
+            local fileinfo      = sl.section_fileinfo({ trunc_width = 120 })
+            local location      = sl.section_location({ trunc_width = 75 })
+
+            return sl.combine_groups({
+              { hl = mode_hl,                  strings = { mode } },
+              { hl = "MiniStatuslineDevinfo",  strings = { git, diagnostics } },
+              "%<",
+              { hl = "MiniStatuslineFilename", strings = { filename } },
+              "%=",
+              { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
+              { hl = mode_hl,                  strings = { location } },
+            })
+          end,
+          inactive = function()
+            local sl = require("mini.statusline")
+            local filename = vim.fn.expand("%:~:.")
+            return sl.combine_groups({
+              { hl = "MiniStatuslineFilename", strings = { filename } },
+            })
+          end,
+        },
+      })
+    end,
   },
 
   {

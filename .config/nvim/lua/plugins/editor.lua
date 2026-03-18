@@ -44,16 +44,8 @@ return {
 		"echasnovski/mini.trailspace",
 		version = "*",
 		opts = {},
-		-- Trim on save:
-		init = function()
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				callback = function()
-					require("mini.trailspace").trim()
-				end,
-			})
-		end,
 	},
-
+ 
 	{
 		"stevearc/conform.nvim",
 		event = "bufwritepre",

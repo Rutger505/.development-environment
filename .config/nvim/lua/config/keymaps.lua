@@ -17,6 +17,7 @@ vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>",   { desc = "Li
 vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>",     { desc = "Buffers" })
 vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>",   { desc = "Help Tags" })
 vim.keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>",         { desc = "Todo Comments" })
+vim.keymap.set("n", "<leader>f.", "<cmd>Telescope resume<cr>",       { desc = "Resume last search" })
 
 -- Explorer
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree focus<cr>", { desc = "Focus Neo-tree" })

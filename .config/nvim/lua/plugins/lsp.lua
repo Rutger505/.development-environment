@@ -1,11 +1,13 @@
 return {
 	{
 		"williamboman/mason.nvim",
+		cmd = { "Mason", "MasonInstall", "MasonUpdate", "MasonUninstall" },
 		opts = {},
 	},
 
 	{
 		"williamboman/mason-lspconfig.nvim",
+		event = "BufReadPre",
 		dependencies = { "williamboman/mason.nvim" },
 		opts = {
 			ensure_installed = {
@@ -17,6 +19,7 @@ return {
 
 	{
 		"neovim/nvim-lspconfig",
+		event = "BufReadPre",
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",

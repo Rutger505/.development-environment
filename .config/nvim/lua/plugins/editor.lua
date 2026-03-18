@@ -1,5 +1,4 @@
 return {
-
 	{
 		"nvim-telescope/telescope.nvim",
 		event = "VeryLazy",
@@ -18,11 +17,13 @@ return {
 
 	{
 		"lewis6991/gitsigns.nvim",
+		event = "BufReadPre",
 		opts = {},
 	},
 
 	{
 		"NMAC427/guess-indent.nvim",
+		event = "BufReadPost",
 		opts = {},
 	},
 
@@ -35,6 +36,7 @@ return {
 	{
 		"echasnovski/mini.trailspace",
 		version = "*",
+		event = "BufReadPre",
 		opts = {},
 	},
  
@@ -68,6 +70,7 @@ return {
 
 	{
 		"folke/todo-comments.nvim",
+		event = "BufReadPre",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		keys = {
 			{ "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Todo Comments" },

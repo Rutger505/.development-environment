@@ -1,6 +1,6 @@
 -- lua/plugins/ui.lua
 return {
-  { "nvim-tree/nvim-web-devicons", lazy = true },
+  { "nvim-tree/nvim-web-devicons" },
 
   {
     "folke/which-key.nvim",
@@ -13,6 +13,7 @@ return {
   {
     "echasnovski/mini.statusline",
     version = "*",
+    event = "VeryLazy",
     config = function()
       require("mini.statusline").setup({
         use_icons = true,
@@ -50,6 +51,7 @@ return {
 
   {
     "rcarriga/nvim-notify",
+    event = "VeryLazy",
     config = function()
         require("notify").setup({
             stages = "static",

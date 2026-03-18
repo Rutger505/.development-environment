@@ -19,8 +19,20 @@ Personal Neovim configuration built on [Lazy.nvim](https://github.com/folke/lazy
 | `<C-h/j/k/l>` | Move focus between windows |
 | `<C-Left/Right>` | Resize window width |
 | `<C-Up/Down>` | Resize window height |
+| `<leader>wc` | Close window |
 
-### Telescope (fuzzy finder)
+### Navigation
+
+| Key | Action |
+|-----|--------|
+| `[t` / `]t` | Prev / next tab |
+| `[b` / `]b` | Prev / next buffer |
+| `[h` / `]h` | Prev / next git hunk |
+| `[d` / `]d` | Prev / next diagnostic |
+| `[e` / `]e` | Prev / next error |
+| `[q` / `]q` | Prev / next quickfix |
+
+### Telescope
 
 | Key | Action |
 |-----|--------|
@@ -31,25 +43,23 @@ Personal Neovim configuration built on [Lazy.nvim](https://github.com/folke/lazy
 | `<leader>ft` | Search TODO comments |
 | `<leader>f.` | Resume last search |
 
-### File Explorer (Neo-tree)
+### File Explorer
 
 | Key | Action |
 |-----|--------|
 | `<leader>e` | Focus Neo-tree |
 
-### LSP (active when a language server is attached)
+### LSP
 
 | Key | Action |
 |-----|--------|
 | `gd` | Go to definition |
 | `gr` | Go to references |
 | `K` | Hover documentation |
-| `<leader>gd` | Go to declaration |
+| `<leader>cd` | Go to declaration |
 | `<leader>ci` | Go to implementation |
-| `<leader>rn` | Rename symbol |
-| `<leader>ca` | Code actions |
-| `<leader>cd` | Show diagnostic float |
-| `[d` / `]d` | Prev / next diagnostic |
+| `<leader>cr` | Rename symbol |
+| `<leader>ca` | Code action |
 
 ### Code
 
@@ -59,18 +69,23 @@ Personal Neovim configuration built on [Lazy.nvim](https://github.com/folke/lazy
 | `<leader>cs` | Symbol browser |
 | `<leader>cl` | LSP definitions panel |
 
-### Diagnostics (Trouble)
+### Diagnostics
 
 | Key | Action |
 |-----|--------|
 | `<leader>xx` | Toggle project diagnostics |
 | `<leader>xX` | Toggle buffer diagnostics |
+| `<leader>xd` | Diagnostic float |
 
 ### Git
 
 | Key | Action |
 |-----|--------|
 | `<leader>gg` | Open LazyGit |
+| `<leader>gs` | Stage hunk |
+| `<leader>gr` | Reset hunk |
+| `<leader>gp` | Preview hunk |
+| `<leader>gb` | Blame line |
 
 ### Plugin Manager
 

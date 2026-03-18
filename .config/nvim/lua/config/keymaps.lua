@@ -21,7 +21,6 @@ vim.keymap.set("n", "<leader>f.", "<cmd>Telescope resume<cr>",       { desc = "R
 
 -- Explorer
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree focus<cr>", { desc = "Focus Neo-tree" })
-vim.keymap.set("n", "<leader>E", "<cmd>Neotree close<cr>", { desc = "Close Neo-tree" })
 
 -- Format
 vim.keymap.set({ "n", "v" }, "<leader>cf", function()

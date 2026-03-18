@@ -11,7 +11,13 @@ export DEV_ENV="${DEV_ENV:-$XDG_DATA_HOME/dev-env}"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZSH_CONFIG_DIR="$XDG_CONFIG_HOME/zsh"
 export ZSH="$XDG_DATA_HOME/oh-my-zsh"
-export HISTFILE="$XDG_STATE_HOME/zsh/history"
+HISTFILE="$XDG_STATE_HOME/zsh/history"
+HISTSIZE=100000
+SAVEHIST=100000
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_VERIFY
 
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
@@ -29,10 +35,10 @@ export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME"/platformio
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export OMNISHARPHOME="$XDG_CONFIG_HOME"/omnisharp
 export VCPKG_ROOT="$XDG_DATA_HOME/vcpkg"
+export RUSTUP_HOME=~/.local/share/rustup
 
 export FONTCONFIG_PATH="/etc/fonts/"
 export FONTCONFIG_FILE="/etc/fonts/fonts.conf"
-
 
 export EDITOR="nvim"
 export VISUAL="nvim"

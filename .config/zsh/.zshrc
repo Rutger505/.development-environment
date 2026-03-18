@@ -7,6 +7,8 @@ HYPHEN_INSENSITIVE="false"
 
 zstyle ':omz:update' mode disabled
 
+VI_MODE_SET_CURSOR=true
+
 plugins=(
   git
   sudo

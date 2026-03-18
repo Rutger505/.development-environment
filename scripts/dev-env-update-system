@@ -91,9 +91,17 @@ tmux split-window -t "$TARGET" bash -c '
 tmux split-window -t "$TARGET" bash -c '
   set -eu
   echo "Updating OMZ"
-  OMZ_UPDATE_FILE="${ZSH:-$HOME/.local/share/oh-my-zsh}/upgrade.sh"
-  if [ -f "$OMZ_UPDATE_FILE" ]; then
-    "$OMZ_UPDATE_FILE"
+  ZSH="${ZSH:-$HOME/.local/share/oh-my-zsh}"
+  if [ -f "$ZSH/tools/upgrade.sh" ]; then
+    zsh "$ZSH/tools/upgrade.sh"
+    echo
+    echo "Updating OMZ custom plugins"
+    for plugin_dir in "${ZSH_CUSTOM:-$ZSH/custom}/plugins"/*/; do
+      if [ -d "$plugin_dir/.git" ]; then
+        echo "Updating $(basename "$plugin_dir")..."
+        git -C "$plugin_dir" pull
+      fi
+    done
   else
     echo "OMZ is not installed."
   fi

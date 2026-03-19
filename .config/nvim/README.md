@@ -22,6 +22,7 @@ Personal Neovim configuration built on [Lazy.nvim](https://github.com/folke/lazy
 | `<leader>wc` | Close window |
 | `<leader>w-` | Split horizontal |
 | `<leader>w\` | Split vertical |
+| `<leader>we` | Equalize windows |
 
 ### Navigation
 

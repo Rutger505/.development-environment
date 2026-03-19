@@ -30,3 +30,10 @@ vim.g.loaded_netrwPlugin = 1
 vim.schedule(function()
 	vim.o.clipboard = "unnamedplus"
 end)
+
+-- Equalize splits when the window is resized
+vim.api.nvim_create_autocmd("VimResized", {
+	callback = function()
+		vim.cmd("wincmd =")
+	end,
+})

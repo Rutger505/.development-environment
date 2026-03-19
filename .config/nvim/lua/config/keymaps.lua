@@ -31,9 +31,10 @@ vim.keymap.set("n", "<leader>bn", "<cmd>enew<cr>",                   { desc = "N
 vim.keymap.set("n", "<leader>bc", function() Snacks.bufdelete() end, { desc = "Close Buffer" })
 
 -- Window
-vim.keymap.set("n", "<leader>wc", "<cmd>close<cr>",   { desc = "Close Window" })
-vim.keymap.set("n", "<leader>w-", "<cmd>split<cr>",   { desc = "Split Horizontal" })
+vim.keymap.set("n", "<leader>wc", "<cmd>close<cr>",    { desc = "Close Window" })
+vim.keymap.set("n", "<leader>w-", "<cmd>split<cr>",    { desc = "Split Horizontal" })
 vim.keymap.set("n", "<leader>w\\", "<cmd>vsplit<cr>",  { desc = "Split Vertical" })
+vim.keymap.set("n", "<leader>we", "<cmd>wincmd =<cr>", { desc = "Equalize Windows" })
 
 -- Tabs
 vim.keymap.set("n", "[t",         "<cmd>tabprev<cr>",  { desc = "Prev Tab" })

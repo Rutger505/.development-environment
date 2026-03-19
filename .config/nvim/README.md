@@ -113,3 +113,4 @@ Treesitter parsers are installed automatically (`auto_install = true`) when you 
 ## TODO
 
 - [ ] Add DAP (debugger) support — `nvim-dap` + `nvim-dap-ui`
+- [ ] Add https://github.com/alexghergh/nvim-tmux-navigation?tab=readme-ov-file

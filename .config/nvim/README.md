@@ -16,7 +16,7 @@ Personal Neovim configuration built on [Lazy.nvim](https://github.com/folke/lazy
 
 | Key | Action |
 |-----|--------|
-| `<C-h/j/k/l>` | Move focus between windows |
+| `<C-h/j/k/l>` | Move focus between windows / tmux panes |
 | `<C-Left/Right>` | Resize window width |
 | `<C-Up/Down>` | Resize window height |
 | `<leader>wc` | Close window |
@@ -115,4 +115,3 @@ Treesitter parsers are installed automatically (`auto_install = true`) when you 
 ## TODO
 
 - [ ] Add DAP (debugger) support — `nvim-dap` + `nvim-dap-ui`
-- [ ] Add https://github.com/alexghergh/nvim-tmux-navigation?tab=readme-ov-file

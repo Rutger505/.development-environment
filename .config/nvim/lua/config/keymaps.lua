@@ -13,11 +13,12 @@ require("which-key").add({
 })
 
 
--- Windows
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- Windows (nvim-tmux-navigation: seamlessly navigate nvim splits and tmux panes)
+vim.keymap.set("n", "<C-h>", function() require("nvim-tmux-navigation").NvimTmuxNavigateLeft()  end, { desc = "Move focus left" })
+vim.keymap.set("n", "<C-j>", function() require("nvim-tmux-navigation").NvimTmuxNavigateDown()  end, { desc = "Move focus down" })
+vim.keymap.set("n", "<C-k>", function() require("nvim-tmux-navigation").NvimTmuxNavigateUp()    end, { desc = "Move focus up" })
+vim.keymap.set("n", "<C-l>", function() require("nvim-tmux-navigation").NvimTmuxNavigateRight() end, { desc = "Move focus right" })
 
 vim.keymap.set("n", "<C-Left>",  "<cmd>vertical resize +2<cr>", { desc = "Decrease window width" })
 vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize -2<cr>", { desc = "Increase window width" })

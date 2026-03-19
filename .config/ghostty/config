@@ -11,8 +11,6 @@ font-feature = -liga
 font-feature = -dlig
 
 # Window
-window-padding-x = 14
-window-padding-y = 14
 maximize = true
 window-decoration = none
 confirm-close-surface = false

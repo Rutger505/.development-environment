@@ -27,12 +27,13 @@ vim.keymap.set("n", "<C-Down>",  "<cmd>resize +2<cr>",          { desc = "Decrea
 -- Buffers
 vim.keymap.set("n", "[b",         "<cmd>bprev<cr>",                 { desc = "Prev Buffer" })
 vim.keymap.set("n", "]b",         "<cmd>bnext<cr>",                 { desc = "Next Buffer" })
+vim.keymap.set("n", "<leader>bn", "<cmd>enew<cr>",                   { desc = "New Buffer" })
 vim.keymap.set("n", "<leader>bc", function() Snacks.bufdelete() end, { desc = "Close Buffer" })
 
 -- Window
 vim.keymap.set("n", "<leader>wc", "<cmd>close<cr>",   { desc = "Close Window" })
-vim.keymap.set("n", "<leader>ws", "<cmd>split<cr>",   { desc = "Split Horizontal" })
-vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<cr>",  { desc = "Split Vertical" })
+vim.keymap.set("n", "<leader>w-", "<cmd>split<cr>",   { desc = "Split Horizontal" })
+vim.keymap.set("n", "<leader>w\\", "<cmd>vsplit<cr>",  { desc = "Split Vertical" })
 
 -- Tabs
 vim.keymap.set("n", "[t",         "<cmd>tabprev<cr>",  { desc = "Prev Tab" })

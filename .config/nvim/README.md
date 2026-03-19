@@ -20,8 +20,8 @@ Personal Neovim configuration built on [Lazy.nvim](https://github.com/folke/lazy
 | `<C-Left/Right>` | Resize window width |
 | `<C-Up/Down>` | Resize window height |
 | `<leader>wc` | Close window |
-| `<leader>ws` | Split horizontal |
-| `<leader>wv` | Split vertical |
+| `<leader>w-` | Split horizontal |
+| `<leader>w\` | Split vertical |
 
 ### Navigation
 
@@ -31,6 +31,7 @@ Personal Neovim configuration built on [Lazy.nvim](https://github.com/folke/lazy
 | `<leader>tn` | New tab |
 | `<leader>tc` | Close tab |
 | `[b` / `]b` | Prev / next buffer |
+| `<leader>bn` | New buffer |
 | `<leader>bc` | Close buffer |
 | `[h` / `]h` | Prev / next git hunk |
 | `[d` / `]d` | Prev / next diagnostic |

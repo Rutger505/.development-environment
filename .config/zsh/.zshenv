@@ -49,6 +49,7 @@ export PATH="$PATH:$DEV_ENV/scripts"
 export PATH="$XDG_DATA_HOME/JetBrains/Toolbox/scripts:$PATH"
 export PATH="$PNPM_HOME:$PATH"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$XDG_DATA_HOME/opencode/bin:$PATH"
 
 export DEV_ENV_ERROR_FILE="$XDG_STATE_HOME/dev-env-sync-error"
 

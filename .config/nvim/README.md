@@ -55,6 +55,7 @@ Personal Neovim configuration built on [Lazy.nvim](https://github.com/folke/lazy
 | Key | Action |
 |-----|--------|
 | `<leader>e` | Focus Neo-tree |
+| `<leader>E` | Reveal current file in Neo-tree |
 
 ### LSP
 

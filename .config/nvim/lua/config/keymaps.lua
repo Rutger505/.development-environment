@@ -56,7 +56,8 @@ vim.keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>",         { desc = "To
 vim.keymap.set("n", "<leader>f.", "<cmd>Telescope resume<cr>",       { desc = "Resume last search" })
 
 -- Explorer
-vim.keymap.set("n", "<leader>e", "<cmd>Neotree focus<cr>", { desc = "Focus Neo-tree" })
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree focus<cr>",          { desc = "Focus Neo-tree" })
+vim.keymap.set("n", "<leader>E", "<cmd>Neotree reveal<cr>",         { desc = "Reveal file in Neo-tree" })
 
 -- Format
 vim.keymap.set({ "n", "v" }, "<leader>cf", function()

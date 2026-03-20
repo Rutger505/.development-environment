@@ -86,6 +86,9 @@ vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
 vim.keymap.set("n", "<leader>cc", "gcc", { desc = "Comment Line",      remap = true })
 vim.keymap.set("v", "<leader>cc", "gc",  { desc = "Comment Selection", remap = true })
 
+-- PlantUML
+vim.keymap.set("n", "<leader>cp", "<cmd>PreviewFile<cr>", { desc = "PlantUML Preview" })
+
 -- Lazy
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 

@@ -76,6 +76,7 @@ Personal Neovim configuration built on [Lazy.nvim](https://github.com/folke/lazy
 | `<leader>cf` | Format buffer or selection |
 | `<leader>cs` | Symbol browser |
 | `<leader>cl` | LSP definitions panel |
+| `<leader>cp` | PlantUML preview (in `.puml` files) |
 
 ### Diagnostics
 

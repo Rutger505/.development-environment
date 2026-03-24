@@ -77,7 +77,7 @@ tmux split-window -t "$TARGET" bash -c '
   set -eu
   echo "Updating Flatpak packages"
   if command -v flatpak >/dev/null 2>&1; then
-    flatpak update -y
+    sudo flatpak update -y
   else
     echo "Flatpak is not installed. Skipping flatpak update."
   fi

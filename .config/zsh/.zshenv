@@ -51,6 +51,7 @@ export PATH="$PNPM_HOME:$PATH"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$XDG_DATA_HOME/opencode/bin:$PATH"
 export PATH="/usr/libexec/imv:$PATH"
+export PATH="$CARGO_HOME/bin:$PATH"
 
 export DEV_ENV_ERROR_FILE="$XDG_STATE_HOME/dev-env-sync-error"
 

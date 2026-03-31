@@ -14,6 +14,7 @@ font-feature = -dlig
 window-decoration = none
 confirm-close-surface = false
 resize-overlay = never
+mouse-hide-while-typing = true
 
 # Cursor styling
 cursor-style = "block"

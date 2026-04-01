@@ -10,7 +10,6 @@
       "Bash(dev-env-check-broken-stowlinks)",
       "Bash(dev-env-reload-hyprland)",
       "Bash(command -v:*)",
-      "Bash(kanata:*)",
       "WebSearch"
     ]
   }

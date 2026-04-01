@@ -1,6 +1,0 @@
-" Yank goes to system clipboard
-nnoremap y "+y
-vnoremap y "+y
-
-" Make Y behave consistently (yank to end of line into clipboard)
-nnoremap Y "+yy

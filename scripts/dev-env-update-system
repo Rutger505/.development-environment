@@ -18,7 +18,6 @@ DISTRO="$(detect_distro)"
 # Build the first pane command based on distro
 if [ "$DISTRO" = "arch" ]; then
   FIRST_PANE_CMD='
-    set -eu
     echo "Updating yay packages"
     if command -v omarchy-update >/dev/null 2>&1; then
       omarchy-update
@@ -32,7 +31,6 @@ if [ "$DISTRO" = "arch" ]; then
   '
 elif [ "$DISTRO" = "debian" ]; then
   FIRST_PANE_CMD='
-    set -eu
     echo "Updating apt packages"
     sudo apt-get update && sudo apt-get upgrade -y
     echo
@@ -58,7 +56,6 @@ fi
 # Snap pane (debian only)
 if [ "$DISTRO" = "debian" ]; then
   tmux split-window -t "$TARGET" bash -c '
-    set -eu
     echo "Updating snap packages"
     if command -v snap >/dev/null 2>&1; then
       sudo snap refresh
@@ -74,7 +71,6 @@ fi
 
 # Flatpak pane
 tmux split-window -t "$TARGET" bash -c '
-  set -eu
   echo "Updating Flatpak packages"
   if command -v flatpak >/dev/null 2>&1; then
     sudo flatpak update -y
@@ -89,7 +85,6 @@ tmux split-window -t "$TARGET" bash -c '
 
 # OMZ pane
 tmux split-window -t "$TARGET" bash -c '
-  set -eu
   echo "Updating OMZ"
   ZSH="${ZSH:-$HOME/.local/share/oh-my-zsh}"
   if [ -f "$ZSH/tools/upgrade.sh" ]; then

@@ -117,3 +117,5 @@ Treesitter parsers are installed automatically (`auto_install = true`) when you 
 ## TODO
 
 - [ ] Add DAP (debugger) support — `nvim-dap` + `nvim-dap-ui`
+- [ ] Add flash.nvim
+- [ ] Add some sort of ai integrations

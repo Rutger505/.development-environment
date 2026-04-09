@@ -23,6 +23,7 @@ return {
 			},
 			filesystem = {
 				hijack_netrw_behavior = "disabled",
+				use_libuv_file_watcher = true,
 			},
 		},
 	},

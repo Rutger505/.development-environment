@@ -11,7 +11,7 @@ font-feature = -liga
 font-feature = -dlig
 
 # Window
-window-decoration = none
+# window-decoration = none
 confirm-close-surface = false
 resize-overlay = never
 mouse-hide-while-typing = true

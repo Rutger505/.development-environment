@@ -21,7 +21,6 @@
         "cpu",
         "custom/cpu-percentage",
         "battery",
-        "custom/battery-power",
     ],
     "hyprland/workspaces": {
         "on-click": "activate",
@@ -93,10 +92,10 @@
         "on-click": "omarchy-launch-wifi"
     },
     "battery": {
-        "format": "{icon} {capacity}%",
-        "format-discharging": "{icon} {capacity}% (↓{power:>1.0f}W)",
-        "format-charging": "{icon} {capacity}% (↑{power:>1.0f}W)",
-        "format-plugged": "{icon} {capacity}%",
+        "format": "{icon}  {capacity}%",
+        "format-discharging": "{icon}  {capacity}% (↓{power:>1.0f}W)",
+        "format-charging": "{icon}  {capacity}% (↑{power:>1.0f}W)",
+        "format-plugged": "{icon}  {capacity}%",
         "format-icons": {
             "charging": [
                 "󰢜",
@@ -182,12 +181,6 @@
     "custom/cpu-percentage": {
         "format": "{}%",
         "exec": "waybar-cpu-percentage",
-        "interval": 5,
-        "tooltip": false
-    },
-    "custom/battery-power": {
-        "format": "{}",
-        "exec": "waybar-battery-power",
         "interval": 5,
         "tooltip": false
     },

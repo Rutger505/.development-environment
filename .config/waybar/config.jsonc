@@ -20,7 +20,8 @@
         "pulseaudio",
         "cpu",
         "custom/cpu-percentage",
-        "battery"
+        "battery",
+        "custom/battery-power",
     ],
     "hyprland/workspaces": {
         "on-click": "activate",
@@ -36,8 +37,8 @@
             "7": "7",
             "8": "8",
             "9": "9",
-      "10": "0",
-            "active": "󱓻"
+            "10": "0",
+            "active": "󱓻",
         },
         "persistent-workspaces": {
             "1": [],

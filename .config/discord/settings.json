@@ -1,3 +1,18 @@
 {
-		"SKIP_HOST_UPDATE": true
+  "offloadAdmControls": true,
+  "enableHardwareAcceleration": true,
+  "chromiumSwitches": {},
+  "IS_MAXIMIZED": true,
+  "IS_MINIMIZED": false,
+  "WINDOW_BOUNDS": {
+    "x": 0,
+    "y": 0,
+    "width": 1920,
+    "height": 1080
+  },
+  "BACKGROUND_COLOR": "#121214",
+  "asyncVideoInputDeviceInit": false,
+  "SKIP_HOST_UPDATE": true,
+  "enableLibOpenH264Electron": false,
+  "openH264Enabled": true
 }

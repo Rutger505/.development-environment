@@ -26,6 +26,9 @@ vim.opt.tabstop = 4
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us" }
+
 -- Defer communicating to system clipboard after startup
 vim.schedule(function()
 	vim.o.clipboard = "unnamedplus"

@@ -2,6 +2,7 @@ zsh
 tmux
 zoxide
 bat
+git-delta
 ripgrep
 fzf
 cloc

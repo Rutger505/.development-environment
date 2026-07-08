@@ -4,7 +4,7 @@
 ^/README.*
 ^/TODO.*
 ^/CLAUDE.*
-\.claude
+/\.claude/(?!CLAUDE\.md$).*
 applications
 synchronization
 scripts

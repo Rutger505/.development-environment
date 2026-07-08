@@ -13,7 +13,9 @@
       "WebSearch",
       "Bash(git checkout *)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(fd -H -t d '\\\\.claude$' /home/rutger/.local/share/dev-env/)"
     ]
   }
 }

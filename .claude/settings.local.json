@@ -15,7 +15,11 @@
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
-      "Bash(fd -H -t d '\\\\.claude$' /home/rutger/.local/share/dev-env/)"
+      "Bash(fd -H -t d '\\\\.claude$' /home/rutger/.local/share/dev-env/)",
+      "Bash(gh issue *)",
+      "Bash(eza -la .config/git/)",
+      "Bash(cat .config/git/config)",
+      "Bash(eza --tree .config/hypr)"
     ]
   }
 }

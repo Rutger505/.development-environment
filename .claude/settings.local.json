@@ -19,7 +19,11 @@
       "Bash(gh issue *)",
       "Bash(eza -la .config/git/)",
       "Bash(cat .config/git/config)",
-      "Bash(eza --tree .config/hypr)"
+      "Bash(eza --tree .config/hypr)",
+      "Skill(update-config)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(pw-play /usr/share/sounds/freedesktop/stereo/bell.oga)",
+      "Bash(git *)"
     ]
   }
 }

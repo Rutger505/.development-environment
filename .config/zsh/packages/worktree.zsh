@@ -11,7 +11,7 @@ worktree-create() {
 
   git worktree add -b "$branch" "$worktree_path"
 
-  for dep in vendor node_modules; do
+  for dep in vendor node_modules .tsbuildinfo .eslintcache; do
     if [ -e "$dep" ]; then
       echo "Copying $dep"
       cp -r "$dep" "$worktree_path/$dep"

@@ -24,6 +24,15 @@ worktree-create() {
     cp .claude/settings.local.json "$worktree_path/.claude/settings.local.json"
   fi
 
+  # Copy .env files (gitignored) at any depth, preserving directory structure.
+  local env_file
+  fd -H -I -t f '^\.env$' --exclude node_modules --exclude vendor --exclude .git |
+    while IFS= read -r env_file; do
+      echo "Copying $env_file"
+      mkdir -p "$worktree_path/${env_file:h}"
+      cp "$env_file" "$worktree_path/$env_file"
+    done
+
   echo "cd to $worktree_path"
   cd "$worktree_path"
 }

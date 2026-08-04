@@ -121,6 +121,37 @@ applications/
 2. Install wanted games
 
 
+## clipcdn — upload clips & artifacts to my CDN
+
+`clipcdn` (in `.local/bin`) uploads files to my self-hosted MinIO CDN
+(`cdn.rutgerpronk.com`, deployed from `kubernetes-infrastructure/5-minio`) and
+prints a shareable URL. Handy for sharing clips with mates and for grabbing
+build artifacts (e.g. the soundboard APK) straight onto a phone.
+
+It uses the MinIO client (`mc`), installed via the optional `clipcdn` package
+group (`minio-client`).
+
+### Setup
+
+```bash
+cp ~/.config/clipcdn/config.example ~/.config/clipcdn/config
+chmod 600 ~/.config/clipcdn/config      # holds a secret key
+$EDITOR ~/.config/clipcdn/config         # fill in endpoint + credentials
+clipcdn --setup                          # register the mc alias
+```
+
+The real `config` is gitignored; only `config.example` is tracked.
+
+### Usage
+
+```bash
+clipcdn clip.mp4                  # -> https://cdn.rutgerpronk.com/cdn/clip.mp4
+clipcdn clip.mp4 clips/funny.mp4  # custom remote path
+clipcdn --clips                   # sync ~/Videos/Clips -> <bucket>/clips
+clipcdn --artifact app-debug.apk  # upload to <bucket>/artifacts (for testing)
+clipcdn --list                    # list what's on the CDN
+```
+
 ## Adding Support for New Distributions
 
 To add support for a new distribution:

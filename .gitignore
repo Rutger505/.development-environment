@@ -1,3 +1,6 @@
 .idea
 *.log
 .claude/settings.local.json
+
+# clipcdn holds a MinIO secret key — only the .example is tracked
+.config/clipcdn/config

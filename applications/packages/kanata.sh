@@ -30,6 +30,15 @@ EOF
 echo "Creating config file"
 sudo mkdir -p /etc/kanata
 cat <<EOF | sudo tee "/etc/kanata/kanata.conf" >/dev/null
+(defcfg
+  ;; Matches the default, set explicitly to silence a startup warning
+  process-unmapped-keys no
+  ;; Only grab pure keyboards. Combined keyboard+mouse devices would otherwise
+  ;; route pointer events through kanata's virtual keyboard, making evdev hotkey
+  ;; listeners (gpu-screen-recorder) discard it as a non-keyboard device.
+  linux-device-detect-mode keyboard-only
+)
+
 ;; defsrc is still necessary
 (defsrc)
 (deflayermap (base-layer)

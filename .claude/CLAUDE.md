@@ -3,7 +3,7 @@
 These apply to every project and session.
 
 ## Response style
-Use fewer words. Lead with the answer or what was done.
+Be brief. Lead with the answer or what was done.
 - Still explain the mechanism — why something breaks, how a fix works — just say it in fewer words.
 - Cut restated evidence and caveats that don't change what I should do next.
 - Don't pre-empt follow-up questions — offer the detail instead of including it.

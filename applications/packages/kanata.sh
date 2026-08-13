@@ -38,8 +38,11 @@ cat <<EOF | sudo tee "/etc/kanata/kanata.conf" >/dev/null
   ;; listeners (gpu-screen-recorder) discard it as a non-keyboard device.
   linux-device-detect-mode keyboard-only
   ;; gpu-screen-recorder creates this device to re-emit the keys it does not
-  ;; consume. Grabbing it makes gsr think it has been hijacked, so it drops its
-  ;; grab and the focused application receives the hotkeys too.
+  ;; consume, so kanata must not grab it back. Only relevant if gsr's own evdev
+  ;; hotkeys are re-enabled: they are currently off (disable_hotkeys) because
+  ;; kanata holds an exclusive grab on the physical keyboards and gsr skips
+  ;; kanata's virtual device ("might be a mouse" - it advertises REL axes), so
+  ;; gsr can never grab anything. gsr hotkeys live in hypr/bindings.conf instead.
   linux-dev-names-exclude ("gsr-ui virtual keyboard")
 )
 

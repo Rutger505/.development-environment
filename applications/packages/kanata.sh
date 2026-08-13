@@ -37,6 +37,10 @@ cat <<EOF | sudo tee "/etc/kanata/kanata.conf" >/dev/null
   ;; route pointer events through kanata's virtual keyboard, making evdev hotkey
   ;; listeners (gpu-screen-recorder) discard it as a non-keyboard device.
   linux-device-detect-mode keyboard-only
+  ;; gpu-screen-recorder creates this device to re-emit the keys it does not
+  ;; consume. Grabbing it makes gsr think it has been hijacked, so it drops its
+  ;; grab and the focused application receives the hotkeys too.
+  linux-dev-names-exclude ("gsr-ui virtual keyboard")
 )
 
 ;; defsrc is still necessary

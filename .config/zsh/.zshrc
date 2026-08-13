@@ -44,6 +44,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# After oh-my-zsh: it sets its own history options in lib/history.zsh
+source $ZSH_CONFIG_DIR/history.zsh
+
 source $ZSH_CONFIG_DIR/aliases.zsh
 
 for file in $ZSH_CONFIG_DIR/packages/*.zsh; do

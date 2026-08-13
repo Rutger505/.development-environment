@@ -2,6 +2,11 @@
 
 These apply to every project and session.
 
+## Response style
+Be brief. Lead with the answer or what was done, then stop.
+- Don't explain the mechanism, restate evidence, or list caveats unless they change what I should do next.
+- Don't pre-empt follow-up questions — offer the detail instead of including it.
+
 ## Shell tooling
 - Always use `rg` (ripgrep), `fd`, and `eza` instead of `grep`, `find`, and `ls`.
 

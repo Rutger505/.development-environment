@@ -22,14 +22,10 @@ require("hypr.bindings")
 require("hypr.looknfeel")
 require("hypr.autostart")
 
--- Machine-specific config, one file per hostname (e.g. rutger-laptop-omarchy.lua
--- next to this file). Replaces the old custom-<hostname>.conf /
--- custom-by-hostname.conf symlink trick, which relied on zsh's $HOST special
--- param.
+-- Machine-specific config, one file per hostname 
 local host_modules = {
   ["rutger-laptop-omarchy"] = "hypr.rutger-laptop-omarchy",
   ["rutger-desktop-omarchy"] = "hypr.rutger-desktop-omarchy",
-  ["rutger-cheapcargo-laptop-omarchy"] = "hypr.rutger-cheapcargo-laptop-omarchy",
 }
 
 local hostname_handle = io.popen("hostname")

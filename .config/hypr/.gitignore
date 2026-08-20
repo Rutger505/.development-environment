@@ -1,4 +1,2 @@
 # Device specific configuration, also auto generated through nwg-displays
-monitors.conf
-workspaces.conf
-custom-by-hostname.conf
+monitors.lua

@@ -1,3 +1,4 @@
+require("config.remote_clipboard").setup()
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true

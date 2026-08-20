@@ -2,6 +2,10 @@
 
 Read the README.md for project overview and structure.
 
+## Git workflow
+
+Commit directly to `main` in this repo — always allowed, no feature branch needed. This overrides the global "branch first on default branch" rule for this repo specifically.
+
 ## Working with this repository
 
 This repository uses GNU Stow to symlink config files to the home directory. After making changes:

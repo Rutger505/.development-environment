@@ -1,5 +1,4 @@
-@define-color foreground #cdd6f4;
-@define-color background #1e1e2e;
+@import "../omarchy/current/theme/waybar.css";
 
 * {
   background-color: @background;
@@ -8,7 +7,7 @@
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: 'CaskaydiaMono Nerd Font';
+  font-family: 'JetBrainsMono Nerd Font';
   font-size: 12px;
 }
 

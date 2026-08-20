@@ -1,7 +1,7 @@
 # Arch-specific core packages
 
 # Map caps to esc
-kanata-bin
+kanata
 
 # Hyprland monitors (omarchy)
 hyprmon-bin

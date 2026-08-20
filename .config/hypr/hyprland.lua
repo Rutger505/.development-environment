@@ -22,8 +22,32 @@ require("hypr.bindings")
 require("hypr.looknfeel")
 require("hypr.autostart")
 
+-- Machine-specific config, one file per hostname (e.g. rutger-laptop-omarchy.lua
+-- next to this file). Replaces the old custom-<hostname>.conf /
+-- custom-by-hostname.conf symlink trick, which relied on zsh's $HOST special
+-- param.
+local host_modules = {
+  ["rutger-laptop-omarchy"] = "hypr.rutger-laptop-omarchy",
+  ["rutger-desktop-omarchy"] = "hypr.rutger-desktop-omarchy",
+  ["rutger-cheapcargo-laptop-omarchy"] = "hypr.rutger-cheapcargo-laptop-omarchy",
+}
+
+local hostname_handle = io.popen("hostname")
+local hostname = hostname_handle and hostname_handle:read("*l") or nil
+if hostname_handle then hostname_handle:close() end
+
+local host_module = hostname and host_modules[hostname]
+if host_module then
+  require(host_module)
+end
+
 -- Toggle config flags dynamically.
 require("default.hypr.toggles")
+
+-- Per-app window rules, one file per app (mirrors Omarchy's own apps/ dir).
+local paths = require("default.hypr.paths")
+local require_all = require("default.hypr.require_all")
+require_all.files(paths.config_home .. "/hypr/application-rules", "hypr.application-rules")
 
 -- Add any other personal Hyprland configuration below.
 -- o.window("qemu", { workspace = "5" })

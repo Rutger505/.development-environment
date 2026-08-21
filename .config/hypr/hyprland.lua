@@ -41,9 +41,17 @@ end
 require("default.hypr.toggles")
 
 -- Per-app window rules, one file per app (mirrors Omarchy's own apps/ dir).
+-- Omarchy's require_all.files() uses `find -type f`, which skips symlinks, so it
+-- finds nothing in this stow-managed tree. Same loop, but with `find -L`.
 local paths = require("default.hypr.paths")
-local require_all = require("default.hypr.require_all")
-require_all.files(paths.config_home .. "/hypr/application-rules", "hypr.application-rules")
+local rules_dir = paths.config_home .. "/hypr/application-rules"
+local rules_handle = io.popen("find -L '" .. rules_dir .. "' -maxdepth 1 -type f -name '*.lua' -printf '%f\\n' | sort")
+if rules_handle then
+  for filename in rules_handle:lines() do
+    require("hypr.application-rules." .. filename:gsub("%.lua$", ""))
+  end
+  rules_handle:close()
+end
 
 -- Add any other personal Hyprland configuration below.
 -- o.window("qemu", { workspace = "5" })

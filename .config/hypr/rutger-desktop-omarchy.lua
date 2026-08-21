@@ -9,3 +9,6 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("hyprctl dispatch workspace 3")
   hl.exec_cmd("[workspace 3 silent] uwsm app -- discord")
 end)
+
+-- Never idle: no screensaver, no idle lock, no display sleep.
+o.exec_on_start("omarchy toggle idle stay-awake")

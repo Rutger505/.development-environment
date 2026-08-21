@@ -30,8 +30,20 @@ MC_ALIAS="${MC_ALIAS:-homecdn}"
 
 die() { echo "clipcdn: $*" >&2; exit 1; }
 
+# Resolve the MinIO client binary. Upstream ships it as `mc`, but Arch's
+# minio-client package installs it as `mcli` to avoid clashing with Midnight
+# Commander. Honor an explicit $MC override too.
+MC="${MC:-}"
 need_mc() {
-  command -v mc >/dev/null 2>&1 || die "'mc' (MinIO client) not found. Install it (yay -S minio-client / mcli)."
+  if [ -z "$MC" ]; then
+    if command -v mc >/dev/null 2>&1; then
+      MC=mc
+    elif command -v mcli >/dev/null 2>&1; then
+      MC=mcli
+    else
+      die "MinIO client not found. Install it (yay -S minio-client) — provides 'mcli'."
+    fi
+  fi
 }
 
 check_config() {
@@ -42,7 +54,7 @@ check_config() {
 
 setup_alias() {
   need_mc; check_config
-  mc alias set "$MC_ALIAS" "$CDN_ENDPOINT" "$CDN_ACCESS_KEY" "$CDN_SECRET_KEY" >/dev/null
+  "$MC" alias set "$MC_ALIAS" "$CDN_ENDPOINT" "$CDN_ACCESS_KEY" "$CDN_SECRET_KEY" >/dev/null
 }
 
 public_url() {
@@ -54,7 +66,7 @@ public_url() {
 upload_one() {
   local src="$1" key="$2"
   [ -f "$src" ] || die "not a file: $src"
-  mc cp "$src" "$MC_ALIAS/$CDN_BUCKET/$key" >/dev/null
+  "$MC" cp "$src" "$MC_ALIAS/$CDN_BUCKET/$key" >/dev/null
   public_url "$key"
 }
 
@@ -80,14 +92,14 @@ cmd_clips() {
   setup_alias
   echo "Syncing $dir -> $MC_ALIAS/$CDN_BUCKET/clips ..." >&2
   # mirror = upload new/changed files, keep existing remote files.
-  mc mirror --overwrite "$dir" "$MC_ALIAS/$CDN_BUCKET/clips"
+  "$MC" mirror --overwrite "$dir" "$MC_ALIAS/$CDN_BUCKET/clips"
   echo "Done. Base URL: $(public_url clips)/" >&2
 }
 
 cmd_list() {
   local prefix="${1:-}"
   setup_alias
-  mc ls --recursive "$MC_ALIAS/$CDN_BUCKET/$prefix"
+  "$MC" ls --recursive "$MC_ALIAS/$CDN_BUCKET/$prefix"
 }
 
 usage() {

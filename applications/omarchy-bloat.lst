@@ -1,7 +1,9 @@
 # Omarchy preinstalls this machine does not need.
 #
-# Source: ~/.local/share/omarchy/install/omarchy-base.packages (Omarchy 4.0.0 "Quattro").
-# Consumed by: scripts/dev-env-remove-omarchy-bloat
+# Source: ~/.local/share/omarchy/install/omarchy-base.packages (Omarchy 4.0.0 "Quattro"),
+# plus a few leftovers from Omarchy 3.
+# Consumed by: scripts/dev-env-remove-omarchy-bloat, which
+# applications/post-install/arch/remove-unused-applications.sh calls on install.
 #
 # This file is deliberately NOT under applications/packages/, because the
 # installer loads every *.lst it finds there and would install these again.
@@ -67,6 +69,17 @@ bolt                     # Thunderbolt 3 device manager; B550 has no Thunderbolt
 ### Duplicated by dev-env's own package lists ################################
 
 gnome-disk-utility       # 7 MB. gparted + udisks2 are installed via dev-env.
+foot                     # Ghostty is the terminal here: ~/.config/xdg-terminals.list
+                         # lists com.mitchellh.ghostty.desktop and nothing else, so
+                         # foot is never reached by xdg-terminal-exec.
+alacritty                # Not installed (Omarchy 3 leftover); listed so a fresh
+kitty                    # install of dev-env on an older box cleans up too.
+
+
+### Omarchy 3 leftovers ######################################################
+
+signal-desktop           # Not installed here; kept for older machines.
+1password-beta           # Same; Bitwarden is the password manager in dev-env.
 
 
 ### Considered and kept ######################################################

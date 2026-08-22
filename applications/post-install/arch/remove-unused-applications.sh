@@ -3,24 +3,12 @@
 # Remove Omarchy preinstalled bloat we don't want on a dev machine.
 # Safe to re-run: every removal is guarded by an installed/exists check.
 
-# --- Packages to remove (pacman/yay) --------------------------------------
-# Preinstalled apps + alternative terminals we don't use (we run Ghostty).
-REMOVE_PACKAGES=(
-  signal-desktop
-  1password-beta
-  libreoffice-fresh   # LibreOffice office suite
-  aether              # Omarchy mail/calendar app
-  foot                # alt terminal
-  alacritty           # alt terminal (defensive; may not be installed)
-  kitty               # alt terminal (defensive; may not be installed)
-)
+DEV_ENV="${DEV_ENV:-$HOME/.local/share/dev-env}"
 
-for pkg in "${REMOVE_PACKAGES[@]}"; do
-  if yay -Q "$pkg" &> /dev/null; then
-    echo "Removing package: $pkg"
-    yay -R --noconfirm "$pkg"
-  fi
-done
+# --- Packages to remove ----------------------------------------------------
+# The list itself lives in applications/omarchy-bloat.lst, annotated with the
+# reason for each package (and for the ones deliberately kept).
+"$DEV_ENV/scripts/dev-env-remove-omarchy-bloat" --noconfirm
 
 # --- Default web-app launchers to remove -----------------------------------
 # Omarchy seeds these as .desktop files (SUPER+SHIFT+... webapps).

@@ -1,8 +1,11 @@
 #!/bin/bash
 # Remove the Omarchy preinstalls listed in applications/omarchy-bloat.lst.
 #
+# Usage: dev-env-remove-omarchy-bloat [--noconfirm]
+#
 # Not a wrapper around `omarchy-remove-preinstalls`: that command also wipes
-# every installed web app and TUI launcher, and this machine keeps those.
+# every installed web app and TUI launcher, and which of those to keep is
+# decided in applications/post-install/arch/remove-unused-applications.sh.
 # It does set the same state marker, so Omarchy migrations will not re-add
 # preinstalled packages later.
 
@@ -11,6 +14,11 @@ set -euo pipefail
 DEV_ENV="${DEV_ENV:-$HOME/.local/share/dev-env}"
 BLOAT_LIST="$DEV_ENV/applications/omarchy-bloat.lst"
 STATE_MARKER="$HOME/.local/state/omarchy/preinstalls-removed"
+
+pacman_args=()
+if [ "${1:-}" = "--noconfirm" ]; then
+  pacman_args+=(--noconfirm)
+fi
 
 if [ ! -f /etc/arch-release ]; then
   echo "Omarchy only runs on Arch. Nothing to do." >&2
@@ -39,7 +47,7 @@ else
   printf '  %s\n' "${installed[@]}"
   echo
   # -Rns also takes unneeded dependencies and config files with it.
-  sudo pacman -Rns "${installed[@]}"
+  sudo pacman -Rns "${pacman_args[@]}" "${installed[@]}"
 fi
 
 # Tell Omarchy the preinstalls are gone on purpose, so its migrations

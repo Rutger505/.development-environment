@@ -132,13 +132,19 @@ and, just as importantly, which ones were considered and kept and why.
 dev-env-remove-omarchy-bloat
 ```
 
-Removes the 29 listed packages with `pacman -Rns` (~900 MB, more once orphaned
-dependencies go too) and touches `~/.local/state/omarchy/preinstalls-removed`
-so Omarchy migrations don't reinstall them on the next `omarchy-update`.
+Removes the listed packages with `pacman -Rns` (~900 MB on this machine, more
+once orphaned dependencies go too) and touches
+`~/.local/state/omarchy/preinstalls-removed` so Omarchy migrations don't
+reinstall them on the next `omarchy-update`.
+
+`applications/post-install/arch/remove-unused-applications.sh` runs it with
+`--noconfirm` during install, then prunes the seeded web-app `.desktop`
+launchers separately.
 
 Deliberately not a wrapper around Omarchy's own `omarchy-remove-preinstalls`:
-that also deletes every installed web app and TUI launcher, which we keep.
-To undo, run `omarchy-install-preinstalls`.
+that also deletes *every* installed web app and TUI launcher, and which ones to
+keep is decided in the post-install script. To undo, run
+`omarchy-install-preinstalls`.
 
 ## clipcdn — upload clips & artifacts to my CDN
 

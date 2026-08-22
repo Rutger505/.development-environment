@@ -121,6 +121,25 @@ applications/
 2. Install wanted games
 
 
+## Removing Omarchy preinstalls (Arch/Omarchy only)
+
+Omarchy pacstraps ~140 packages from
+`~/.local/share/omarchy/install/omarchy-base.packages`. A chunk of that is
+duplicated or unused here. `applications/omarchy-bloat.lst` records which ones
+and, just as importantly, which ones were considered and kept and why.
+
+```bash
+dev-env-remove-omarchy-bloat
+```
+
+Removes the 29 listed packages with `pacman -Rns` (~900 MB, more once orphaned
+dependencies go too) and touches `~/.local/state/omarchy/preinstalls-removed`
+so Omarchy migrations don't reinstall them on the next `omarchy-update`.
+
+Deliberately not a wrapper around Omarchy's own `omarchy-remove-preinstalls`:
+that also deletes every installed web app and TUI launcher, which we keep.
+To undo, run `omarchy-install-preinstalls`.
+
 ## clipcdn — upload clips & artifacts to my CDN
 
 `clipcdn` (in `.local/bin`) uploads files to my self-hosted MinIO CDN

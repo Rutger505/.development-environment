@@ -1,0 +1,51 @@
+#!/bin/bash
+# Remove the Omarchy preinstalls listed in applications/omarchy-bloat.lst.
+#
+# Not a wrapper around `omarchy-remove-preinstalls`: that command also wipes
+# every installed web app and TUI launcher, and this machine keeps those.
+# It does set the same state marker, so Omarchy migrations will not re-add
+# preinstalled packages later.
+
+set -euo pipefail
+
+DEV_ENV="${DEV_ENV:-$HOME/.local/share/dev-env}"
+BLOAT_LIST="$DEV_ENV/applications/omarchy-bloat.lst"
+STATE_MARKER="$HOME/.local/state/omarchy/preinstalls-removed"
+
+if [ ! -f /etc/arch-release ]; then
+  echo "Omarchy only runs on Arch. Nothing to do." >&2
+  exit 0
+fi
+
+if [ ! -f "$BLOAT_LIST" ]; then
+  echo "Package list not found: $BLOAT_LIST" >&2
+  exit 1
+fi
+
+# Strip comments (whole-line and trailing) and blank lines.
+mapfile -t wanted < <(awk '{ sub(/#.*/, ""); if ($1 != "") print $1 }' "$BLOAT_LIST")
+
+installed=()
+for pkg in "${wanted[@]}"; do
+  if pacman -Qq "$pkg" &>/dev/null; then
+    installed+=("$pkg")
+  fi
+done
+
+if [ ${#installed[@]} -eq 0 ]; then
+  echo "Nothing to remove; all ${#wanted[@]} listed packages are already gone."
+else
+  echo "Removing ${#installed[@]} of ${#wanted[@]} listed packages:"
+  printf '  %s\n' "${installed[@]}"
+  echo
+  # -Rns also takes unneeded dependencies and config files with it.
+  sudo pacman -Rns "${installed[@]}"
+fi
+
+# Tell Omarchy the preinstalls are gone on purpose, so its migrations
+# (and the "Install > Preinstalls" menu entry) respect the choice.
+mkdir -p "$(dirname "$STATE_MARKER")"
+touch "$STATE_MARKER"
+
+echo
+echo "Done. Run 'omarchy-install-preinstalls' if you ever want them back."

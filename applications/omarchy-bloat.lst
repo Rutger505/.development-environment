@@ -1,0 +1,101 @@
+# Omarchy preinstalls this machine does not need.
+#
+# Source: ~/.local/share/omarchy/install/omarchy-base.packages (Omarchy 4.0.0 "Quattro").
+# Consumed by: scripts/dev-env-remove-omarchy-bloat
+#
+# This file is deliberately NOT under applications/packages/, because the
+# installer loads every *.lst it finds there and would install these again.
+#
+# Uncommented = removed. Commented = considered and rejected, with the reason.
+# Sizes are installed size of the package itself; `pacman -Rns` also reclaims
+# dependencies that nothing else needs, so real savings are higher.
+#
+# Machine this was assessed against: MSI B550 desktop, Ryzen 5 5600X,
+# Radeon RX 9070 XT, 3 external monitors, Canon MG2900 printer, zsh + tmux,
+# Zen/Brave browsers, VSCode + JetBrains + Neovim.
+
+
+### Preinstalled apps with a replacement already installed ###################
+
+libreoffice-fresh        # 421 MB. Last opened Dec 2025.
+kdenlive                 #  90 MB. LosslessCut + omacut cover the clip editing.
+localsend                #  67 MB. Nothing pairs with it; clipcdn covers sharing.
+cliamp                   #  35 MB. Retro Winamp clone; Spotify is installed.
+obsidian                 #  25 MB. Last opened May 2026.
+obs-studio               #  25 MB. gpu-screen-recorder(-ui) is the recorder in use.
+pinta                    #  20 MB. Drags in dotnet-runtime for a Paint clone.
+aether                   #  19 MB. Wallpaper->theme generator; themes are pinned.
+herdr                    #  18 MB. tmux replacement. Its shell integration is
+                         #  bash-only (~/.local/share/omarchy/default/bash/fns/herdr)
+                         #  and this machine runs zsh, so it is unreachable anyway.
+lazydocker               #  13 MB. Docker Desktop + `docker compose` are in use.
+xournalpp                #   8 MB. PDF annotation; config dir created by the
+                         #  Quattro upgrade and never touched since.
+moonlight-qt             #   2 MB. Game-streaming client on the machine that
+                         #  would be the *host*, not the client.
+omawrite                 # 0.6 MB. Markdown editor; Typora/VSCode/nvim installed.
+omacalc                  # 0.3 MB. Calculator; qalculate is installed.
+tobi-try                 # 0.1 MB. "Fresh directories for every vibe" scratch-dir toy.
+ttfx                     #   2 MB. Terminal text effects. A toy.
+
+
+### Runtimes and libs only these apps pulled in ##############################
+
+dotnet-runtime           #  74 MB. Only pinta required it.
+libvips                  #  31 MB. Nothing on the system requires it.
+mariadb-libs             #  24 MB. Optional dep of libreoffice-fresh / qt-base only.
+postgresql-libs          #  11 MB. Same.
+python-poetry-core       #   2 MB. Python build backend; poetry itself isn't installed.
+luarocks                 # Lua module manager; nvim uses lazy.nvim, not luarocks.
+qemu-user-static-binfmt  # binfmt rules for cross-arch emulation; qemu-user-static
+                         # is not installed, so the rules bind nothing.
+
+
+### Input method for languages not used here #################################
+
+fcitx5                   #  18 MB. CJK/IME framework.
+fcitx5-qt                #   2 MB.
+fcitx5-gtk               # 0.3 MB.
+
+
+### Hardware that is not in this machine #####################################
+
+asdcontrol               # Brightness for Apple Studio/Pro USB-C displays.
+bolt                     # Thunderbolt 3 device manager; B550 has no Thunderbolt.
+
+
+### Duplicated by dev-env's own package lists ################################
+
+gnome-disk-utility       # 7 MB. gparted + udisks2 are installed via dev-env.
+
+
+### Considered and kept ######################################################
+
+# chromium               # 416 MB, the single biggest win -- but the default
+#                        # browser is zen.desktop, which omarchy-launch-webapp
+#                        # does not support, so it falls back to chromium for
+#                        # all 15 installed web apps (ChatGPT, WhatsApp, ...).
+#                        # Removing it requires first:
+#                        #   xdg-settings set default-web-browser brave.desktop
+#                        # which also sends every normal link to Brave, not Zen.
+# noto-fonts-cjk         # 299 MB. Unused for input, but it is what renders CJK
+#                        # glyphs in the browser; removing it means tofu boxes.
+# mise                   #  91 MB. Referenced in 8 places across omarchy's own
+#                        # scripts and provides the ~/.local/bin AI-CLI stubs.
+# yaru-icon-theme        #  63 MB. Fallback icon theme for GTK apps.
+# nautilus               #  14 MB (+ sushi, nautilus-python, evince, gvfs-*).
+#                        # Still the GUI file manager and the file-picker portal
+#                        # target; yazi does not replace that.
+# tesseract              #  27 MB with tesseract-data-eng. Backs Omarchy's
+#                        # screenshot text-extraction hotkey.
+# ruby                   #  17 MB. Removed only if tobi-try goes; `pacman -Rns`
+#                        # on tobi-try leaves it because it is explicitly installed.
+#                        # Drop manually if nothing else wants it.
+# omacut                 # Video trimmer -- actually useful for clipping.
+# ddcutil                # Brightness over DDC/CI for the 3 external monitors.
+# cups, cups-*, avahi    # A Canon MG2900 is configured and idle on this box.
+# system-config-printer  # Same.
+# plymouth               # Hard dependency of omarchy-settings; cannot be removed.
+# sddm                   # Hard dependency of omarchy; cannot be removed.
+# clang, llvm            # Requested by dev-env's own 05-compilers.lst.
+# docker*, lazygit       # In active use.

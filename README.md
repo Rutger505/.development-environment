@@ -32,7 +32,7 @@ cat ~/.ssh/id_ed25519.pub
 1. Clone the repository (default location is `~/.local/share/dev-env`).
 
 ```bash
-git clone git@github.com:Rutger505/.development-environment.git ~/.local/share/dev-env
+git clone git@github.com:Rutger505/dev-env.git ~/.local/share/dev-env
 ```
 
 > **Custom location:** You can clone to any location. Set `DEV_ENV` in your environment before running scripts:

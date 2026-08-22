@@ -2,13 +2,11 @@
 #
 # Source: ~/.local/share/omarchy/install/omarchy-base.packages (Omarchy 4.0.0 "Quattro"),
 # plus a few leftovers from Omarchy 3.
-# Consumed by: scripts/dev-env-remove-omarchy-bloat, which
-# applications/post-install/arch/remove-unused-applications.sh calls on install.
+# Consumed by: applications/post-install/arch/remove-unused-applications.sh
 #
 # This file is deliberately NOT under applications/packages/, because the
 # installer loads every *.lst it finds there and would install these again.
 #
-# Uncommented = removed. Commented = considered and rejected, with the reason.
 # Sizes are installed size of the package itself; `pacman -Rns` also reclaims
 # dependencies that nothing else needs, so real savings are higher.
 #
@@ -24,13 +22,11 @@ kdenlive                 #  90 MB. LosslessCut + omacut cover the clip editing.
 localsend                #  67 MB. Nothing pairs with it; clipcdn covers sharing.
 cliamp                   #  35 MB. Retro Winamp clone; Spotify is installed.
 obsidian                 #  25 MB. Last opened May 2026.
-obs-studio               #  25 MB. gpu-screen-recorder(-ui) is the recorder in use.
 pinta                    #  20 MB. Drags in dotnet-runtime for a Paint clone.
 aether                   #  19 MB. Wallpaper->theme generator; themes are pinned.
 herdr                    #  18 MB. tmux replacement. Its shell integration is
                          #  bash-only (~/.local/share/omarchy/default/bash/fns/herdr)
                          #  and this machine runs zsh, so it is unreachable anyway.
-lazydocker               #  13 MB. Docker Desktop + `docker compose` are in use.
 xournalpp                #   8 MB. PDF annotation; config dir created by the
                          #  Quattro upgrade and never touched since.
 moonlight-qt             #   2 MB. Game-streaming client on the machine that
@@ -48,7 +44,13 @@ libvips                  #  31 MB. Nothing on the system requires it.
 mariadb-libs             #  24 MB. Optional dep of libreoffice-fresh / qt-base only.
 postgresql-libs          #  11 MB. Same.
 python-poetry-core       #   2 MB. Python build backend; poetry itself isn't installed.
-luarocks                 # Lua module manager; nvim uses lazy.nvim, not luarocks.
+luarocks                 # Unused by the nvim configs: no `rocks` setting anywhere,
+                         # no ~/.local/share/nvim*/lazy-rocks tree, and no ~/.luarocks.
+                         # nui.nvim is the only plugin shipping a rockspec, and
+                         # lazy.nvim skips it (has a lua/ dir, no dependencies,
+                         # build.type = "builtin"), so luarocks is never invoked.
+                         # lazy.nvim's rocks.hererocks defaults to nil, so it would
+                         # bootstrap its own luarocks if a rock ever were needed.
 qemu-user-static-binfmt  # binfmt rules for cross-arch emulation; qemu-user-static
                          # is not installed, so the rules bind nothing.
 
@@ -80,35 +82,3 @@ kitty                    # install of dev-env on an older box cleans up too.
 
 signal-desktop           # Not installed here; kept for older machines.
 1password-beta           # Same; Bitwarden is the password manager in dev-env.
-
-
-### Considered and kept ######################################################
-
-# chromium               # 416 MB, the single biggest win -- but the default
-#                        # browser is zen.desktop, which omarchy-launch-webapp
-#                        # does not support, so it falls back to chromium for
-#                        # all 15 installed web apps (ChatGPT, WhatsApp, ...).
-#                        # Removing it requires first:
-#                        #   xdg-settings set default-web-browser brave.desktop
-#                        # which also sends every normal link to Brave, not Zen.
-# noto-fonts-cjk         # 299 MB. Unused for input, but it is what renders CJK
-#                        # glyphs in the browser; removing it means tofu boxes.
-# mise                   #  91 MB. Referenced in 8 places across omarchy's own
-#                        # scripts and provides the ~/.local/bin AI-CLI stubs.
-# yaru-icon-theme        #  63 MB. Fallback icon theme for GTK apps.
-# nautilus               #  14 MB (+ sushi, nautilus-python, evince, gvfs-*).
-#                        # Still the GUI file manager and the file-picker portal
-#                        # target; yazi does not replace that.
-# tesseract              #  27 MB with tesseract-data-eng. Backs Omarchy's
-#                        # screenshot text-extraction hotkey.
-# ruby                   #  17 MB. Removed only if tobi-try goes; `pacman -Rns`
-#                        # on tobi-try leaves it because it is explicitly installed.
-#                        # Drop manually if nothing else wants it.
-# omacut                 # Video trimmer -- actually useful for clipping.
-# ddcutil                # Brightness over DDC/CI for the 3 external monitors.
-# cups, cups-*, avahi    # A Canon MG2900 is configured and idle on this box.
-# system-config-printer  # Same.
-# plymouth               # Hard dependency of omarchy-settings; cannot be removed.
-# sddm                   # Hard dependency of omarchy; cannot be removed.
-# clang, llvm            # Requested by dev-env's own 05-compilers.lst.
-# docker*, lazygit       # In active use.

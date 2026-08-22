@@ -125,26 +125,19 @@ applications/
 
 Omarchy pacstraps ~140 packages from
 `~/.local/share/omarchy/install/omarchy-base.packages`. A chunk of that is
-duplicated or unused here. `applications/omarchy-bloat.lst` records which ones
-and, just as importantly, which ones were considered and kept and why.
+duplicated or unused here. `applications/omarchy-bloat.lst` lists the ones we
+drop, annotated with the reason for each.
 
-```bash
-dev-env-remove-omarchy-bloat
-```
+`applications/post-install/arch/remove-unused-applications.sh` reads that list
+and removes whatever is installed with `pacman -Rns` (~880 MB on this machine,
+more once orphaned dependencies go too), then prunes the seeded web-app
+`.desktop` launchers. It's guarded and safe to re-run.
 
-Removes the listed packages with `pacman -Rns` (~900 MB on this machine, more
-once orphaned dependencies go too) and touches
-`~/.local/state/omarchy/preinstalls-removed` so Omarchy migrations don't
-reinstall them on the next `omarchy-update`.
-
-`applications/post-install/arch/remove-unused-applications.sh` runs it with
-`--noconfirm` during install, then prunes the seeded web-app `.desktop`
-launchers separately.
-
+It also touches `~/.local/state/omarchy/preinstalls-removed` so Omarchy's
+migrations don't reinstall the packages on the next `omarchy-update`.
 Deliberately not a wrapper around Omarchy's own `omarchy-remove-preinstalls`:
 that also deletes *every* installed web app and TUI launcher, and which ones to
-keep is decided in the post-install script. To undo, run
-`omarchy-install-preinstalls`.
+keep is decided here. To undo, run `omarchy-install-preinstalls`.
 
 ## clipcdn — upload clips & artifacts to my CDN
 

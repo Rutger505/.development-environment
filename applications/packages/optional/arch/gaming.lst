@@ -7,7 +7,6 @@ steam
 jdk21-openjdk
 minecraft-launcher
 prismlauncher
-modrinth-app-bin
 
 # ShadowPlay-style clip recorder + overlay UI
 # Pulls in gpu-screen-recorder and gpu-screen-recorder-notification

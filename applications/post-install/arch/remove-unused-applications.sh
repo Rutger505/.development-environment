@@ -38,11 +38,17 @@ else
   echo "Package list not found, skipping package removal: $BLOAT_LIST"
 fi
 
-# --- Default web-app launchers to remove -----------------------------------
-# Omarchy seeds these as .desktop files (SUPER+SHIFT+... webapps).
+# --- Desktop launchers to remove -------------------------------------------
+# Removing the package is not always enough: Omarchy seeds .desktop files into
+# ~/.local/share/applications, and pacman does not own those, so they survive
+# a -Rns and keep showing up in the launcher pointing at a missing binary.
+
+# Web apps Omarchy seeds as .desktop files (SUPER+SHIFT+... launchers).
 REMOVE_WEBAPPS=(
   Basecamp
+  ChatGPT
   Discord
+  GitHub
   HEY
   WhatsApp
   X
@@ -54,20 +60,38 @@ REMOVE_WEBAPPS=(
   "Google Photos"
 )
 
-APPS_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/applications"
-if cd "$APPS_DIR"; then
-  for app in "${REMOVE_WEBAPPS[@]}"; do
-    if [ -f "${app}.desktop" ]; then
-      echo "Removing webapp launcher: ${app}.desktop"
-      rm "${app}.desktop"
-    fi
-  done
-else
-  echo "Can't change directory to $APPS_DIR" && exit 1
-fi
+# Plain launchers (not web apps) for software this machine does not use.
+REMOVE_DESKTOP_ENTRIES=(
+  Alacritty   # Omarchy 3 terminal; Ghostty is the terminal here.
+  foot        # Omarchy 4 terminal, same reason.
+  typora      # Package already uninstalled, launcher stayed behind.
+  windows-vm  # omarchy-windows-vm; no Windows VM on this machine.
+)
 
-# ChatGPT desktop app (optional Omarchy install) — remove if present.
-if command -v omarchy-remove-ai-chatgpt &> /dev/null && yay -Q openai-codex-desktop &> /dev/null; then
-  echo "Removing ChatGPT desktop app"
-  omarchy-remove-ai-chatgpt
-fi
+APPS_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/applications"
+ICON_DIRS=(
+  "${XDG_DATA_HOME:-$HOME/.local/share}/icons/hicolor/256x256/apps"
+  "$APPS_DIR/icons"
+)
+
+# Drop a launcher plus any icon installed alongside it. This mirrors what
+# omarchy-webapp-remove does, but honours XDG_DATA_HOME instead of hardcoding
+# $HOME/.local/share. Omarchy derives web-app icon names by lowercasing and
+# dashing the app name, so try both that and the verbatim name.
+remove_desktop_entry() {
+  local name="$1" icon_dir slug
+  slug="$(printf '%s' "$name" | tr '[:upper:]' '[:lower:]' | sed 's/[^[:alnum:]]\+/-/g; s/^-//; s/-$//')"
+
+  [ -f "$APPS_DIR/$name.desktop" ] || return 0
+  echo "Removing desktop entry: $name.desktop"
+  rm -f "$APPS_DIR/$name.desktop"
+  for icon_dir in "${ICON_DIRS[@]}"; do
+    rm -f "$icon_dir/$name.png" "$icon_dir/$slug.png"
+  done
+}
+
+for app in "${REMOVE_WEBAPPS[@]}" "${REMOVE_DESKTOP_ENTRIES[@]}"; do
+  remove_desktop_entry "$app"
+done
+
+update-desktop-database "$APPS_DIR" &> /dev/null

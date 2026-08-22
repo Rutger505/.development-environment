@@ -1,4 +1,4 @@
-# Omarchy preinstalls this machine does not need.
+# Packages this machine does not need — mostly Omarchy preinstalls.
 #
 # Source: ~/.local/share/omarchy/install/omarchy-base.packages (Omarchy 4.0.0 "Quattro"),
 # plus a few leftovers from Omarchy 3.
@@ -18,7 +18,7 @@
 ### Preinstalled apps with a replacement already installed ###################
 
 libreoffice-fresh        # 421 MB. Last opened Dec 2025.
-kdenlive                 #  90 MB. LosslessCut + omacut cover the clip editing.
+kdenlive                 #  90 MB. omacut covers the clip trimming.
 localsend                #  67 MB. Nothing pairs with it; clipcdn covers sharing.
 cliamp                   #  35 MB. Retro Winamp clone; Spotify is installed.
 obsidian                 #  25 MB. Last opened May 2026.
@@ -31,7 +31,7 @@ xournalpp                #   8 MB. PDF annotation; config dir created by the
                          #  Quattro upgrade and never touched since.
 moonlight-qt             #   2 MB. Game-streaming client on the machine that
                          #  would be the *host*, not the client.
-omawrite                 # 0.6 MB. Markdown editor; Typora/VSCode/nvim installed.
+omawrite                 # 0.6 MB. Markdown editor; VSCode/nvim installed.
 omacalc                  # 0.3 MB. Calculator; qalculate is installed.
 tobi-try                 # 0.1 MB. "Fresh directories for every vibe" scratch-dir toy.
 ttfx                     #   2 MB. Terminal text effects. A toy.
@@ -76,6 +76,24 @@ foot                     # Ghostty is the terminal here: ~/.config/xdg-terminals
                          # foot is never reached by xdg-terminal-exec.
 alacritty                # Not installed (Omarchy 3 leftover); listed so a fresh
 kitty                    # install of dev-env on an older box cleans up too.
+
+
+### Outside Omarchy's preinstall set, but still not wanted ###################
+
+losslesscut-bin          # 574 MB. Biggest single win in this file. Electron app
+                         # for lossless trims; omacut does the same job and is
+                         # already preinstalled. Nothing requires it.
+openai-codex-desktop     # The ChatGPT desktop app, offered by Omarchy's
+                         # "Install > AI" menu (omarchy-install-ai-chatgpt).
+                         # Not installed here; listed so it stays gone.
+discover-overlay         # Third-party Discord voice overlay (GTK). Discord
+                         # itself stays; only the overlay is unwanted.
+gnome-multi-writer       # 0.4 MB. Writes one ISO to several USB sticks at once.
+                         # balena-etcher is installed and nothing here flashes
+                         # more than one stick at a time.
+typora                   # Not installed (only a stale .desktop was left behind);
+                         # listed so other machines drop it. VSCode/nvim edit
+                         # Markdown here.
 
 
 ### Omarchy 3 leftovers ######################################################

@@ -1,5 +1,11 @@
 {
     "cleanmenu": false,
     "answerclean": "None",
-    "devel": true
+    "devel": true,
+    "removemake": "no",
+    "diffmenu": true,
+    "answerdiff": "Installed",
+    "editmenu": false,
+    "answerupgrade": "None",
+    "rebuild": "no"
 }
